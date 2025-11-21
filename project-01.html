@@ -4,165 +4,224 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bike Mobile E-Commerce | Phuong Vu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Roboto', 'system-ui', 'sans-serif'],
+            body: ['Roboto', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            ink: '#0f172a',
+            accent: '#0ea5e9'
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body class="bg-gray-50 text-slate-900">
-  <header class="fixed inset-x-0 top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
+<body class="bg-white text-ink font-body">
+  <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="flex items-center justify-between h-16">
-        <a href="index.html" class="flex items-center gap-2 text-sm font-semibold text-slate-900">
-          <img src="images/logo.png" alt="Phuong Vu logo" class="h-10 w-10 object-contain">
-          <span class="hidden sm:inline">Phuong Vu</span>
+      <div class="flex h-16 items-center justify-between">
+        <a href="index.html" class="flex items-center gap-2 text-sm font-semibold">
+          <img src="images/logo.png" alt="Phuong Vu logo" class="h-9 w-9 object-contain">
+          <span>Phuong Vu</span>
         </a>
-        <button type="button" class="md:hidden p-2 rounded-lg border border-slate-200 text-slate-700" data-menu-toggle aria-expanded="false" aria-label="Toggle navigation">
+        <button type="button" class="md:hidden p-2 rounded-lg border border-slate-200" data-menu-toggle aria-expanded="false" aria-label="Toggle navigation">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
           </svg>
         </button>
-        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700">
-          <a href="index.html" class="hover:text-indigo-600">Home</a>
-          <a href="index.html#Portfolio" class="hover:text-indigo-600">Portfolio</a>
-          <a href="index.html#About" class="hover:text-indigo-600">About</a>
-          <a href="graphic-design.html" class="hover:text-indigo-600">Other Works</a>
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-700">
+          <a href="index.html#work" class="hover:text-ink">Work</a>
+          <a href="index.html#about" class="hover:text-ink">About</a>
+          <a href="graphic-design.html" class="hover:text-ink">Other Works</a>
+          <a href="https://www.linkedin.com/in/vuhoangphuong/" class="inline-flex items-center gap-2 rounded-full border border-slate-300 px-4 py-2 text-xs uppercase tracking-wide text-ink hover:border-ink">Let’s talk</a>
         </nav>
       </div>
       <div class="hidden flex-col gap-3 pb-4 md:hidden" data-mobile-menu>
-        <a href="index.html" class="text-sm font-medium text-slate-700 hover:text-indigo-600">Home</a>
-        <a href="index.html#Portfolio" class="text-sm font-medium text-slate-700 hover:text-indigo-600">Portfolio</a>
-        <a href="index.html#About" class="text-sm font-medium text-slate-700 hover:text-indigo-600">About</a>
-        <a href="graphic-design.html" class="text-sm font-medium text-slate-700 hover:text-indigo-600">Other Works</a>
+        <a href="index.html#work" class="text-sm font-medium text-slate-700 hover:text-ink">Work</a>
+        <a href="index.html#about" class="text-sm font-medium text-slate-700 hover:text-ink">About</a>
+        <a href="graphic-design.html" class="text-sm font-medium text-slate-700 hover:text-ink">Other Works</a>
+        <a href="https://www.linkedin.com/in/vuhoangphuong/" class="text-sm font-medium text-accent">Let’s talk</a>
       </div>
     </div>
   </header>
 
-  <main class="pt-20 pb-16">
-    <section class="max-w-6xl mx-auto px-4">
-      <h1 class="text-3xl font-bold text-center mt-6 mb-6">Bike mobile E-commerce website</h1>
-      <img src="images/bike-website/img002.png" alt="Bike mobile website hero" class="w-full h-auto rounded-xl shadow-sm mb-10">
-
-      <div class="grid gap-10 lg:grid-cols-[260px_1fr] items-start">
-        <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 space-y-6">
-          <div>
-            <h2 class="text-xl font-semibold">My role</h2>
-            <ul class="list-disc list-inside text-slate-700 space-y-1">
-              <li>UX Designer</li>
-              <li>UI Designer</li>
-              <li>UI Prototype</li>
-            </ul>
+  <main class="pt-14 pb-16">
+    <section class="max-w-6xl mx-auto px-4 py-8 space-y-5">
+      <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Case Study</p>
+      <div class="space-y-6">
+        <div class="space-y-4">
+          <h1 class="font-display text-3xl sm:text-4xl leading-tight">Bike Mobile E-Commerce Website</h1>
+          <p class="text-lg text-slate-700">A mobile-first redesign for a premium bike retailer to simplify comparison and guest checkout, turning curious browsers into confident buyers.</p>
+          <div class="flex flex-wrap gap-3 text-sm text-slate-600">
+            <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Role: UX & UI Design</span>
+            <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Duration: 3 months</span>
+            <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Tools: FigJam, Figma</span>
           </div>
-          <div>
-            <h2 class="text-xl font-semibold">Tools</h2>
-            <ul class="list-disc list-inside text-slate-700 space-y-1">
-              <li>Pen &amp; paper</li>
-              <li>FigJam</li>
-              <li>Figma</li>
-            </ul>
-          </div>
-          <div>
-            <h2 class="text-xl font-semibold">Duration</h2>
-            <p class="text-slate-700">3 months</p>
+          <div class="flex gap-3">
+            <a href="#solution" class="inline-flex items-center justify-center rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white hover:bg-slate-900">Jump to solution</a>
+            <a href="#prototype" class="inline-flex items-center justify-center rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-ink hover:border-ink">View prototype</a>
           </div>
         </div>
+        <div class="rounded-3xl border border-slate-200 bg-slate-50 p-4">
+          <img src="images/bike-website/img002.png" alt="Bike mobile website hero" class="w-full max-w-[640px] mx-auto h-auto rounded-2xl cursor-pointer" data-lightbox>
+        </div>
+      </div>
+    </section>
 
-        <div class="space-y-6 text-slate-700">
-          <div class="space-y-3">
-            <h2 class="text-2xl font-semibold">Summary</h2>
-            <p>E-commerce case with a focus on mobile platforms. The bike company has its website to sell its bikes online, they have trouble increasing sale revenue from its website and it's only available on desktop size, no small screen support. They need to enhance their browsing and checkout experience to greatly improve their product’s usability.</p>
+    <section class="max-w-6xl mx-auto px-4 py-6">
+      <div class="grid gap-6 md:grid-cols-3">
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-3">
+          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Challenges</p>
+          <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+            <li>No small-screen experience.</li>
+            <li>Hard to compare bikes.</li>
+            <li>Checkout friction; account required.</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-3">
+          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Goals</p>
+          <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+            <li>Support mobile discovery to checkout.</li>
+            <li>Make comparison effortless.</li>
+            <li>Add guest checkout to cut drop-off.</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-3">
+          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">My focus</p>
+          <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+            <li>Research & synthesis</li>
+            <li>Flows, wireframes, prototypes</li>
+            <li>Ul system & usability testing</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-6 space-y-4">
+      <h2 class="text-2xl font-display">Research insights</h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 space-y-2">
+          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">What I learned</p>
+          <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+            <li>Users open many product pages but can’t tell differences quickly.</li>
+            <li>Account creation before checkout causes abandonment.</li>
+            <li>They want specs up front: size, terrain, components, price.</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 space-y-2">
+          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Design principles</p>
+          <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+            <li>Comparison first: align specs, enable quick contrast.</li>
+            <li>Frictionless purchase: guest checkout, minimal fields.</li>
+            <li>Small-screen clarity: concise cards, tap-friendly actions.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="solution" class="max-w-6xl mx-auto px-4 py-6 space-y-4">
+      <h2 class="text-2xl font-display">Solution highlights</h2>
+      <div class="grid gap-4 md:grid-cols-3">
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-2">
+          <h3 class="text-lg font-semibold text-ink">Compare in one glance</h3>
+          <p class="text-sm text-slate-700">Side-by-side spec summaries and saved comparisons to reduce back-and-forth browsing.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-2">
+          <h3 class="text-lg font-semibold text-ink">Guest checkout</h3>
+          <p class="text-sm text-slate-700">Checkout without account creation; clear progress, minimal form fields, auto-fill friendly.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-2">
+          <h3 class="text-lg font-semibold text-ink">Mobile-first UI</h3>
+          <p class="text-sm text-slate-700">Compact cards, large tap targets, and scannable detail blocks tailored for phones.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-6 space-y-4">
+      <h2 class="text-2xl font-display">User flow</h2>
+      <p class="text-sm text-slate-700">Mapped the core path from discovery to checkout to remove dead ends and reduce taps.</p>
+      <img src="images/bike-website/img004.png" alt="User flow" class="w-full max-w-3xl mx-auto h-auto rounded-2xl border border-slate-200 cursor-pointer" data-lightbox>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-6 space-y-6">
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="space-y-3">
+          <h3 class="text-xl font-semibold text-ink">Wireframes</h3>
+          <p class="text-sm text-slate-700">Quick sketches and low-fidelity wires to explore layout options for product cards and comparison.</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+            <img src="images/bike-website/img005.png" alt="Wireframe 1" class="w-full h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
+            <img src="images/bike-website/img006.png" alt="Wireframe 2" class="w-full h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
+            <img src="images/bike-website/img007.png" alt="Wireframe 3" class="w-full h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
+            <img src="images/bike-website/img008.png" alt="Wireframe 4" class="w-full h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
           </div>
-          <div class="space-y-3">
-            <h2 class="text-2xl font-semibold">Business Goal(s)</h2>
-            <p>To improve the conversion from browser to checkout completion; as a result to increase revenue on the products from mobile-web experience.</p>
-          </div>
-          <div class="space-y-3">
-            <h2 class="text-2xl font-semibold">Problem(s)</h2>
-            <p>The business was facing several challenges in its business operations, including no small screen website, and a difficult checkout process. This was resulting in low customer engagement and a high bounce rate.</p>
-          </div>
-          <div class="space-y-3">
-            <h2 class="text-2xl font-semibold">Target customers</h2>
-            <p>Customers who are passionate about bike riding, and are willing to spend a lot of money on their purchases. In addition, they think of it as an investment so they are very picky and do their research. The age range is 24 - 38. Approximately 72% are men.</p>
-          </div>
+        </div>
+        <div class="space-y-3">
+          <h3 class="text-xl font-semibold text-ink">Lo-fi refinement</h3>
+          <p class="text-sm text-slate-700">Focused on hierarchy and flows before visual polish.</p>
+          <img src="images/bike-website/img009.png" alt="Low fidelity wireframes" class="w-full h-auto rounded-xl border border-slate-200">
         </div>
       </div>
 
-      <div class="max-w-4xl mx-auto mt-12 space-y-8 text-slate-700">
-        <section class="space-y-3">
-          <h2 class="text-2xl font-semibold">Persona</h2>
-          <p>Along with secondary data research from the company, I conducted my own research for this project to find out the pain points of users. I conducted 7 user interviews to gain insights into bikes purchasing experience from online stores.</p>
-          <img src="images/bike-website/img003.png" alt="Persona" class="w-full h-auto rounded-lg shadow-sm">
-          <p>Users browse the website and open many items pages but it is hard for them to decide which one is better to make a purchase decision. In this case, it would be nice if users can compare products to see which one best suits their needs.</p>
-          <p>Most users do not like to go through the registration on the website to make a purchase. A guest checkout should be implemented to help users purchase without having to register for an account.</p>
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-2xl font-semibold">Solution</h2>
-          <p>To address these issues, Bike Mobile decided to revamp its e-commerce website. The company worked with a web development agency to design a new, user-friendly website that offered a better shopping experience. The website was optimized for speed, with a clean and modern design that made it easy for customers to find and purchase products.</p>
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-2xl font-semibold">User Flow</h2>
-          <p>After I came to the solutions for this project in the previous step, I worked on user flow to shape my direction for the improved e-commerce website. This is to ensure that I understand each step the user is going through so that I can determine the most efficient routes.</p>
-          <img src="images/bike-website/img004.png" alt="User flow" class="w-full h-auto rounded-lg shadow-sm">
-        </section>
-
-        <section class="space-y-3">
-          <h3 class="text-xl font-semibold">Wireframes</h3>
-          <p>I started by sketching my ideas. This step helps me move from one idea to another quickly. Key screens are essential in this part because they helped me focus on the goals of this project.</p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-            <img src="images/bike-website/img005.png" alt="Wireframe 1" class="w-full h-auto rounded-lg shadow-sm">
-            <img src="images/bike-website/img006.png" alt="Wireframe 2" class="w-full h-auto rounded-lg shadow-sm">
-            <img src="images/bike-website/img007.png" alt="Wireframe 3" class="w-full h-auto rounded-lg shadow-sm">
-            <img src="images/bike-website/img008.png" alt="Wireframe 4" class="w-full h-auto rounded-lg shadow-sm">
-          </div>
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-2xl font-semibold">Lo-fi Wireframes</h2>
-          <p>Once I can figure out with the best solutions, the next step is to refine my wireframes. This step allowed me to have a better look at my solutions.</p>
-          <img src="images/bike-website/img009.png" alt="Low fidelity wireframes" class="w-full h-auto rounded-lg shadow-sm">
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-2xl font-semibold">Usability testing</h2>
-          <p>Once I'm happy with my wireframe, I run a usability testing with several people to see if my project is heading in the right direction. The main objective of this testing is to find out if I have achieved the steps needed for users to complete their tasks which are comparing bikes to help make purchase decisions and check out as guests. Five participants in both online and offline environments run through the step and contributed valuable feedback to my project.</p>
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-2xl font-semibold">Hi-fi Wireframes</h2>
-          <p>After feedback was collected during the 1st testing phase, I refined my wireframe in high fidelity. I also ran another usability testing round. Participants were able to complete the assigned tasks better. With the information gathered from many rounds of usability testing, I was able to make changes and refine the solutions.</p>
-          <div class="space-y-4">
-            <img src="images/bike-website/img010.png" alt="High fidelity screen 1" class="w-full h-auto rounded-lg shadow-sm">
-            <img src="images/bike-website/img011.png" alt="High fidelity screen 2" class="w-full h-auto rounded-lg shadow-sm">
-          </div>
-        </section>
-
-        <section class="space-y-3">
-          <h3 class="text-xl font-semibold">Prototype</h3>
-          <div class="overflow-hidden rounded-xl shadow-sm border border-slate-200">
-            <iframe class="w-full" style="border: 0;" width="900" height="640" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FqbwEwjyWIjEsTXq2nMvcYF%2FSpringboard-Capstone-II%3Fpage-id%3D248%253A43%26node-id%3D338%253A1518%26viewport%3D451%252C247%252C0.05%26scaling%3Dscale-down%26starting-point-node-id%3D428%253A1371%26show-proto-sidebar%3D1" allowfullscreen></iframe>
-          </div>
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-2xl font-semibold">Key takeaways</h2>
-          <p>This is an interesting project for me. I find out that mobile websites have many similarities with mobile applications. They are both built for smaller screens. Therefore the parts that can be put out on the screen are limited. I posed the question to myself asking how I could present enough information from a regular website on a small screen without compromising the looks and feels. It was also one of the most challenging tasks for me to complete in this project especially when I do the Bike comparison problem. This leads me to believe that limitations can be a great force for creativity!</p>
-        </section>
+      <div class="space-y-3">
+        <h3 class="text-xl font-semibold text-ink">Hi-fi screens</h3>
+        <p class="text-sm text-slate-700">Iterated high-fidelity designs after usability rounds.</p>
+        <div class="space-y-4">
+          <img src="images/bike-website/img010.png" alt="High fidelity screen 1" class="w-full max-w-3xl mx-auto h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
+          <img src="images/bike-website/img011.png" alt="High fidelity screen 2" class="w-full max-w-3xl mx-auto h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
+        </div>
       </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-6 space-y-4">
+      <h2 class="text-2xl font-display">Testing & learnings</h2>
+      <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+        <li>Comparison cards reduced product-hopping; users chose in fewer steps.</li>
+        <li>Guest checkout removed major drop-off; users preferred progress visibility.</li>
+        <li>Specs needed bolder labels; improved contrast and spacing in later iterations.</li>
+      </ul>
+    </section>
+
+    <section id="prototype" class="max-w-6xl mx-auto px-4 py-6 space-y-3">
+      <h2 class="text-2xl font-display">Prototype</h2>
+      <div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
+        <iframe class="w-full" style="border: 0;" width="900" height="640" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FqbwEwjyWIjEsTXq2nMvcYF%2FSpringboard-Capstone-II%3Fpage-id%3D248%253A43%26node-id%3D338%253A1518%26viewport%3D451%252C247%252C0.05%26scaling%3Dscale-down%26starting-point-node-id%3D428%253A1371%26show-proto-sidebar%3D1" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-6 space-y-3">
+      <h2 class="text-2xl font-display">Key takeaways</h2>
+      <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+        <li>Mobile constraints force clarity—prioritize essentials and comparison.</li>
+        <li>Guest checkout is a must-have for reducing abandonment.</li>
+        <li>Early testing caught hierarchy issues before development.</li>
+      </ul>
     </section>
   </main>
 
-  <footer class="bg-slate-900 text-white mt-16">
-    <div class="max-w-6xl mx-auto px-4 py-8 text-center space-y-3">
-      <p>Thank you for visiting my website!</p>
-      <p>&copy; Phuong Vu</p>
-      <p class="flex items-center justify-center gap-2 text-sm">Find me on
-        <a href="https://www.linkedin.com/in/vuhoangphuong/" class="inline-flex items-center gap-1 text-indigo-200 hover:text-white">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
-            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
-          </svg>
-        </a>
-      </p>
+  <footer class="border-t border-slate-200 bg-white">
+    <div class="max-w-6xl mx-auto px-4 py-10">
+      <div class="space-y-3 text-sm text-slate-600 text-right">
+        <p>Based remote · Available for product design roles & select freelance.</p>
+        <p class="text-slate-500">© Phuong Vu</p>
+      </div>
     </div>
   </footer>
+
+  <div id="lightbox" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm items-center justify-center p-4">
+    <div class="relative max-w-5xl w-full">
+      <button type="button" class="absolute -top-10 right-0 text-white text-2xl" aria-label="Close" data-lightbox-close>&times;</button>
+      <img src="" alt="Expanded view" class="w-full h-auto rounded-2xl border border-white/20" data-lightbox-image>
+    </div>
+  </div>
 
   <script>
     const menuToggle = document.querySelector('[data-menu-toggle]');
@@ -174,6 +233,32 @@
         menuToggle.setAttribute('aria-expanded', isOpen.toString());
       });
     }
+
+    // Simple lightbox for images with data-lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.querySelector('[data-lightbox-image]');
+    const closeLightbox = document.querySelector('[data-lightbox-close]');
+    document.querySelectorAll('[data-lightbox]').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImage.src = img.src;
+        lightbox.classList.remove('hidden');
+        lightbox.classList.add('flex');
+      });
+    });
+    if (closeLightbox) {
+      closeLightbox.addEventListener('click', () => {
+        lightbox.classList.add('hidden');
+        lightbox.classList.remove('flex');
+        lightboxImage.src = '';
+      });
+    }
+    lightbox?.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.add('hidden');
+        lightbox.classList.remove('flex');
+        lightboxImage.src = '';
+      }
+    });
   </script>
 </body>
 </html>

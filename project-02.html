@@ -3,175 +3,241 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kura Car Care App | Phuong Vu</title>
+  <title>Kura Car Care | Phuong Vu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Roboto', 'system-ui', 'sans-serif'],
+            body: ['Roboto', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            ink: '#0f172a',
+            accent: '#0ea5e9'
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body class="bg-gray-50 text-slate-900">
-  <header class="fixed inset-x-0 top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
+<body class="bg-white text-ink font-body">
+  <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="flex items-center justify-between h-16">
-        <a href="index.html" class="flex items-center gap-2 text-sm font-semibold text-slate-900">
-          <img src="images/logo.png" alt="Phuong Vu logo" class="h-10 w-10 object-contain">
-          <span class="hidden sm:inline">Phuong Vu</span>
+      <div class="flex h-16 items-center justify-between">
+        <a href="index.html" class="flex items-center gap-2 text-sm font-semibold">
+          <img src="images/logo.png" alt="Phuong Vu logo" class="h-9 w-9 object-contain">
+          <span>Phuong Vu</span>
         </a>
-        <button type="button" class="md:hidden p-2 rounded-lg border border-slate-200 text-slate-700" data-menu-toggle aria-expanded="false" aria-label="Toggle navigation">
+        <button type="button" class="md:hidden p-2 rounded-lg border border-slate-200" data-menu-toggle aria-expanded="false" aria-label="Toggle navigation">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
           </svg>
         </button>
-        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700">
-          <a href="index.html" class="hover:text-indigo-600">Home</a>
-          <a href="index.html#Portfolio" class="hover:text-indigo-600">Portfolio</a>
-          <a href="index.html#About" class="hover:text-indigo-600">About</a>
-          <a href="graphic-design.html" class="hover:text-indigo-600">Other Works</a>
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-700">
+          <a href="index.html#work" class="hover:text-ink">Work</a>
+          <a href="index.html#about" class="hover:text-ink">About</a>
+          <a href="graphic-design.html" class="hover:text-ink">Other Works</a>
+          <a href="https://www.linkedin.com/in/vuhoangphuong/" class="inline-flex items-center gap-2 rounded-full border border-slate-300 px-4 py-2 text-xs uppercase tracking-wide text-ink hover:border-ink">Let’s talk</a>
         </nav>
       </div>
       <div class="hidden flex-col gap-3 pb-4 md:hidden" data-mobile-menu>
-        <a href="index.html" class="text-sm font-medium text-slate-700 hover:text-indigo-600">Home</a>
-        <a href="index.html#Portfolio" class="text-sm font-medium text-slate-700 hover:text-indigo-600">Portfolio</a>
-        <a href="index.html#About" class="text-sm font-medium text-slate-700 hover:text-indigo-600">About</a>
-        <a href="graphic-design.html" class="text-sm font-medium text-slate-700 hover:text-indigo-600">Other Works</a>
+        <a href="index.html#work" class="text-sm font-medium text-slate-700 hover:text-ink">Work</a>
+        <a href="index.html#about" class="text-sm font-medium text-slate-700 hover:text-ink">About</a>
+        <a href="graphic-design.html" class="text-sm font-medium text-slate-700 hover:text-ink">Other Works</a>
+        <a href="https://www.linkedin.com/in/vuhoangphuong/" class="text-sm font-medium text-accent">Let’s talk</a>
       </div>
     </div>
   </header>
 
-  <main class="pt-20 pb-16">
-    <section class="max-w-6xl mx-auto px-4">
-      <h1 class="text-3xl font-bold text-center mt-6 mb-6">Kura, a car care app</h1>
-      <img src="images/Carcare/img001.png" alt="Kura car care app" class="w-full h-auto rounded-xl shadow-sm mb-10">
-
-      <div class="grid gap-10 lg:grid-cols-[260px_1fr] items-start">
-        <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 space-y-6">
-          <div>
-            <h2 class="text-xl font-semibold">My role</h2>
-            <ul class="list-disc list-inside text-slate-700 space-y-1">
-              <li>UX Reseacher</li>
-              <li>UI Designer</li>
-              <li>UI Prototype</li>
-            </ul>
-          </div>
-          <div>
-            <h2 class="text-xl font-semibold">Tools</h2>
-            <ul class="list-disc list-inside text-slate-700 space-y-1">
-              <li>Pen &amp; paper</li>
-              <li>FigJam</li>
-              <li>Figma</li>
-            </ul>
-          </div>
-          <div>
-            <h2 class="text-xl font-semibold">Duration</h2>
-            <p class="text-slate-700">3 months</p>
-          </div>
+  <main class="pt-14 pb-16">
+    <section class="max-w-6xl mx-auto px-4 py-8 space-y-5">
+      <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Case Study</p>
+      <div class="space-y-4">
+        <h1 class="font-display text-3xl sm:text-4xl leading-tight">Kura, a car care app</h1>
+        <p class="text-lg text-slate-700">A maintenance companion that turns complex schedules into friendly reminders and transparent history for car owners.</p>
+        <div class="flex flex-wrap gap-3 text-sm text-slate-600">
+          <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Role: UX Research & UI Design</span>
+          <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Duration: 3 months</span>
+          <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Tools: Pen & paper, FigJam, Figma</span>
         </div>
+        <div class="flex gap-3">
+          <a href="#solution" class="inline-flex items-center justify-center rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white hover:bg-slate-900">Jump to solution</a>
+          <a href="#prototype" class="inline-flex items-center justify-center rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-ink hover:border-ink">View prototype</a>
+        </div>
+      </div>
+      <div class="rounded-3xl border border-slate-200 bg-slate-50 p-4 flex justify-center">
+        <img src="images/Carcare/img001.png" alt="Kura car care app" class="w-full max-w-3xl h-auto rounded-2xl border border-slate-200 cursor-pointer" data-lightbox>
+      </div>
+    </section>
 
-        <div class="space-y-6 text-slate-700">
-          <div class="space-y-3">
-            <h2 class="text-2xl font-semibold">Summary</h2>
-            <p>This app is designed to help car owners track and maintain their vehicles by providing an intuitive and user-friendly interface. It includes an easy to understand dashboard of the car's performance metric, a calendar of upcoming maintainance tasks and reminders.</p>
-          </div>
-          <div class="space-y-3">
-            <h2 class="text-2xl font-semibold">Research</h2>
-            <p>I interviewed a group of people to find out what they want to do with their cars when they are not driving. Both formal and informal one on one interviews were conducted to find out the issues car owners might have. There are many things they want to do with their cars, however taking care of their cars is their priority and they wish to have an alternative or a better way rather than relying solely on the car mechanic telling them what to do.</p>
-          </div>
-          <div class="space-y-3">
-            <h3 class="text-xl font-semibold">Problem(s)</h3>
-            <p>After interviewing a handful of people, I realized that people want to take better care of their cars so they can drive without any worry. Car owners may have difficulty remembering to do periodic maintenance, understanding how to do DIY maintenance tasks, getting the best performance out of their cars, and finding reliable advice. This app addresses each of these areas by providing an easy-to-use interface for tracking maintenance tasks, step-by-step instructions for DIY tasks, performance metrics to help users understand their car better, and access to a virtual assistant for reliable advice.</p>
-          </div>
-          <div class="space-y-3">
-            <h2 class="text-2xl font-semibold">Target customers</h2>
-            <p>The target customers for this app would be car owners, mechanics, and DIY enthusiasts. Car owners would appreciate the convenience of having an easy-to-use app to help them keep track of their vehicle's maintenance needs, as well as having access to helpful advice and performance metrics. Mechanics would also benefit from using this app to provide their customers with detailed recommendations for car repairs and maintenance.</p>
-          </div>
-          <div class="space-y-3">
-            <h2 class="text-2xl font-semibold">Persona</h2>
-            <p>The persona for this app would be any car owner who is looking for an easy way to track and maintain their car. This could include individuals looking to save time and money on car repairs, as well as mechanics</p>
-          </div>
+    <section class="max-w-6xl mx-auto px-4 py-6">
+      <div class="grid gap-6 md:grid-cols-3">
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-3">
+          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Challenges</p>
+          <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+            <li>Owners forget periodic maintenance.</li>
+            <li>No easy way to track service history.</li>
+            <li>DIY guidance and trustworthy advice are scarce.</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-3">
+          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Goals</p>
+          <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+            <li>Track maintenance in one place.</li>
+            <li>Surface clear next steps and reminders.</li>
+            <li>Give owners confidence with reliable recommendations.</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-3">
+          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">My focus</p>
+          <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+            <li>Research & synthesis</li>
+            <li>User flows, wireframes, prototypes</li>
+            <li>UI system & usability testing</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-6 space-y-4">
+      <h2 class="text-2xl font-display">Research insights</h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 space-y-2">
+          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">What I learned</p>
+          <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+            <li>People forget schedules and lack visibility into car health.</li>
+            <li>They want guidance that is timely, simple, and trustworthy.</li>
+            <li>Service history needs to be transparent and portable.</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 space-y-2">
+          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Design principles</p>
+          <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+            <li>Clarity first: show upcoming tasks and status at a glance.</li>
+            <li>Helpful nudges: reminders with context, not alarms.</li>
+            <li>Trustworthy tone: friendly, confident visuals.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="solution" class="max-w-6xl mx-auto px-4 py-6 space-y-4">
+      <h2 class="text-2xl font-display">Solution highlights</h2>
+      <div class="grid gap-4 md:grid-cols-3">
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-2">
+          <h3 class="text-lg font-semibold text-ink">Unified maintenance hub</h3>
+          <p class="text-sm text-slate-700">Dashboard of car performance, service history, and upcoming tasks.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-2">
+          <h3 class="text-lg font-semibold text-ink">Smart reminders</h3>
+          <p class="text-sm text-slate-700">Timely prompts for service with clear instructions or DIY steps.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-2">
+          <h3 class="text-lg font-semibold text-ink">Friendly visuals</h3>
+          <p class="text-sm text-slate-700">Blue, confident visual language to build trust and reduce friction.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-6 space-y-4">
+      <h2 class="text-2xl font-display">Persona</h2>
+      <img src="images/Carcare/img002.png" alt="Persona visuals" class="w-full max-w-3xl mx-auto h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-6 space-y-4">
+      <h2 class="text-2xl font-display">Ideate</h2>
+      <p class="text-sm text-slate-700">“How might we” prompts to simplify maintenance, surface priorities, and reduce stress.</p>
+      <img src="images/Carcare/img003.png" alt="How might we notes" class="w-full max-w-3xl mx-auto h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-6 space-y-4">
+      <h2 class="text-2xl font-display">User Flow</h2>
+      <img src="images/Carcare/img004.png" alt="User flow" class="w-full max-w-3xl mx-auto h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-6 space-y-6">
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="space-y-3">
+          <h3 class="text-xl font-semibold text-ink">Wireframes</h3>
+          <p class="text-sm text-slate-700">Quick sketches and low-fidelity wires to clarify layout and feature hierarchy.</p>
+          <img src="images/Carcare/img006.jpeg" alt="Wireframe sketches" class="w-full max-w-3xl mx-auto h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
+          <h3 class="text-lg font-semibold text-ink">Lo-fidelity wireframes</h3>
+          <img src="images/Carcare/img007.png" alt="Lo-fi screens" class="w-full max-w-3xl mx-auto h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
+        </div>
+        <div class="space-y-3">
+          <h3 class="text-xl font-semibold text-ink">Usability testing</h3>
+          <p class="text-sm text-slate-700">Iterative usability rounds ensured users could complete tasks; flows were refined based on feedback.</p>
+          <img src="images/Carcare/img008.JPG" alt="Usability testing session" class="w-full max-w-3xl mx-auto h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
         </div>
       </div>
 
-      <div class="max-w-4xl mx-auto mt-12 space-y-8 text-slate-700">
-        <section class="space-y-3">
-          <img src="images/Carcare/img002.png" alt="Persona visuals" class="w-full h-auto rounded-lg shadow-sm">
-        </section>
-
-        <section class="space-y-3">
-          <h3 class="text-xl font-semibold">Solution(s)</h3>
-          <p>Based on the research, I came up with a solution that helps car owners with their pain points. A car maintenance app will be designed. The app will help car owners keep track of their car maintenance service history as well as recommend what should be done on the next service schedule.</p>
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-2xl font-semibold">Competitive analysis</h2>
-          <p>I selected several applications that offer similar maintenance services for cars including CarFax, AUTOsist, Simply Auto, Drivvo, and Car Assistant. The goal was to find out the scope and value they offer to users when it comes to routine car maintenance. Only 1 out of 5 applications offer vehicles’ service histories. None of them allow users to schedule service right from the app.</p>
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-2xl font-semibold">Ideate</h2>
-          <p>It is essential to understand the user's pain points. Based on what I have researched so far and narrowed it down. I started with a “How might we” series of questions.</p>
-          <img src="images/Carcare/img003.png" alt="How might we notes" class="w-full h-auto rounded-lg shadow-sm">
-          <p>One way to help car owners solve their problems is by providing an easy-to-use app that helps them keep track of their car maintenance needs. The app should feature an intuitive interface, with a dashboard of the car's performance metrics, a calendar of upcoming maintenance tasks. Additionally, the app should provide helpful tips and resources on how to save money on car repairs, as well as maximizing the performance of the vehicle.</p>
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-2xl font-semibold">User Flow</h2>
-          <img src="images/Carcare/img004.png" alt="User flow" class="w-full h-auto rounded-lg shadow-sm">
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-2xl font-semibold">Wireframes</h2>
-          <p>After deciding on the user flow, I moved on to working with the lo-fi wireframe to start visualizing my app so I can have a clearer picture of the direction. I started with pen and paper to quickly bring my ideas to life. This helps me brainstorm ideas for my app layout. Once I'm happy with some of the layout solutions, I moved on to digital low-fidelity wireframe for a more refined version of my app. At this stage, I haven't decided on the detailed visual system yet.</p>
-          <img src="images/Carcare/img006.jpeg" alt="Wireframe sketches" class="w-full h-auto rounded-lg shadow-sm">
-          <h3 class="text-xl font-semibold">Lo-fidelity wireframes</h3>
-          <img src="images/Carcare/img007.png" alt="Lo-fi screens" class="w-full h-auto rounded-lg shadow-sm">
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-2xl font-semibold">Usability testing</h2>
-          <p>I did some usability testing to see if the user's goals can be achieved efficiently. I then took feedback collected from the usability testing and kept improving my project accordingly. <br>Several rounds of usability testing were also conducted during the wireframe phase to keep improving the project.</p>
-          <img src="images/Carcare/img008.JPG" alt="Usability testing session" class="w-full h-auto rounded-lg shadow-sm">
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-2xl font-semibold">Branding</h2>
-          <img src="images/Carcare/img009.png" alt="Branding" class="w-48 h-auto rounded-lg shadow-sm mx-auto">
-          <p>App name: Kura - it derives from "cura" in Latin, which means care. As the project is designed to solve car owners’ problems with their car maintenance, I feel Kura is a good name for the app.</p>
-          <p>Because the goal of this project is to help car owners keep track of their car health and status so they can drive with confidence, blue color was picked as the primary color for this project. Blue represents confidence. Blue is also described as peaceful, secure, and orderly which aligns intending to give users more transparency and accessibility to their cars’ service history.</p>
-        </section>
-
-        <section class="space-y-4">
-          <h2 class="text-2xl font-semibold">Hi-fidelity wireframes</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            <img src="images/Carcare/img010.png" alt="Hi-fi screen 1" class="w-full h-auto rounded-lg shadow-sm">
-            <img src="images/Carcare/img011.png" alt="Hi-fi screen 2" class="w-full h-auto rounded-lg shadow-sm">
-            <img src="images/Carcare/img012.png" alt="Hi-fi screen 3" class="w-full h-auto rounded-lg shadow-sm">
-            <img src="images/Carcare/img013.png" alt="Hi-fi screen 4" class="w-full h-auto rounded-lg shadow-sm">
-            <img src="images/Carcare/img014.png" alt="Hi-fi screen 5" class="w-full h-auto rounded-lg shadow-sm">
-            <img src="images/Carcare/img015.png" alt="Hi-fi screen 6" class="w-full h-auto rounded-lg shadow-sm">
-            <img src="images/Carcare/img016.png" alt="Hi-fi screen 7" class="w-full h-auto rounded-lg shadow-sm">
-          </div>
-        </section>
-
-        <section class="space-y-3">
-          <h3 class="text-xl font-semibold">Prototype</h3>
-          <div class="overflow-hidden rounded-xl shadow-sm border border-slate-200">
-            <iframe class="w-full" style="border: 0;" width="900" height="640" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FRD1QNkJJcE91tqCKCvVP60%2FSpringboard-Capstone-I---Car-App%3Fpage-id%3D202%253A75%26node-id%3D202%253A76%26viewport%3D988%252C667%252C0.13%26scaling%3Dscale-down%26starting-point-node-id%3D327%253A1217%26show-proto-sidebar%3D1" allowfullscreen></iframe>
-          </div>
-        </section>
+      <div class="space-y-3">
+        <h2 class="text-2xl font-display">Branding</h2>
+        <img src="images/Carcare/img009.png" alt="Branding" class="w-48 h-auto rounded-xl border border-slate-200 mx-auto cursor-pointer" data-lightbox>
+        <p class="text-sm text-slate-700 text-center">Name derived from "cura" (care). Blue palette conveys confidence and clarity.</p>
       </div>
+
+      <div class="space-y-3">
+        <h3 class="text-xl font-semibold text-ink">Hi-fi screens</h3>
+        <p class="text-sm text-slate-700">Iterated high-fidelity designs after usability rounds.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <img src="images/Carcare/img010.png" alt="Hi-fi screen 1" class="w-full h-auto rounded-lg shadow-sm cursor-pointer" data-lightbox>
+          <img src="images/Carcare/img011.png" alt="Hi-fi screen 2" class="w-full h-auto rounded-lg shadow-sm cursor-pointer" data-lightbox>
+          <img src="images/Carcare/img012.png" alt="Hi-fi screen 3" class="w-full h-auto rounded-lg shadow-sm cursor-pointer" data-lightbox>
+          <img src="images/Carcare/img013.png" alt="Hi-fi screen 4" class="w-full h-auto rounded-lg shadow-sm cursor-pointer" data-lightbox>
+          <img src="images/Carcare/img014.png" alt="Hi-fi screen 5" class="w-full h-auto rounded-lg shadow-sm cursor-pointer" data-lightbox>
+          <img src="images/Carcare/img015.png" alt="Hi-fi screen 6" class="w-full h-auto rounded-lg shadow-sm cursor-pointer" data-lightbox>
+          <img src="images/Carcare/img016.png" alt="Hi-fi screen 7" class="w-full h-auto rounded-lg shadow-sm cursor-pointer" data-lightbox>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-6 space-y-4">
+      <h2 class="text-2xl font-display">Testing & learnings</h2>
+      <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+        <li>Clear reminders and history reduce anxiety and missed tasks.</li>
+        <li>Concise flows improved task completion during testing.</li>
+        <li>Visual clarity (labels, spacing) increased comprehension.</li>
+      </ul>
+    </section>
+
+    <section id="prototype" class="max-w-6xl mx-auto px-4 py-6 space-y-3">
+      <h2 class="text-2xl font-display">Prototype</h2>
+      <div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
+        <iframe class="w-full" style="border: 0;" width="900" height="640" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FRD1QNkJJcE91tqCKCvVP60%2FSpringboard-Capstone-I---Car-App%3Fpage-id%3D202%253A75%26node-id%3D202%253A76%26viewport%3D988%252C667%252C0.13%26scaling%3Dscale-down%26starting-point-node-id%3D327%253A1217%26show-proto-sidebar%3D1" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-6 space-y-3">
+      <h2 class="text-2xl font-display">Key takeaways</h2>
+      <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+        <li>Timely, contextual reminders are the core value.</li>
+        <li>Transparency in history builds trust with owners.</li>
+        <li>Early testing exposed clarity gaps before build.</li>
+      </ul>
     </section>
   </main>
 
-  <footer class="bg-slate-900 text-white mt-16">
-    <div class="max-w-6xl mx-auto px-4 py-8 text-center space-y-3">
-      <p>Thank you for visiting my website!</p>
-      <p>&copy; Phuong Vu</p>
-      <p class="flex items-center justify-center gap-2 text-sm">Find me on
-        <a href="https://www.linkedin.com/in/vuhoangphuong/" class="inline-flex items-center gap-1 text-indigo-200 hover:text-white">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
-            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
-          </svg>
-        </a>
-      </p>
+  <footer class="border-t border-slate-200 bg-white">
+    <div class="max-w-6xl mx-auto px-4 py-10">
+      <div class="space-y-3 text-sm text-slate-600 text-right">
+        <p>Based remote · Available for product design roles & select freelance.</p>
+        <p class="text-slate-500">© Phuong Vu</p>
+      </div>
     </div>
   </footer>
+
+  <div id="lightbox" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm items-center justify-center p-4">
+    <div class="relative max-w-5xl w-full">
+      <button type="button" class="absolute -top-10 right-0 text-white text-2xl" aria-label="Close" data-lightbox-close>&times;</button>
+      <img src="" alt="Expanded view" class="w-full h-auto rounded-2xl border border-white/20" data-lightbox-image>
+    </div>
+  </div>
 
   <script>
     const menuToggle = document.querySelector('[data-menu-toggle]');
@@ -183,6 +249,29 @@
         menuToggle.setAttribute('aria-expanded', isOpen.toString());
       });
     }
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.querySelector('[data-lightbox-image]');
+    const closeLightbox = document.querySelector('[data-lightbox-close]');
+    document.querySelectorAll('[data-lightbox]').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImage.src = img.src;
+        lightbox.classList.remove('hidden');
+        lightbox.classList.add('flex');
+      });
+    });
+    closeLightbox?.addEventListener('click', () => {
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+      lightboxImage.src = '';
+    });
+    lightbox?.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.add('hidden');
+        lightbox.classList.remove('flex');
+        lightboxImage.src = '';
+      }
+    });
   </script>
 </body>
 </html>
