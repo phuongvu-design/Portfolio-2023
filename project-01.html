@@ -39,16 +39,14 @@
           </svg>
         </button>
         <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-700">
-          <a href="index.html#work" class="hover:text-ink">Work</a>
-          <a href="index.html#about" class="hover:text-ink">About</a>
-          <a href="graphic-design.html" class="hover:text-ink">Other Works</a>
+          <a href="index.html#work" class="hover:text-ink">Featured Projects</a>
+          <a href="index.html#about" class="hover:text-ink">About Me</a>
           <a href="https://www.linkedin.com/in/vuhoangphuong/" class="inline-flex items-center gap-2 rounded-full border border-slate-300 px-4 py-2 text-xs uppercase tracking-wide text-ink hover:border-ink">Let’s talk</a>
         </nav>
       </div>
       <div class="hidden flex-col gap-3 pb-4 md:hidden" data-mobile-menu>
-        <a href="index.html#work" class="text-sm font-medium text-slate-700 hover:text-ink">Work</a>
-        <a href="index.html#about" class="text-sm font-medium text-slate-700 hover:text-ink">About</a>
-        <a href="graphic-design.html" class="text-sm font-medium text-slate-700 hover:text-ink">Other Works</a>
+        <a href="index.html#work" class="text-sm font-medium text-slate-700 hover:text-ink">Featured Projects</a>
+        <a href="index.html#about" class="text-sm font-medium text-slate-700 hover:text-ink">About Me</a>
         <a href="https://www.linkedin.com/in/vuhoangphuong/" class="text-sm font-medium text-accent">Let’s talk</a>
       </div>
     </div>
@@ -207,6 +205,10 @@
     </section>
   </main>
 
+  <button type="button" id="backToTop" class="fixed bottom-32 right-6 hidden items-center gap-2 rounded-full bg-ink px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-ink/20 transition hover:bg-slate-900" aria-label="Back to top">
+    ↑ Top
+  </button>
+
   <footer class="border-t border-slate-200 bg-white">
     <div class="max-w-6xl mx-auto px-4 py-10">
       <div class="space-y-3 text-sm text-slate-600 text-right">
@@ -259,6 +261,15 @@
         lightboxImage.src = '';
       }
     });
+
+    const backToTop = document.getElementById('backToTop');
+    const toggleBackToTop = () => {
+      if (!backToTop) return;
+      backToTop.classList.toggle('hidden', window.scrollY < 300);
+    };
+    window.addEventListener('scroll', toggleBackToTop);
+    backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    toggleBackToTop();
   </script>
 </body>
 </html>
