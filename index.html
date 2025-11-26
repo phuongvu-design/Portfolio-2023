@@ -7,19 +7,20 @@
   <title>Phuong Vu | Product Designer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            display: ['Roboto', 'system-ui', 'sans-serif'],
-            body: ['Roboto', 'system-ui', 'sans-serif']
+            display: ['Inter', 'system-ui', 'sans-serif'],
+            body: ['Inter', 'system-ui', 'sans-serif']
           },
           colors: {
-            ink: '#0f172a',
-            accent: '#0ea5e9'
+            ink: '#111827',
+            accent: '#2563eb',
+            subtle: '#6b7280'
           }
         }
       }
@@ -29,12 +30,12 @@
 </head>
 
 <body class="bg-white text-ink font-body">
-  <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="flex h-16 items-center justify-between">
-        <a href="index.html" class="flex items-center gap-2 text-sm font-semibold">
-          <img src="images/logo.png" alt="Phuong Vu logo" class="h-9 w-9 object-contain">
-          <span>Phuong Vu</span>
+  <header
+    class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex h-20 items-center justify-between">
+        <a href="index.html" class="text-xl font-bold tracking-tight text-ink hover:opacity-70 transition-opacity">
+          Phuong Vu
         </a>
         <button type="button" class="md:hidden p-2 rounded-lg border border-slate-200" data-menu-toggle
           aria-expanded="false" aria-label="Toggle navigation">
@@ -43,138 +44,89 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
           </svg>
         </button>
-        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-700">
-          <a href="#work" class="hover:text-ink">Featured Projects</a>
-          <a href="#about" class="hover:text-ink">About Me</a>
+        <nav class="hidden md:flex items-center gap-10 text-sm font-medium text-subtle">
+          <a href="#work" class="hover:text-ink transition-colors">Work</a>
+          <a href="#about" class="hover:text-ink transition-colors">About</a>
           <a href="https://www.linkedin.com/in/vuhoangphuong/"
-            class="inline-flex items-center gap-2 rounded-full border border-slate-300 px-4 py-2 text-xs uppercase tracking-wide text-ink hover:border-ink">Let’s
-            talk</a>
+            class="text-ink hover:text-accent transition-colors">LinkedIn ↗</a>
         </nav>
       </div>
-      <div class="hidden flex-col gap-3 pb-4 md:hidden" data-mobile-menu>
-        <a href="#work" class="text-sm font-medium text-slate-700 hover:text-ink">Featured Projects</a>
-        <a href="#about" class="text-sm font-medium text-slate-700 hover:text-ink">About Me</a>
-        <a href="https://www.linkedin.com/in/vuhoangphuong/" class="text-sm font-medium text-accent">Let’s talk</a>
+      <div class="hidden flex-col gap-6 pb-8 md:hidden text-lg font-medium text-subtle" data-mobile-menu>
+        <a href="#work" class="hover:text-ink">Work</a>
+        <a href="#about" class="hover:text-ink">About</a>
+        <a href="https://www.linkedin.com/in/vuhoangphuong/" class="text-ink">LinkedIn ↗</a>
       </div>
     </div>
   </header>
 
-  <main class="pt-14 pb-16">
-    <section class="max-w-6xl mx-auto px-4 py-10 md:py-14">
-      <div class="space-y-6">
-        <p class="text-xs uppercase tracking-[0.2em] text-slate-500">Product Designer · UI/UX</p>
-        <h1 class="font-display text-4xl leading-tight md:text-5xl">Designing clear, confident experiences that help
-          products earn trust and traction.</h1>
-        <p class="max-w-2xl text-lg text-slate-700">I shape digital products with balanced research, systems thinking,
-          and crisp visual design. From mobile commerce to car care apps, I move fast, listen closely, and deliver
-          thoughtful details.</p>
-        <div class="flex flex-wrap gap-4">
-          <a href="#work"
-            class="inline-flex items-center justify-center rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white hover:bg-slate-900">See
-            featured work</a>
-          <a href="https://www.linkedin.com/in/vuhoangphuong/"
-            class="inline-flex items-center justify-center rounded-full border border-slate-300 px-5 py-3 text-sm font-semibold text-ink hover:border-ink">Connect
-            on LinkedIn</a>
-        </div>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 text-sm text-slate-700">
-          <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
-            <p class="text-2xl font-display text-ink">2+</p>
-            <p>Years in UI/UX</p>
-          </div>
-          <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
-            <p class="text-2xl font-display text-ink">12</p>
-            <p>End-to-end projects</p>
-          </div>
-          <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
-            <p class="text-2xl font-display text-ink">Research</p>
-            <p>+ product + visual</p>
-          </div>
-          <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
-            <p class="text-2xl font-display text-ink">Remote</p>
-            <p>Distributed teams</p>
-          </div>
-        </div>
+  <main>
+    <section class="pt-40 pb-24 md:pt-52 md:pb-32 max-w-7xl mx-auto px-6">
+      <div class="max-w-4xl space-y-8">
+        <h1 class="font-display text-5xl md:text-7xl font-semibold tracking-tight text-ink leading-[1.1]">
+          Designing digital experiences that clarify complexity.
+        </h1>
+        <p class="text-xl md:text-2xl text-subtle font-light max-w-2xl leading-relaxed">
+          I’m Phuong, a Product Designer based in Seattle. I specialize in building clean, user-centric interfaces for
+          web and mobile.
+        </p>
       </div>
     </section>
 
-    <section id="work" class="max-w-6xl mx-auto px-4 py-10 border-t border-slate-200">
-      <div class="flex items-center gap-3 pb-6">
-        <span
-          class="h-10 w-10 rounded-full border border-slate-200 bg-slate-50 text-ink grid place-items-center font-display">01</span>
-        <div>
-          <p class="text-xs uppercase tracking-[0.2em] text-slate-500">Featured Projects</p>
-          <h2 class="font-display text-3xl text-ink">Products focused on clarity and results</h2>
-        </div>
+    <section id="work" class="max-w-7xl mx-auto px-6 py-24 space-y-16">
+      <div class="flex items-baseline justify-between">
+        <h2 class="text-3xl font-semibold tracking-tight text-ink">Selected Work</h2>
       </div>
-      <div class="grid gap-6 lg:grid-cols-3">
-        <article
-          class="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/70">
-          <img src="images/bike-website/img001.png" alt="Bike mobile e-commerce" loading="lazy"
-            class="h-56 w-full object-cover">
-          <div class="relative flex flex-1 flex-col p-6 space-y-3">
-            <div class="flex items-center gap-2 text-xs uppercase tracking-wide text-slate-500">
-              <span class="rounded-full border border-slate-200 px-3 py-1 bg-slate-50">E-commerce</span>
-              <span>Mobile-first</span>
-            </div>
-            <h3 class="font-display text-xl text-ink">Bike Mobile E-Commerce Website</h3>
-            <p class="text-sm text-slate-700">Reimagined shopping with fast comparison and frictionless guest checkout
-              for a premium retailer.</p>
-            <div class="mt-auto flex items-center justify-between pt-3 text-sm text-accent">
-              <a href="project-01.html" class="inline-flex items-center gap-2">View case study
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
-                  stroke="currentColor" stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
-              <span class="text-slate-500 text-xs">UX • UI • Prototype</span>
-            </div>
+
+      <div class="grid gap-x-12 gap-y-20 md:grid-cols-2">
+        <article class="group cursor-pointer space-y-4">
+          <a href="project-01.html" class="block overflow-hidden rounded-2xl bg-slate-50">
+            <img src="images/bike-website/img001.png" alt="E-bike Website Redesign" loading="lazy"
+              class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105">
+          </a>
+          <div class="space-y-1">
+            <h3 class="text-xl font-medium text-ink group-hover:text-accent transition-colors">
+              <a href="project-01.html">E-bike Website Redesign</a>
+            </h3>
+            <p class="text-subtle">UX Research • Web Design</p>
           </div>
         </article>
 
-        <article
-          class="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/70">
-          <img src="images/Carcare/img001.png" alt="Car care app" loading="lazy" class="h-56 w-full object-cover">
-          <div class="relative flex flex-1 flex-col p-6 space-y-3">
-            <div class="flex items-center gap-2 text-xs uppercase tracking-wide text-slate-500">
-              <span class="rounded-full border border-slate-200 px-3 py-1 bg-slate-50">Mobile App</span>
-              <span>Lifecycle</span>
-            </div>
-            <h3 class="font-display text-xl text-ink">Kura Car Care</h3>
-            <p class="text-sm text-slate-700">A maintenance companion that turns complex schedules into friendly, timely
-              reminders.</p>
-            <div class="mt-auto flex items-center justify-between pt-3 text-sm text-accent">
-              <a href="project-02.html" class="inline-flex items-center gap-2">View case study
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
-                  stroke="currentColor" stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
-              <span class="text-slate-500 text-xs">Research • UI system</span>
-            </div>
+        <article class="group cursor-pointer space-y-4">
+          <a href="project-02.html" class="block overflow-hidden rounded-2xl bg-slate-50">
+            <img src="images/Carcare/img001.png" alt="Car Care App" loading="lazy"
+              class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105">
+          </a>
+          <div class="space-y-1">
+            <h3 class="text-xl font-medium text-ink group-hover:text-accent transition-colors">
+              <a href="project-02.html">Car Care App</a>
+            </h3>
+            <p class="text-subtle">Product Design • Mobile App</p>
           </div>
         </article>
 
-        <article
-          class="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/70">
-          <img src="images/remoteworkplace/img001.png" alt="Remote workplace finder" loading="lazy"
-            class="h-56 w-full object-cover">
-          <div class="relative flex flex-1 flex-col p-6 space-y-3">
-            <div class="flex items-center gap-2 text-xs uppercase tracking-wide text-slate-500">
-              <span class="rounded-full border border-slate-200 px-3 py-1 bg-slate-50">Product Sprint</span>
-              <span>MVP</span>
-            </div>
-            <h3 class="font-display text-xl text-ink">PostUp Remote Work Finder</h3>
-            <p class="text-sm text-slate-700">Design sprint to help remote teams choose reliable, well-equipped places
-              to work from.</p>
-            <div class="mt-auto flex items-center justify-between pt-3 text-sm text-accent">
-              <a href="project-03.html" class="inline-flex items-center gap-2">View case study
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
-                  stroke="currentColor" stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
-              <span class="text-slate-500 text-xs">Sprint • Prototype</span>
-            </div>
+        <article class="group cursor-pointer space-y-4">
+          <a href="project-03.html" class="block overflow-hidden rounded-2xl bg-slate-50">
+            <img src="images/remoteworkplace/img001.png" alt="Remote Workplace Finder" loading="lazy"
+              class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105">
+          </a>
+          <div class="space-y-1">
+            <h3 class="text-xl font-medium text-ink group-hover:text-accent transition-colors">
+              <a href="project-03.html">Remote Workplace Finder</a>
+            </h3>
+            <p class="text-subtle">UX Design • Case Study</p>
+          </div>
+        </article>
+
+        <article class="group cursor-pointer space-y-4">
+          <a href="graphic-design.html" class="block overflow-hidden rounded-2xl bg-slate-50">
+            <img src="images/vietvaluealliance/img001.jpg" alt="Graphic Design Collection" loading="lazy"
+              class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105">
+          </a>
+          <div class="space-y-1">
+            <h3 class="text-xl font-medium text-ink group-hover:text-accent transition-colors">
+              <a href="graphic-design.html">Graphic Design Collection</a>
+            </h3>
+            <p class="text-subtle">Branding • Illustration • Print</p>
           </div>
         </article>
       </div>
@@ -296,84 +248,45 @@
       </div>
     </section>
 
-    <section id="about" class="max-w-6xl mx-auto px-4 py-10 border-t border-slate-200">
-      <div class="flex items-center gap-3 pb-6">
-        <span
-          class="h-10 w-10 rounded-full border border-slate-200 bg-slate-50 text-ink grid place-items-center font-display">04</span>
-        <div>
-          <p class="text-xs uppercase tracking-[0.2em] text-slate-500">About me</p>
-          <h2 class="font-display text-3xl text-ink">Designer, researcher, collaborator</h2>
-        </div>
-      </div>
-      <div class="grid gap-8 md:grid-cols-2 items-start">
-        <div class="space-y-4 text-slate-700">
-          <p>Hi! I'm Ken, a UI/UX and graphic designer with 2+ years of experience across agencies and product teams. I
-            build thoughtful, user-centered experiences and keep visual craft high without losing sight of business
-            goals.</p>
-          <p>I move quickly with tools like Figma and Adobe Creative Suite, and I'm comfortable collaborating in remote,
-            async environments. Whether embedded in a team or leading a project, I maintain open communication and clear
-            rationale for every design decision.</p>
-          <p>Let's create something meaningful together.</p>
-          <div class="flex flex-wrap gap-3 pt-2 text-xs uppercase tracking-wide text-slate-600">
-            <span class="rounded-full border border-slate-200 bg-slate-50 px-4 py-2">Figma</span>
-            <span class="rounded-full border border-slate-200 bg-slate-50 px-4 py-2">Adobe Creative Suite</span>
-            <span class="rounded-full border border-slate-200 bg-slate-50 px-4 py-2">Design Systems</span>
-            <span class="rounded-full border border-slate-200 bg-slate-50 px-4 py-2">User Research</span>
-            <span class="rounded-full border border-slate-200 bg-slate-50 px-4 py-2">Prototyping</span>
+    <section id="about" class="max-w-7xl mx-auto px-6 py-24 border-t border-slate-100">
+      <div class="grid gap-12 md:grid-cols-[1fr_2fr]">
+        <h2 class="text-3xl font-semibold tracking-tight text-ink">About Me</h2>
+        <div class="space-y-8 text-lg text-subtle leading-relaxed">
+          <p>
+            I believe that good design is invisible. It clears the path for users to achieve their goals without
+            friction.
+            With a background in graphic design and a passion for user research, I bridge the gap between aesthetics and
+            utility.
+          </p>
+          <p>
+            When I’m not designing, you can find me exploring Seattle’s coffee scene, sketching in my notebook, or
+            trying to perfect my sourdough recipe.
+          </p>
+          <div class="pt-4">
+            <a href="mailto:vuhoangphuong@example.com" class="text-ink font-medium hover:text-accent transition-colors">
+              vuhoangphuong@example.com
+            </a>
           </div>
-        </div>
-        <div class="space-y-4 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-          <h3 class="font-display text-xl text-ink">How I work</h3>
-          <div class="space-y-3 text-sm text-slate-700">
-            <div class="flex items-start gap-3">
-              <span class="mt-1 h-2 w-2 rounded-full bg-accent"></span>
-              <p><strong class="text-ink">Listen first.</strong> Understand context, constraints, and success metrics.
-              </p>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="mt-1 h-2 w-2 rounded-full bg-accent"></span>
-              <p><strong class="text-ink">Prototype early.</strong> Visualize ideas quickly to reduce risk.</p>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="mt-1 h-2 w-2 rounded-full bg-accent"></span>
-              <p><strong class="text-ink">Ship with intent.</strong> Collaborate closely with devs with clear,
-                goal-aligned specs.</p>
-            </div>
-          </div>
-          <!-- <a href="https://www.linkedin.com/in/vuhoangphuong/" class="inline-flex items-center justify-center rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white hover:bg-slate-900">Start a conversation</a> -->
-        </div>
-      </div>
-    </section>
-
-    <section class="max-w-6xl mx-auto px-4 py-12 border-t border-slate-200">
-      <div class="rounded-3xl border border-slate-200 bg-slate-50 p-8 text-center shadow-sm">
-        <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Let's build the next thing</p>
-        <h3 class="mt-3 font-display text-3xl text-ink">Have a role or project in mind?</h3>
-        <p class="mt-3 text-slate-700">I'm available for product design roles and select freelance engagements. Tell me
-          about your timeline and goals.</p>
-        <div class="mt-6 flex flex-wrap justify-center gap-4">
-          <a href="https://www.linkedin.com/in/vuhoangphuong/"
-            class="inline-flex items-center justify-center rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white hover:bg-slate-900">Message
-            on LinkedIn</a>
-          <a href="#work"
-            class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-ink hover:border-ink">Browse
-            work</a>
         </div>
       </div>
     </section>
   </main>
 
   <button type="button" id="backToTop"
-    class="fixed bottom-32 right-6 hidden items-center gap-2 rounded-full bg-ink px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-ink/20 transition hover:bg-slate-900"
+    class="fixed bottom-8 right-8 hidden items-center justify-center w-12 h-12 rounded-full bg-ink text-white shadow-xl hover:bg-slate-800 transition-all z-50"
     aria-label="Back to top">
-    ↑ Top
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+      stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+    </svg>
   </button>
 
-  <footer class="border-t border-slate-200 bg-white">
-    <div class="max-w-6xl mx-auto px-4 py-10">
-      <div class="space-y-3 text-sm text-slate-600 text-right">
-        <p>Based remote · Available for product design roles & select freelance.</p>
-        <p class="text-slate-500">© Phuong Vu</p>
+  <footer class="bg-white border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
+      <p class="text-sm text-subtle">© 2023 Phuong Vu</p>
+      <div class="flex gap-6 text-sm font-medium text-subtle">
+        <a href="https://www.linkedin.com/in/vuhoangphuong/" class="hover:text-ink transition-colors">LinkedIn</a>
+        <a href="mailto:vuhoangphuong@example.com" class="hover:text-ink transition-colors">Email</a>
       </div>
     </div>
   </footer>
