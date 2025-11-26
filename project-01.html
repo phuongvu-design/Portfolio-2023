@@ -25,6 +25,7 @@
       }
     }
   </script>
+  <script src="js/main.js" defer></script>
 </head>
 
 <body class="bg-white text-ink font-body">
@@ -256,50 +257,7 @@
   </div>
 
   <script>
-    const menuToggle = document.querySelector('[data-menu-toggle]');
-    const mobileMenu = document.querySelector('[data-mobile-menu]');
-    if (menuToggle && mobileMenu) {
-      menuToggle.addEventListener('click', () => {
-        const isOpen = !mobileMenu.classList.toggle('hidden');
-        mobileMenu.classList.toggle('flex');
-        menuToggle.setAttribute('aria-expanded', isOpen.toString());
-      });
-    }
-
-    // Simple lightbox for images with data-lightbox
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.querySelector('[data-lightbox-image]');
-    const closeLightbox = document.querySelector('[data-lightbox-close]');
-    document.querySelectorAll('[data-lightbox]').forEach(img => {
-      img.addEventListener('click', () => {
-        lightboxImage.src = img.src;
-        lightbox.classList.remove('hidden');
-        lightbox.classList.add('flex');
-      });
-    });
-    if (closeLightbox) {
-      closeLightbox.addEventListener('click', () => {
-        lightbox.classList.add('hidden');
-        lightbox.classList.remove('flex');
-        lightboxImage.src = '';
-      });
-    }
-    lightbox?.addEventListener('click', (e) => {
-      if (e.target === lightbox) {
-        lightbox.classList.add('hidden');
-        lightbox.classList.remove('flex');
-        lightboxImage.src = '';
-      }
-    });
-
-    const backToTop = document.getElementById('backToTop');
-    const toggleBackToTop = () => {
-      if (!backToTop) return;
-      backToTop.classList.toggle('hidden', window.scrollY < 300);
-    };
-    window.addEventListener('scroll', toggleBackToTop);
-    backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    toggleBackToTop();
+    // Inline script removed, functionality moved to js/main.js
   </script>
 </body>
 

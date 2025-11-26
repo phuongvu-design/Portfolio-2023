@@ -25,6 +25,7 @@
       }
     }
   </script>
+  <script src="js/main.js" defer></script>
 </head>
 
 <body class="bg-white text-ink font-body">
@@ -378,24 +379,7 @@
   </footer>
 
   <script>
-    const menuToggle = document.querySelector('[data-menu-toggle]');
-    const mobileMenu = document.querySelector('[data-mobile-menu]');
-    if (menuToggle && mobileMenu) {
-      menuToggle.addEventListener('click', () => {
-        const isOpen = !mobileMenu.classList.toggle('hidden');
-        mobileMenu.classList.toggle('flex');
-        menuToggle.setAttribute('aria-expanded', isOpen.toString());
-      });
-    }
-
-    const backToTop = document.getElementById('backToTop');
-    const toggleBackToTop = () => {
-      if (!backToTop) return;
-      backToTop.classList.toggle('hidden', window.scrollY < 300);
-    };
-    window.addEventListener('scroll', toggleBackToTop);
-    backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    toggleBackToTop();
+    // Inline script removed, functionality moved to js/main.js
   </script>
 </body>
 

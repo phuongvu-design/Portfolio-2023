@@ -25,6 +25,7 @@
       }
     }
   </script>
+  <script src="js/main.js" defer></script>
 </head>
 
 <body class="bg-white text-ink font-body">
@@ -100,13 +101,13 @@
 
       <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         <img src="images/vietvaluealliance/img002.png" alt="Logo option" loading="lazy"
-          class="w-full h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
+          class="w-full h-auto rounded-xl border border-slate-200 cursor-pointer max-w-3xl mx-auto" data-lightbox>
         <img src="images/vietvaluealliance/img003.png" alt="Logo variant" loading="lazy"
-          class="w-full h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
+          class="w-full h-auto rounded-xl border border-slate-200 cursor-pointer max-w-3xl mx-auto" data-lightbox>
         <img src="images/vietvaluealliance/img004.png" alt="Business card" loading="lazy"
-          class="w-full h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
+          class="w-full h-auto rounded-xl border border-slate-200 cursor-pointer max-w-3xl mx-auto" data-lightbox>
         <img src="images/vietvaluealliance/img005.png" alt="Collateral" loading="lazy"
-          class="w-full h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
+          class="w-full h-auto rounded-xl border border-slate-200 cursor-pointer max-w-3xl mx-auto" data-lightbox>
       </div>
     </section>
   </main>
@@ -135,50 +136,7 @@
   </div>
 
   <script>
-    const menuToggle = document.querySelector('[data-menu-toggle]');
-    const mobileMenu = document.querySelector('[data-mobile-menu]');
-    if (menuToggle && mobileMenu) {
-      menuToggle.addEventListener('click', () => {
-        const isOpen = !mobileMenu.classList.toggle('hidden');
-        mobileMenu.classList.toggle('flex');
-        menuToggle.setAttribute('aria-expanded', isOpen.toString());
-      });
-    }
-
-    // Lightbox and sizing for project media
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.querySelector('[data-lightbox-image]');
-    const closeLightbox = document.querySelector('[data-lightbox-close]');
-    document.querySelectorAll('main img').forEach(img => {
-      img.classList.add('cursor-pointer', 'max-w-3xl', 'mx-auto');
-      img.setAttribute('data-lightbox', '');
-      img.addEventListener('click', () => {
-        lightboxImage.src = img.src;
-        lightbox.classList.remove('hidden');
-        lightbox.classList.add('flex');
-      });
-    });
-    closeLightbox?.addEventListener('click', () => {
-      lightbox.classList.add('hidden');
-      lightbox.classList.remove('flex');
-      lightboxImage.src = '';
-    });
-    lightbox?.addEventListener('click', (e) => {
-      if (e.target === lightbox) {
-        lightbox.classList.add('hidden');
-        lightbox.classList.remove('flex');
-        lightboxImage.src = '';
-      }
-    });
-
-    const backToTop = document.getElementById('backToTop');
-    const toggleBackToTop = () => {
-      if (!backToTop) return;
-      backToTop.classList.toggle('hidden', window.scrollY < 300);
-    };
-    window.addEventListener('scroll', toggleBackToTop);
-    backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    toggleBackToTop();
+    // Inline script removed, functionality moved to js/main.js
   </script>
 </body>
 
