@@ -4,286 +4,636 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kura Car Care | Phuong Vu</title>
+  <title>Kura Car Care App | Phuong Vu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            display: ['Inter', 'system-ui', 'sans-serif'],
-            body: ['Inter', 'system-ui', 'sans-serif']
+            sans: ['Inter', 'system-ui', 'sans-serif'],
           },
           colors: {
-            ink: '#111827',
-            accent: '#2563eb',
-            subtle: '#6b7280'
-          }
+            neutral: {
+              950: '#0a0a0a',
+              925: '#141414',
+            }
+          },
         }
       }
     }
   </script>
-  <script src="js/main.js" defer></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f5f5f5; }
+    ::-webkit-scrollbar-thumb { background: #d4d4d4; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #a3a3a3; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .line-animate {
+      position: relative;
+      display: inline-block;
+    }
+    .line-animate::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: currentColor;
+      transition: width 0.3s ease;
+    }
+    .line-animate:hover::after {
+      width: 100%;
+    }
+
+    .image-zoom {
+      cursor: zoom-in;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .image-zoom:hover {
+      transform: scale(1.02);
+    }
+  </style>
 </head>
 
-<body class="bg-white text-ink font-body">
-  <header
-    class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-6">
+<body class="bg-white text-neutral-900 font-sans antialiased">
+  <!-- Header -->
+  <header class="fixed top-0 w-full z-50 transition-all duration-500" id="header">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-12">
       <div class="flex h-20 items-center justify-between">
-        <a href="index.html" class="text-xl font-bold tracking-tight text-ink hover:opacity-70 transition-opacity">
+        <a href="index.html" class="text-lg font-medium tracking-tight hover:opacity-60 transition-opacity duration-300">
           Phuong Vu
         </a>
-        <button type="button" class="md:hidden p-2 rounded-lg border border-slate-200" data-menu-toggle
-          aria-expanded="false" aria-label="Toggle navigation">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-            stroke-width="1.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
-          </svg>
+
+        <button type="button" class="md:hidden p-2 -mr-2" data-menu-toggle aria-expanded="false" aria-label="Toggle navigation">
+          <div class="w-6 h-5 relative flex flex-col justify-between">
+            <span class="w-full h-px bg-neutral-900 transition-all duration-300 origin-center" data-line-1></span>
+            <span class="w-full h-px bg-neutral-900 transition-all duration-300" data-line-2></span>
+            <span class="w-full h-px bg-neutral-900 transition-all duration-300 origin-center" data-line-3></span>
+          </div>
         </button>
-        <nav class="hidden md:flex items-center gap-10 text-sm font-medium text-subtle">
-          <a href="index.html#work" class="hover:text-ink transition-colors">Work</a>
-          <a href="index.html#about" class="hover:text-ink transition-colors">About</a>
-          <a href="https://www.linkedin.com/in/vuhoangphuong/"
-            class="text-ink hover:text-accent transition-colors">LinkedIn ↗</a>
+
+        <nav class="hidden md:flex items-center gap-12 text-sm">
+          <a href="index.html#work" class="line-animate text-neutral-600 hover:text-neutral-900 transition-colors">Work</a>
+          <a href="index.html#about" class="line-animate text-neutral-600 hover:text-neutral-900 transition-colors">About</a>
+          <a href="https://www.linkedin.com/in/vuhoangphuong/" target="_blank" rel="noopener" class="line-animate text-neutral-600 hover:text-neutral-900 transition-colors">LinkedIn</a>
         </nav>
       </div>
-      <div class="hidden flex-col gap-6 pb-8 md:hidden text-lg font-medium text-subtle" data-mobile-menu>
-        <a href="index.html#work" class="hover:text-ink">Work</a>
-        <a href="index.html#about" class="hover:text-ink">About</a>
-        <a href="https://www.linkedin.com/in/vuhoangphuong/" class="text-ink">LinkedIn ↗</a>
+    </div>
+
+    <div class="fixed inset-0 bg-white z-40 hidden opacity-0 transition-opacity duration-300" data-mobile-menu>
+      <div class="flex flex-col items-center justify-center h-full gap-8 text-3xl font-medium">
+        <a href="index.html#work" class="hover:opacity-60 transition-opacity" data-mobile-link>Work</a>
+        <a href="index.html#about" class="hover:opacity-60 transition-opacity" data-mobile-link>About</a>
+        <a href="https://www.linkedin.com/in/vuhoangphuong/" target="_blank" rel="noopener" class="hover:opacity-60 transition-opacity" data-mobile-link>LinkedIn</a>
       </div>
     </div>
   </header>
 
-  <main class="pt-14 pb-16">
-    <section class="max-w-6xl mx-auto px-4 py-8 space-y-5">
-      <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Case Study</p>
-      <div class="space-y-4">
-        <h1 class="font-display text-3xl sm:text-4xl leading-tight">Kura, a car care app</h1>
-        <p class="text-lg text-slate-700">A maintenance companion that turns complex schedules into friendly reminders
-          and transparent history for car owners.</p>
-        <div class="flex flex-wrap gap-3 text-sm text-slate-600">
-          <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Role: UX Research & UI Design</span>
-          <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Duration: 3 months</span>
-          <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Tools: Pen & paper, FigJam,
-            Figma</span>
-        </div>
-        <div class="flex gap-3">
-          <a href="#solution"
-            class="inline-flex items-center justify-center rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white hover:bg-slate-900">Jump
-            to solution</a>
-          <a href="#prototype"
-            class="inline-flex items-center justify-center rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-ink hover:border-ink">View
-            prototype</a>
-        </div>
-      </div>
-      <div class="rounded-3xl border border-slate-200 bg-slate-50 p-4 flex justify-center">
-        <img src="images/Carcare/img001.png" alt="Kura car care app"
-          class="w-full max-w-3xl h-auto rounded-2xl border border-slate-200 cursor-pointer" data-lightbox>
-      </div>
-    </section>
-
-    <section class="max-w-6xl mx-auto px-4 py-6">
-      <div class="grid gap-6 md:grid-cols-3">
-        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-3">
-          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Challenges</p>
-          <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
-            <li>Owners forget periodic maintenance.</li>
-            <li>No easy way to track service history.</li>
-            <li>DIY guidance and trustworthy advice are scarce.</li>
-          </ul>
-        </div>
-        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-3">
-          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Goals</p>
-          <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
-            <li>Track maintenance in one place.</li>
-            <li>Surface clear next steps and reminders.</li>
-            <li>Give owners confidence with reliable recommendations.</li>
-          </ul>
-        </div>
-        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-3">
-          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">My focus</p>
-          <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
-            <li>Research & synthesis</li>
-            <li>User flows, wireframes, prototypes</li>
-            <li>UI system & usability testing</li>
-          </ul>
+  <main>
+    <!-- Hero -->
+    <section class="pt-32 pb-16 md:pt-40 md:pb-24">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+        <div class="max-w-4xl">
+          <p class="text-sm text-neutral-400 tracking-wide uppercase mb-4">Case Study — Product Design</p>
+          <h1 class="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.1] mb-6">
+            Kura Car Care App
+          </h1>
+          <p class="text-xl md:text-2xl text-neutral-500 font-light leading-relaxed mb-8">
+            A maintenance companion that turns complex schedules into friendly reminders and transparent history for car owners.
+          </p>
+          <div class="flex flex-wrap gap-3 mb-8">
+            <span class="px-4 py-2 text-sm bg-neutral-100 text-neutral-600 rounded-full">3 months</span>
+            <span class="px-4 py-2 text-sm bg-neutral-100 text-neutral-600 rounded-full">FigJam & Figma</span>
+            <span class="px-4 py-2 text-sm bg-neutral-100 text-neutral-600 rounded-full">UX Research & UI</span>
+          </div>
+          <div class="flex gap-4">
+            <a href="#solution" class="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white rounded-full text-sm font-medium hover:bg-neutral-700 transition-colors">
+              Jump to solution
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </a>
+            <a href="#prototype" class="inline-flex items-center gap-2 px-6 py-3 border border-neutral-200 rounded-full text-sm font-medium hover:border-neutral-400 transition-colors">
+              View prototype
+            </a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="max-w-6xl mx-auto px-4 py-6 space-y-4">
-      <h2 class="text-2xl font-display">Research insights</h2>
-      <div class="grid gap-4 md:grid-cols-2">
-        <div class="rounded-2xl border border-slate-200 bg-white p-5 space-y-2">
-          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">What I learned</p>
-          <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
-            <li>People forget schedules and lack visibility into car health.</li>
-            <li>They want guidance that is timely, simple, and trustworthy.</li>
-            <li>Service history needs to be transparent and portable.</li>
-          </ul>
-        </div>
-        <div class="rounded-2xl border border-slate-200 bg-white p-5 space-y-2">
-          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Design principles</p>
-          <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
-            <li>Clarity first: show upcoming tasks and status at a glance.</li>
-            <li>Helpful nudges: reminders with context, not alarms.</li>
-            <li>Trustworthy tone: friendly, confident visuals.</li>
-          </ul>
+    <!-- Hero Image -->
+    <section class="pb-24">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+        <div class="rounded-3xl overflow-hidden bg-neutral-50">
+          <img src="images/Carcare/img001.png" alt="Kura car care app" class="w-full h-auto image-zoom" data-lightbox>
         </div>
       </div>
     </section>
 
-    <section id="solution" class="max-w-6xl mx-auto px-4 py-6 space-y-4">
-      <h2 class="text-2xl font-display">Solution highlights</h2>
-      <div class="grid gap-4 md:grid-cols-3">
-        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-2">
-          <h3 class="text-lg font-semibold text-ink">Unified maintenance hub</h3>
-          <p class="text-sm text-slate-700">Dashboard of car performance, service history, and upcoming tasks.</p>
-        </div>
-        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-2">
-          <h3 class="text-lg font-semibold text-ink">Smart reminders</h3>
-          <p class="text-sm text-slate-700">Timely prompts for service with clear instructions or DIY steps.</p>
-        </div>
-        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-2">
-          <h3 class="text-lg font-semibold text-ink">Friendly visuals</h3>
-          <p class="text-sm text-slate-700">Blue, confident visual language to build trust and reduce friction.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="max-w-6xl mx-auto px-4 py-6 space-y-4">
-      <h2 class="text-2xl font-display">Persona</h2>
-      <img src="images/Carcare/img002.png" alt="Persona visuals" loading="lazy"
-        class="w-full max-w-3xl mx-auto h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
-    </section>
-
-    <section class="max-w-6xl mx-auto px-4 py-6 space-y-4">
-      <h2 class="text-2xl font-display">Ideate</h2>
-      <p class="text-sm text-slate-700">“How might we” prompts to simplify maintenance, surface priorities, and reduce
-        stress.</p>
-      <img src="images/Carcare/img003.png" alt="How might we notes" loading="lazy"
-        class="w-full max-w-3xl mx-auto h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
-    </section>
-
-    <section class="max-w-6xl mx-auto px-4 py-6 space-y-4">
-      <h2 class="text-2xl font-display">User Flow</h2>
-      <img src="images/Carcare/img004.png" alt="User flow" loading="lazy"
-        class="w-full max-w-3xl mx-auto h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
-    </section>
-
-    <section class="max-w-6xl mx-auto px-4 py-6 space-y-6">
-      <div class="grid gap-6 md:grid-cols-2">
-        <div class="space-y-3">
-          <h3 class="text-xl font-semibold text-ink">Wireframes</h3>
-          <p class="text-sm text-slate-700">Quick sketches and low-fidelity wires to clarify layout and feature
-            hierarchy.</p>
-          <img src="images/Carcare/img006.jpeg" alt="Wireframe sketches" loading="lazy"
-            class="w-full max-w-3xl mx-auto h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
-          <h3 class="text-lg font-semibold text-ink">Lo-fidelity wireframes</h3>
-          <img src="images/Carcare/img007.png" alt="Lo-fi screens" loading="lazy"
-            class="w-full max-w-3xl mx-auto h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
-        </div>
-        <div class="space-y-3">
-          <h3 class="text-xl font-semibold text-ink">Usability testing</h3>
-          <p class="text-sm text-slate-700">Iterative usability rounds ensured users could complete tasks; flows were
-            refined based on feedback.</p>
-          <img src="images/Carcare/img008.JPG" alt="Usability testing session" loading="lazy"
-            class="w-full max-w-3xl mx-auto h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
-        </div>
-      </div>
-
-      <div class="space-y-3">
-        <h2 class="text-2xl font-display">Branding</h2>
-        <img src="images/Carcare/img009.png" alt="Branding" loading="lazy"
-          class="w-48 h-auto rounded-xl border border-slate-200 mx-auto cursor-pointer" data-lightbox>
-        <p class="text-sm text-slate-700 text-center">Name derived from "cura" (care). Blue palette conveys confidence
-          and clarity.</p>
-      </div>
-
-      <div class="space-y-3">
-        <h3 class="text-xl font-semibold text-ink">Hi-fi screens</h3>
-        <p class="text-sm text-slate-700">Iterated high-fidelity designs after usability rounds.</p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <img src="images/Carcare/img010.png" alt="Hi-fi screen 1" loading="lazy"
-            class="w-full h-auto rounded-lg shadow-sm cursor-pointer" data-lightbox>
-          <img src="images/Carcare/img011.png" alt="Hi-fi screen 2" loading="lazy"
-            class="w-full h-auto rounded-lg shadow-sm cursor-pointer" data-lightbox>
-          <img src="images/Carcare/img012.png" alt="Hi-fi screen 3" loading="lazy"
-            class="w-full h-auto rounded-lg shadow-sm cursor-pointer" data-lightbox>
-          <img src="images/Carcare/img013.png" alt="Hi-fi screen 4" loading="lazy"
-            class="w-full h-auto rounded-lg shadow-sm cursor-pointer" data-lightbox>
-          <img src="images/Carcare/img014.png" alt="Hi-fi screen 5" loading="lazy"
-            class="w-full h-auto rounded-lg shadow-sm cursor-pointer" data-lightbox>
-          <img src="images/Carcare/img015.png" alt="Hi-fi screen 6" loading="lazy"
-            class="w-full h-auto rounded-lg shadow-sm cursor-pointer" data-lightbox>
-          <img src="images/Carcare/img016.png" alt="Hi-fi screen 7" loading="lazy"
-            class="w-full h-auto rounded-lg shadow-sm cursor-pointer" data-lightbox>
+    <!-- Overview Cards -->
+    <section class="py-16 bg-neutral-50">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="reveal">
+            <p class="text-xs text-neutral-400 uppercase tracking-wide mb-4">The Challenge</p>
+            <ul class="space-y-3 text-neutral-600">
+              <li class="flex items-start gap-3">
+                <span class="w-1.5 h-1.5 bg-neutral-400 rounded-full mt-2 shrink-0"></span>
+                Owners forget periodic maintenance
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-1.5 h-1.5 bg-neutral-400 rounded-full mt-2 shrink-0"></span>
+                No easy way to track service history
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-1.5 h-1.5 bg-neutral-400 rounded-full mt-2 shrink-0"></span>
+                DIY guidance and trustworthy advice are scarce
+              </li>
+            </ul>
+          </div>
+          <div class="reveal">
+            <p class="text-xs text-neutral-400 uppercase tracking-wide mb-4">Goals</p>
+            <ul class="space-y-3 text-neutral-600">
+              <li class="flex items-start gap-3">
+                <span class="w-1.5 h-1.5 bg-neutral-400 rounded-full mt-2 shrink-0"></span>
+                Track maintenance in one place
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-1.5 h-1.5 bg-neutral-400 rounded-full mt-2 shrink-0"></span>
+                Surface clear next steps and reminders
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-1.5 h-1.5 bg-neutral-400 rounded-full mt-2 shrink-0"></span>
+                Give owners confidence with reliable recommendations
+              </li>
+            </ul>
+          </div>
+          <div class="reveal">
+            <p class="text-xs text-neutral-400 uppercase tracking-wide mb-4">My Focus</p>
+            <ul class="space-y-3 text-neutral-600">
+              <li class="flex items-start gap-3">
+                <span class="w-1.5 h-1.5 bg-neutral-400 rounded-full mt-2 shrink-0"></span>
+                Research & synthesis
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-1.5 h-1.5 bg-neutral-400 rounded-full mt-2 shrink-0"></span>
+                User flows, wireframes, prototypes
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-1.5 h-1.5 bg-neutral-400 rounded-full mt-2 shrink-0"></span>
+                UI system & usability testing
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="max-w-6xl mx-auto px-4 py-6 space-y-4">
-      <h2 class="text-2xl font-display">Testing & learnings</h2>
-      <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
-        <li>Clear reminders and history reduce anxiety and missed tasks.</li>
-        <li>Concise flows improved task completion during testing.</li>
-        <li>Visual clarity (labels, spacing) increased comprehension.</li>
-      </ul>
-    </section>
+    <!-- Research Insights -->
+    <section class="py-24">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+        <div class="max-w-3xl mb-16">
+          <p class="text-sm text-neutral-400 tracking-wide uppercase mb-3">Discovery</p>
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-6">Research Insights</h2>
+        </div>
 
-    <section id="prototype" class="max-w-6xl mx-auto px-4 py-6 space-y-3">
-      <h2 class="text-2xl font-display">Prototype</h2>
-      <div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
-        <iframe class="w-full" style="border: 0;" width="900" height="640"
-          src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FRD1QNkJJcE91tqCKCvVP60%2FSpringboard-Capstone-I---Car-App%3Fpage-id%3D202%253A75%26node-id%3D202%253A76%26viewport%3D988%252C667%252C0.13%26scaling%3Dscale-down%26starting-point-node-id%3D327%253A1217%26show-proto-sidebar%3D1"
-          allowfullscreen></iframe>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="reveal p-8 rounded-2xl border border-neutral-200">
+            <p class="text-xs text-neutral-400 uppercase tracking-wide mb-6">What I Learned</p>
+            <ul class="space-y-4 text-neutral-600">
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-neutral-100 rounded-full flex items-center justify-center text-xs font-medium shrink-0">1</span>
+                People forget schedules and lack visibility into car health
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-neutral-100 rounded-full flex items-center justify-center text-xs font-medium shrink-0">2</span>
+                They want guidance that is timely, simple, and trustworthy
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-neutral-100 rounded-full flex items-center justify-center text-xs font-medium shrink-0">3</span>
+                Service history needs to be transparent and portable
+              </li>
+            </ul>
+          </div>
+          <div class="reveal p-8 rounded-2xl border border-neutral-200">
+            <p class="text-xs text-neutral-400 uppercase tracking-wide mb-6">Design Principles</p>
+            <ul class="space-y-4 text-neutral-600">
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-neutral-900 text-white rounded-full flex items-center justify-center text-xs font-medium shrink-0">1</span>
+                Clarity first: show upcoming tasks and status at a glance
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-neutral-900 text-white rounded-full flex items-center justify-center text-xs font-medium shrink-0">2</span>
+                Helpful nudges: reminders with context, not alarms
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-neutral-900 text-white rounded-full flex items-center justify-center text-xs font-medium shrink-0">3</span>
+                Trustworthy tone: friendly, confident visuals
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="max-w-6xl mx-auto px-4 py-6 space-y-3">
-      <h2 class="text-2xl font-display">Key takeaways</h2>
-      <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
-        <li>Timely, contextual reminders are the core value.</li>
-        <li>Transparency in history builds trust with owners.</li>
-        <li>Early testing exposed clarity gaps before build.</li>
-      </ul>
+    <!-- Solution Highlights -->
+    <section id="solution" class="py-24 bg-neutral-50">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+        <div class="max-w-3xl mb-16">
+          <p class="text-sm text-neutral-400 tracking-wide uppercase mb-3">Approach</p>
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">Solution Highlights</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="reveal bg-white p-8 rounded-2xl">
+            <div class="w-12 h-12 bg-neutral-100 rounded-full flex items-center justify-center mb-6">
+              <svg class="w-5 h-5 text-neutral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Unified Maintenance Hub</h3>
+            <p class="text-neutral-500 leading-relaxed">Dashboard of car performance, service history, and upcoming tasks.</p>
+          </div>
+          <div class="reveal bg-white p-8 rounded-2xl">
+            <div class="w-12 h-12 bg-neutral-100 rounded-full flex items-center justify-center mb-6">
+              <svg class="w-5 h-5 text-neutral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Smart Reminders</h3>
+            <p class="text-neutral-500 leading-relaxed">Timely prompts for service with clear instructions or DIY steps.</p>
+          </div>
+          <div class="reveal bg-white p-8 rounded-2xl">
+            <div class="w-12 h-12 bg-neutral-100 rounded-full flex items-center justify-center mb-6">
+              <svg class="w-5 h-5 text-neutral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Friendly Visuals</h3>
+            <p class="text-neutral-500 leading-relaxed">Blue, confident visual language to build trust and reduce friction.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Persona -->
+    <section class="py-24">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+        <div class="max-w-3xl mb-12">
+          <p class="text-sm text-neutral-400 tracking-wide uppercase mb-3">Understanding Users</p>
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-4">Persona</h2>
+        </div>
+        <div class="reveal rounded-2xl overflow-hidden bg-neutral-50 p-4">
+          <img src="images/Carcare/img002.png" alt="User persona" loading="lazy" class="w-full h-auto rounded-xl image-zoom" data-lightbox>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ideation -->
+    <section class="py-24 bg-neutral-50">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+        <div class="max-w-3xl mb-12">
+          <p class="text-sm text-neutral-400 tracking-wide uppercase mb-3">Exploration</p>
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-4">Ideation</h2>
+          <p class="text-neutral-500 text-lg">"How might we" prompts to simplify maintenance, surface priorities, and reduce stress.</p>
+        </div>
+        <div class="reveal rounded-2xl overflow-hidden bg-white p-4">
+          <img src="images/Carcare/img003.png" alt="How might we notes" loading="lazy" class="w-full h-auto rounded-xl image-zoom" data-lightbox>
+        </div>
+      </div>
+    </section>
+
+    <!-- User Flow -->
+    <section class="py-24">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+        <div class="max-w-3xl mb-12">
+          <p class="text-sm text-neutral-400 tracking-wide uppercase mb-3">Process</p>
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">User Flow</h2>
+        </div>
+        <div class="reveal rounded-2xl overflow-hidden bg-neutral-50 p-4">
+          <img src="images/Carcare/img004.png" alt="User flow diagram" loading="lazy" class="w-full h-auto rounded-xl image-zoom" data-lightbox>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wireframes & Testing -->
+    <section class="py-24 bg-neutral-50">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+        <div class="grid md:grid-cols-2 gap-16">
+          <div>
+            <p class="text-sm text-neutral-400 tracking-wide uppercase mb-3">Sketching</p>
+            <h2 class="text-3xl font-semibold tracking-tight mb-4">Wireframes</h2>
+            <p class="text-neutral-500 mb-8">Quick sketches and low-fidelity wires to clarify layout and feature hierarchy.</p>
+            <div class="reveal space-y-4">
+              <img src="images/Carcare/img006.jpeg" alt="Wireframe sketches" loading="lazy" class="w-full h-auto rounded-xl image-zoom" data-lightbox>
+              <img src="images/Carcare/img007.png" alt="Lo-fi screens" loading="lazy" class="w-full h-auto rounded-xl image-zoom" data-lightbox>
+            </div>
+          </div>
+          <div>
+            <p class="text-sm text-neutral-400 tracking-wide uppercase mb-3">Validation</p>
+            <h2 class="text-3xl font-semibold tracking-tight mb-4">Usability Testing</h2>
+            <p class="text-neutral-500 mb-8">Iterative usability rounds ensured users could complete tasks; flows were refined based on feedback.</p>
+            <div class="reveal">
+              <img src="images/Carcare/img008.JPG" alt="Usability testing session" loading="lazy" class="w-full h-auto rounded-xl image-zoom" data-lightbox>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Branding -->
+    <section class="py-24">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+          <div class="reveal">
+            <p class="text-sm text-neutral-400 tracking-wide uppercase mb-3">Identity</p>
+            <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-6">Branding</h2>
+            <p class="text-neutral-500 text-lg leading-relaxed">Name derived from "cura" (care). The blue palette conveys confidence and clarity—qualities car owners need when managing their vehicle's health.</p>
+          </div>
+          <div class="reveal flex justify-center">
+            <img src="images/Carcare/img009.png" alt="Kura logo and branding" loading="lazy" class="w-48 h-auto image-zoom" data-lightbox>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hi-Fi Screens -->
+    <section class="py-24 bg-neutral-50">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+        <div class="max-w-3xl mb-12">
+          <p class="text-sm text-neutral-400 tracking-wide uppercase mb-3">Final Design</p>
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-4">Hi-Fi Screens</h2>
+          <p class="text-neutral-500 text-lg">Iterated high-fidelity designs after usability rounds.</p>
+        </div>
+        <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-4">
+          <img src="images/Carcare/img010.png" alt="Hi-fi screen 1" loading="lazy" class="w-full h-auto rounded-xl shadow-sm image-zoom" data-lightbox>
+          <img src="images/Carcare/img011.png" alt="Hi-fi screen 2" loading="lazy" class="w-full h-auto rounded-xl shadow-sm image-zoom" data-lightbox>
+          <img src="images/Carcare/img012.png" alt="Hi-fi screen 3" loading="lazy" class="w-full h-auto rounded-xl shadow-sm image-zoom" data-lightbox>
+          <img src="images/Carcare/img013.png" alt="Hi-fi screen 4" loading="lazy" class="w-full h-auto rounded-xl shadow-sm image-zoom" data-lightbox>
+          <img src="images/Carcare/img014.png" alt="Hi-fi screen 5" loading="lazy" class="w-full h-auto rounded-xl shadow-sm image-zoom" data-lightbox>
+          <img src="images/Carcare/img015.png" alt="Hi-fi screen 6" loading="lazy" class="w-full h-auto rounded-xl shadow-sm image-zoom" data-lightbox>
+          <img src="images/Carcare/img016.png" alt="Hi-fi screen 7" loading="lazy" class="w-full h-auto rounded-xl shadow-sm image-zoom" data-lightbox>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testing Results -->
+    <section class="py-24">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+          <div class="reveal">
+            <p class="text-sm text-neutral-400 tracking-wide uppercase mb-3">Validation</p>
+            <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-6">Testing & Learnings</h2>
+            <ul class="space-y-4 text-neutral-600">
+              <li class="flex items-start gap-4">
+                <span class="w-8 h-8 bg-neutral-900 text-white rounded-full flex items-center justify-center text-sm font-medium shrink-0">✓</span>
+                <span>Clear reminders and history reduce anxiety and missed tasks</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="w-8 h-8 bg-neutral-900 text-white rounded-full flex items-center justify-center text-sm font-medium shrink-0">✓</span>
+                <span>Concise flows improved task completion during testing</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="w-8 h-8 bg-neutral-900 text-white rounded-full flex items-center justify-center text-sm font-medium shrink-0">✓</span>
+                <span>Visual clarity (labels, spacing) increased comprehension</span>
+              </li>
+            </ul>
+          </div>
+          <div class="reveal">
+            <div class="bg-neutral-50 p-8 rounded-2xl">
+              <p class="text-5xl font-semibold mb-2">85%</p>
+              <p class="text-neutral-500">Task completion rate in usability testing sessions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prototype -->
+    <section id="prototype" class="py-24 bg-neutral-50">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+        <div class="max-w-3xl mb-12">
+          <p class="text-sm text-neutral-400 tracking-wide uppercase mb-3">Interactive</p>
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">Prototype</h2>
+        </div>
+        <div class="reveal rounded-2xl overflow-hidden border border-neutral-200">
+          <iframe class="w-full aspect-[16/10]" style="border: 0;"
+            src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FRD1QNkJJcE91tqCKCvVP60%2FSpringboard-Capstone-I---Car-App%3Fpage-id%3D202%253A75%26node-id%3D202%253A76%26viewport%3D988%252C667%252C0.13%26scaling%3Dscale-down%26starting-point-node-id%3D327%253A1217%26show-proto-sidebar%3D1"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Takeaways -->
+    <section class="py-24 bg-neutral-900 text-white">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+        <div class="max-w-3xl mb-12">
+          <p class="text-sm text-neutral-400 tracking-wide uppercase mb-3">Reflection</p>
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">Key Takeaways</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="reveal">
+            <div class="w-12 h-12 border border-neutral-700 rounded-full flex items-center justify-center mb-6">
+              <span class="text-lg font-medium">01</span>
+            </div>
+            <p class="text-neutral-300 leading-relaxed">Timely, contextual reminders are the core value for busy car owners.</p>
+          </div>
+          <div class="reveal">
+            <div class="w-12 h-12 border border-neutral-700 rounded-full flex items-center justify-center mb-6">
+              <span class="text-lg font-medium">02</span>
+            </div>
+            <p class="text-neutral-300 leading-relaxed">Transparency in service history builds trust with owners.</p>
+          </div>
+          <div class="reveal">
+            <div class="w-12 h-12 border border-neutral-700 rounded-full flex items-center justify-center mb-6">
+              <span class="text-lg font-medium">03</span>
+            </div>
+            <p class="text-neutral-300 leading-relaxed">Early testing exposed clarity gaps before development.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next Project -->
+    <section class="py-24">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+        <div class="flex items-center justify-between mb-8">
+          <p class="text-sm text-neutral-400 tracking-wide uppercase">Next Project</p>
+          <a href="index.html#work" class="text-sm text-neutral-600 hover:text-neutral-900 transition-colors line-animate">View all work</a>
+        </div>
+        <a href="project-03.html" class="group block">
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div class="overflow-hidden rounded-2xl bg-neutral-50">
+              <img src="images/remoteworkplace/img001.png" alt="PostUp Remote Workplace Finder" loading="lazy" class="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105">
+            </div>
+            <div>
+              <h3 class="text-3xl md:text-4xl font-semibold mb-4 group-hover:opacity-60 transition-opacity">Remote Workplace Finder</h3>
+              <p class="text-neutral-500 text-lg mb-4">Helping remote workers discover ideal workspaces through location-based search and community reviews.</p>
+              <span class="inline-flex items-center gap-2 text-neutral-900 font-medium">
+                View project
+                <svg class="w-4 h-4 transform group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
     </section>
   </main>
 
-  <button type="button" id="backToTop"
-    class="fixed bottom-8 right-8 hidden items-center justify-center w-12 h-12 rounded-full bg-ink text-white shadow-xl hover:bg-slate-800 transition-all z-50"
-    aria-label="Back to top">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-      stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-    </svg>
-  </button>
-
-  <footer class="bg-white border-t border-slate-100">
-    <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
-      <p class="text-sm text-subtle">© 2023 Phuong Vu</p>
-      <div class="flex gap-6 text-sm font-medium text-subtle">
-        <a href="https://www.linkedin.com/in/vuhoangphuong/" class="hover:text-ink transition-colors">LinkedIn</a>
-        <a href="mailto:vuhoangphuong@example.com" class="hover:text-ink transition-colors">Email</a>
+  <!-- Footer -->
+  <footer class="py-12 border-t border-neutral-100">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <p class="text-sm text-neutral-400">© 2025 Phuong Vu. All rights reserved.</p>
+        <div class="flex items-center gap-8">
+          <a href="https://www.linkedin.com/in/vuhoangphuong/" target="_blank" rel="noopener" class="text-sm text-neutral-500 hover:text-neutral-900 transition-colors line-animate">LinkedIn</a>
+          <a href="mailto:vuhoangphuong@example.com" class="text-sm text-neutral-500 hover:text-neutral-900 transition-colors line-animate">Email</a>
+        </div>
       </div>
     </div>
   </footer>
 
-  <div id="lightbox" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm items-center justify-center p-4">
-    <div class="relative max-w-5xl w-full">
-      <button type="button" class="absolute -top-10 right-0 text-white text-2xl" aria-label="Close"
-        data-lightbox-close>&times;</button>
-      <img src="" alt="Expanded view" class="w-full h-auto rounded-2xl border border-white/20" data-lightbox-image>
-    </div>
+  <!-- Back to top -->
+  <button type="button" id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-neutral-900 text-white rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-neutral-700 flex items-center justify-center z-50" aria-label="Back to top">
+    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+    </svg>
+  </button>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-sm items-center justify-center p-4 cursor-zoom-out">
+    <button type="button" class="absolute top-6 right-6 w-12 h-12 flex items-center justify-center text-white/60 hover:text-white transition-colors" aria-label="Close" data-lightbox-close>
+      <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <img src="" alt="Expanded view" class="max-w-full max-h-[90vh] rounded-lg" data-lightbox-image>
   </div>
 
   <script>
-    // Inline script removed, functionality moved to js/main.js
+    document.addEventListener('DOMContentLoaded', () => {
+      const header = document.getElementById('header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+          header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+        } else {
+          header.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+        }
+      });
+
+      const menuToggle = document.querySelector('[data-menu-toggle]');
+      const mobileMenu = document.querySelector('[data-mobile-menu]');
+      const mobileLinks = document.querySelectorAll('[data-mobile-link]');
+      const lines = {
+        1: document.querySelector('[data-line-1]'),
+        2: document.querySelector('[data-line-2]'),
+        3: document.querySelector('[data-line-3]')
+      };
+
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', () => {
+          const isOpen = mobileMenu.classList.contains('hidden');
+          if (isOpen) {
+            mobileMenu.classList.remove('hidden');
+            setTimeout(() => mobileMenu.classList.remove('opacity-0'), 10);
+            lines[1].style.transform = 'rotate(45deg) translateY(8px)';
+            lines[2].style.opacity = '0';
+            lines[3].style.transform = 'rotate(-45deg) translateY(-8px)';
+            document.body.style.overflow = 'hidden';
+          } else {
+            mobileMenu.classList.add('opacity-0');
+            setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+            lines[1].style.transform = '';
+            lines[2].style.opacity = '';
+            lines[3].style.transform = '';
+            document.body.style.overflow = '';
+          }
+          menuToggle.setAttribute('aria-expanded', isOpen.toString());
+        });
+
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('opacity-0');
+            setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+            lines[1].style.transform = '';
+            lines[2].style.opacity = '';
+            lines[3].style.transform = '';
+            document.body.style.overflow = '';
+          });
+        });
+      }
+
+      const revealElements = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      revealElements.forEach(el => observer.observe(el));
+
+      const backToTop = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+          backToTop.classList.remove('opacity-0', 'invisible');
+          backToTop.classList.add('opacity-100', 'visible');
+        } else {
+          backToTop.classList.add('opacity-0', 'invisible');
+          backToTop.classList.remove('opacity-100', 'visible');
+        }
+      });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImage = document.querySelector('[data-lightbox-image]');
+      const closeLightbox = document.querySelector('[data-lightbox-close]');
+
+      document.querySelectorAll('[data-lightbox]').forEach(img => {
+        img.addEventListener('click', () => {
+          lightboxImage.src = img.src;
+          lightbox.classList.remove('hidden');
+          lightbox.classList.add('flex');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      const hideLightbox = () => {
+        lightbox.classList.add('hidden');
+        lightbox.classList.remove('flex');
+        lightboxImage.src = '';
+        document.body.style.overflow = '';
+      };
+
+      if (closeLightbox) closeLightbox.addEventListener('click', hideLightbox);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) hideLightbox();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) hideLightbox();
+      });
+    });
   </script>
 </body>
 

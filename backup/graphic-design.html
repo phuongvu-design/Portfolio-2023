@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Graphic Design | Phuong Vu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Inter', 'system-ui', 'sans-serif'],
+            body: ['Inter', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            ink: '#111827',
+            accent: '#2563eb',
+            subtle: '#6b7280'
+          }
+        }
+      }
+    }
+  </script>
+  <script src="js/main.js" defer></script>
+</head>
+
+<body class="bg-white text-ink font-body">
+  <header
+    class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex h-20 items-center justify-between">
+        <a href="index.html" class="text-xl font-bold tracking-tight text-ink hover:opacity-70 transition-opacity">
+          Phuong Vu
+        </a>
+        <button type="button" class="md:hidden p-2 rounded-lg border border-slate-200" data-menu-toggle
+          aria-expanded="false" aria-label="Toggle navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+        <nav class="hidden md:flex items-center gap-10 text-sm font-medium text-subtle">
+          <a href="index.html#work" class="hover:text-ink transition-colors">Work</a>
+          <a href="index.html#about" class="hover:text-ink transition-colors">About</a>
+          <a href="https://www.linkedin.com/in/vuhoangphuong/"
+            class="text-ink hover:text-accent transition-colors">LinkedIn ↗</a>
+        </nav>
+      </div>
+      <div class="hidden flex-col gap-6 pb-8 md:hidden text-lg font-medium text-subtle" data-mobile-menu>
+        <a href="index.html#work" class="hover:text-ink">Work</a>
+        <a href="index.html#about" class="hover:text-ink">About</a>
+        <a href="https://www.linkedin.com/in/vuhoangphuong/" class="text-ink">LinkedIn ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-14 pb-16">
+    <section class="max-w-6xl mx-auto px-4 py-8 space-y-5">
+      <p class="text-sm uppercase tracking-[0.2em] text-slate-500 text-center">Visual design collection</p>
+      <h1 class="font-display text-3xl sm:text-4xl leading-tight text-center">Branding, illustration, and storytelling
+      </h1>
+      <p class="text-center text-slate-700 max-w-3xl mx-auto">A curated set of visual projects where I paired
+        research-driven intent with playful craft—spanning public interventions, brand refreshes, and narrative
+        infographics.</p>
+      <div class="flex flex-wrap justify-center gap-3 text-sm text-slate-600">
+        <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Role: Visual &amp; Product
+          Design</span>
+        <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Scope: Branding · Illustration ·
+          Layout</span>
+        <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Tools: Figma, Affinity, Adobe
+          Suite</span>
+      </div>
+      <div class="flex justify-center gap-3">
+        <a href="#highlights"
+          class="inline-flex items-center justify-center rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white hover:bg-slate-900">Jump
+          to highlights</a>
+        <a href="index.html#about"
+          class="inline-flex items-center justify-center rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-ink hover:border-ink">About
+          me</a>
+      </div>
+    </section>
+
+    <section id="highlights" class="max-w-6xl mx-auto px-4 py-8 space-y-4">
+      <div class="flex items-center gap-3">
+        <span
+          class="h-10 w-10 rounded-full border border-slate-200 bg-slate-50 text-ink grid place-items-center font-display">01</span>
+        <div>
+          <p class="text-xs uppercase tracking-[0.2em] text-slate-500">Project lineup</p>
+          <h2 class="font-display text-3xl text-ink">Three distinct visual stories</h2>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article
+          class="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden flex flex-col transition hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/70">
+          <img src="images/other/intervention/img011.png" alt="Pawsitively Clean" loading="lazy"
+            class="w-full h-52 object-cover cursor-pointer max-w-3xl mx-auto" data-lightbox>
+          <div class="p-5 space-y-3 flex-1 flex flex-col">
+            <div class="flex items-center gap-2 text-xs uppercase tracking-wide text-slate-500">
+              <span class="rounded-full border border-slate-200 px-3 py-1 bg-slate-50">Public Intervention</span>
+              <span>Behavioral nudge</span>
+            </div>
+            <h3 class="text-xl font-semibold text-ink">Pawsitively Clean</h3>
+            <p class="text-slate-700 text-sm">Friendly, memorable reminders that make city blocks cleaner for
+              pedestrians and pets.</p>
+            <div class="mt-auto flex items-center justify-between pt-2 text-sm text-accent">
+              <a href="intervention.html" class="inline-flex items-center gap-2">View case study
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <span class="text-slate-500 text-xs">Research · Illustration</span>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden flex flex-col transition hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/70">
+          <img src="images/other/Infographic/img002.png" alt="Through my lens" loading="lazy"
+            class="w-full h-52 object-cover cursor-pointer max-w-3xl mx-auto" data-lightbox>
+          <div class="p-5 space-y-3 flex-1 flex flex-col">
+            <div class="flex items-center gap-2 text-xs uppercase tracking-wide text-slate-500">
+              <span class="rounded-full border border-slate-200 px-3 py-1 bg-slate-50">Infographic</span>
+              <span>Storytelling</span>
+            </div>
+            <h3 class="text-xl font-semibold text-ink">Through my lens</h3>
+            <p class="text-slate-700 text-sm">A week of photography distilled into a single narrative map of moments and
+              moods.</p>
+            <div class="mt-auto flex items-center justify-between pt-2 text-sm text-accent">
+              <a href="infographic.html" class="inline-flex items-center gap-2">View case study
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <span class="text-slate-500 text-xs">Illustration · Layout</span>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden flex flex-col transition hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/70">
+          <img src="images/other/bmc-cover.png" alt="BMC brand redesign" loading="lazy"
+            class="w-full h-52 object-cover cursor-pointer max-w-3xl mx-auto" data-lightbox>
+          <div class="p-5 space-y-3 flex-1 flex flex-col">
+            <div class="flex items-center gap-2 text-xs uppercase tracking-wide text-slate-500">
+              <span class="rounded-full border border-slate-200 px-3 py-1 bg-slate-50">Branding</span>
+              <span>Identity</span>
+            </div>
+            <h3 class="text-xl font-semibold text-ink">Boston Children Museum</h3>
+            <p class="text-slate-700 text-sm">A refreshed visual identity that celebrates curiosity and community.</p>
+            <div class="mt-auto flex items-center justify-between pt-2 text-sm text-accent">
+              <a href="bmc.html" class="inline-flex items-center gap-2">View case study
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <span class="text-slate-500 text-xs">Brand system</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-8 space-y-4">
+      <div class="flex items-center gap-3">
+        <span
+          class="h-10 w-10 rounded-full border border-slate-200 bg-slate-50 text-ink grid place-items-center font-display">02</span>
+        <div>
+          <p class="text-xs uppercase tracking-[0.2em] text-slate-500">Approach</p>
+          <h2 class="font-display text-3xl text-ink">How I build visual work</h2>
+        </div>
+      </div>
+      <div class="grid gap-4 md:grid-cols-3">
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-2">
+          <h3 class="text-lg font-semibold text-ink">Grounded in intent</h3>
+          <p class="text-sm text-slate-700">Start from audience, environment, and desired behavior shifts before
+            drawing.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-2">
+          <h3 class="text-lg font-semibold text-ink">Rapid visual exploration</h3>
+          <p class="text-sm text-slate-700">Moodboards, sketches, and quick variants to test tone, hierarchy, and
+            legibility.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-2">
+          <h3 class="text-lg font-semibold text-ink">Polish with purpose</h3>
+          <p class="text-sm text-slate-700">Tighten grids, color, and typography to ensure consistency across formats.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-10 space-y-5">
+      <div class="flex items-center gap-3">
+        <span
+          class="h-10 w-10 rounded-full border border-slate-200 bg-slate-50 text-ink grid place-items-center font-display">03</span>
+        <div>
+          <p class="text-xs uppercase tracking-[0.2em] text-slate-500">Select visuals</p>
+          <h2 class="font-display text-3xl text-ink">Snapshots from the process</h2>
+        </div>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2">
+        <img src="images/other/intervention/img005.png" alt="Intervention map" loading="lazy"
+          class="w-full h-auto rounded-2xl border border-slate-200 cursor-pointer max-w-3xl mx-auto" data-lightbox>
+        <img src="images/other/Infographic/img001.png" alt="Infographic spread" loading="lazy"
+          class="w-full h-auto rounded-2xl border border-slate-200 cursor-pointer max-w-3xl mx-auto" data-lightbox>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <img src="images/vietvaluealliance/img002.png" alt="Logo exploration 1" loading="lazy"
+          class="w-full h-auto rounded-xl border border-slate-200 cursor-pointer max-w-3xl mx-auto" data-lightbox>
+        <img src="images/vietvaluealliance/img003.png" alt="Logo exploration 2" loading="lazy"
+          class="w-full h-auto rounded-xl border border-slate-200 cursor-pointer max-w-3xl mx-auto" data-lightbox>
+        <img src="images/vietvaluealliance/img004.png" alt="Business card mock" loading="lazy"
+          class="w-full h-auto rounded-xl border border-slate-200 cursor-pointer max-w-3xl mx-auto" data-lightbox>
+        <img src="images/vietvaluealliance/img005.png" alt="Collateral" loading="lazy"
+          class="w-full h-auto rounded-xl border border-slate-200 cursor-pointer max-w-3xl mx-auto" data-lightbox>
+      </div>
+    </section>
+  </main>
+
+  <button type="button" id="backToTop"
+    class="fixed bottom-8 right-8 hidden items-center justify-center w-12 h-12 rounded-full bg-ink text-white shadow-xl hover:bg-slate-800 transition-all z-50"
+    aria-label="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+      stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+    </svg>
+  </button>
+
+  <footer class="bg-white border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
+      <p class="text-sm text-subtle">© 2023 Phuong Vu</p>
+      <div class="flex gap-6 text-sm font-medium text-subtle">
+        <a href="https://www.linkedin.com/in/vuhoangphuong/" class="hover:text-ink transition-colors">LinkedIn</a>
+        <a href="mailto:vuhoangphuong@example.com" class="hover:text-ink transition-colors">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="lightbox" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm items-center justify-center p-4">
+    <div class="relative max-w-5xl w-full">
+      <button type="button" class="absolute -top-10 right-0 text-white text-2xl" aria-label="Close"
+        data-lightbox-close>&times;</button>
+      <img src="" alt="Expanded view" class="w-full h-auto rounded-2xl border border-white/20" data-lightbox-image>
+    </div>
+  </div>
+
+  <script>
+    // Inline script removed, functionality moved to js/main.js
+  </script>
+</body>
+
+</html>

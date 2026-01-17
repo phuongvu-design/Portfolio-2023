@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bike Mobile E-Commerce | Phuong Vu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Inter', 'system-ui', 'sans-serif'],
+            body: ['Inter', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            ink: '#111827',
+            accent: '#2563eb',
+            subtle: '#6b7280'
+          }
+        }
+      }
+    }
+  </script>
+  <script src="js/main.js" defer></script>
+</head>
+
+<body class="bg-white text-ink font-body">
+  <header
+    class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex h-20 items-center justify-between">
+        <a href="index.html" class="text-xl font-bold tracking-tight text-ink hover:opacity-70 transition-opacity">
+          Phuong Vu
+        </a>
+        <button type="button" class="md:hidden p-2 rounded-lg border border-slate-200" data-menu-toggle
+          aria-expanded="false" aria-label="Toggle navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+        <nav class="hidden md:flex items-center gap-10 text-sm font-medium text-subtle">
+          <a href="index.html#work" class="hover:text-ink transition-colors">Work</a>
+          <a href="index.html#about" class="hover:text-ink transition-colors">About</a>
+          <a href="https://www.linkedin.com/in/vuhoangphuong/"
+            class="text-ink hover:text-accent transition-colors">LinkedIn ↗</a>
+        </nav>
+      </div>
+      <div class="hidden flex-col gap-6 pb-8 md:hidden text-lg font-medium text-subtle" data-mobile-menu>
+        <a href="index.html#work" class="hover:text-ink">Work</a>
+        <a href="index.html#about" class="hover:text-ink">About</a>
+        <a href="https://www.linkedin.com/in/vuhoangphuong/" class="text-ink">LinkedIn ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-14 pb-16">
+    <section class="max-w-6xl mx-auto px-4 py-8 space-y-5">
+      <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Case Study</p>
+      <div class="space-y-6">
+        <div class="space-y-4">
+          <h1 class="font-display text-3xl sm:text-4xl leading-tight">Bike Mobile E-Commerce Website</h1>
+          <p class="text-lg text-slate-700">A mobile-first redesign for a premium bike retailer to simplify comparison
+            and guest checkout, turning curious browsers into confident buyers.</p>
+          <div class="flex flex-wrap gap-3 text-sm text-slate-600">
+            <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Role: UX & UI Design</span>
+            <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Duration: 3 months</span>
+            <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Tools: FigJam, Figma</span>
+          </div>
+          <div class="flex gap-3">
+            <a href="#solution"
+              class="inline-flex items-center justify-center rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white hover:bg-slate-900">Jump
+              to solution</a>
+            <a href="#prototype"
+              class="inline-flex items-center justify-center rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-ink hover:border-ink">View
+              prototype</a>
+          </div>
+        </div>
+        <div class="rounded-3xl border border-slate-200 bg-slate-50 p-4">
+          <img src="images/bike-website/img002.png" alt="Bike mobile website hero"
+            class="w-full max-w-[640px] mx-auto h-auto rounded-2xl cursor-pointer" data-lightbox>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-6">
+      <div class="grid gap-6 md:grid-cols-3">
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-3">
+          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Challenges</p>
+          <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+            <li>No small-screen experience.</li>
+            <li>Hard to compare bikes.</li>
+            <li>Checkout friction; account required.</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-3">
+          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Goals</p>
+          <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+            <li>Support mobile discovery to checkout.</li>
+            <li>Make comparison effortless.</li>
+            <li>Add guest checkout to cut drop-off.</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-3">
+          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">My focus</p>
+          <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+            <li>Research & synthesis</li>
+            <li>Flows, wireframes, prototypes</li>
+            <li>Ul system & usability testing</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-6 space-y-4">
+      <h2 class="text-2xl font-display">Research insights</h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 space-y-2">
+          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">What I learned</p>
+          <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+            <li>Users open many product pages but can’t tell differences quickly.</li>
+            <li>Account creation before checkout causes abandonment.</li>
+            <li>They want specs up front: size, terrain, components, price.</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 space-y-2">
+          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Design principles</p>
+          <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+            <li>Comparison first: align specs, enable quick contrast.</li>
+            <li>Frictionless purchase: guest checkout, minimal fields.</li>
+            <li>Small-screen clarity: concise cards, tap-friendly actions.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="solution" class="max-w-6xl mx-auto px-4 py-6 space-y-4">
+      <h2 class="text-2xl font-display">Solution highlights</h2>
+      <div class="grid gap-4 md:grid-cols-3">
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-2">
+          <h3 class="text-lg font-semibold text-ink">Compare in one glance</h3>
+          <p class="text-sm text-slate-700">Side-by-side spec summaries and saved comparisons to reduce back-and-forth
+            browsing.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-2">
+          <h3 class="text-lg font-semibold text-ink">Guest checkout</h3>
+          <p class="text-sm text-slate-700">Checkout without account creation; clear progress, minimal form fields,
+            auto-fill friendly.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-2">
+          <h3 class="text-lg font-semibold text-ink">Mobile-first UI</h3>
+          <p class="text-sm text-slate-700">Compact cards, large tap targets, and scannable detail blocks tailored for
+            phones.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-6 space-y-4">
+      <h2 class="text-2xl font-display">User flow</h2>
+      <p class="text-sm text-slate-700">Mapped the core path from discovery to checkout to remove dead ends and reduce
+        taps.</p>
+      <img src="images/bike-website/img004.png" alt="User flow" loading="lazy"
+        class="w-full max-w-3xl mx-auto h-auto rounded-2xl border border-slate-200 cursor-pointer" data-lightbox>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-6 space-y-6">
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="space-y-3">
+          <h3 class="text-xl font-semibold text-ink">Wireframes</h3>
+          <p class="text-sm text-slate-700">Quick sketches and low-fidelity wires to explore layout options for product
+            cards and comparison.</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+            <img src="images/bike-website/img005.png" alt="Wireframe 1" loading="lazy"
+              class="w-full h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
+            <img src="images/bike-website/img006.png" alt="Wireframe 2" loading="lazy"
+              class="w-full h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
+            <img src="images/bike-website/img007.png" alt="Wireframe 3" loading="lazy"
+              class="w-full h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
+            <img src="images/bike-website/img008.png" alt="Wireframe 4" loading="lazy"
+              class="w-full h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <h3 class="text-xl font-semibold text-ink">Lo-fi refinement</h3>
+          <p class="text-sm text-slate-700">Focused on hierarchy and flows before visual polish.</p>
+          <img src="images/bike-website/img009.png" alt="Low fidelity wireframes" loading="lazy"
+            class="w-full h-auto rounded-xl border border-slate-200">
+        </div>
+      </div>
+
+      <div class="space-y-3">
+        <h3 class="text-xl font-semibold text-ink">Hi-fi screens</h3>
+        <p class="text-sm text-slate-700">Iterated high-fidelity designs after usability rounds.</p>
+        <div class="space-y-4">
+          <img src="images/bike-website/img010.png" alt="High fidelity screen 1" loading="lazy"
+            class="w-full max-w-3xl mx-auto h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
+          <img src="images/bike-website/img011.png" alt="High fidelity screen 2" loading="lazy"
+            class="w-full max-w-3xl mx-auto h-auto rounded-xl border border-slate-200 cursor-pointer" data-lightbox>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-6 space-y-4">
+      <h2 class="text-2xl font-display">Testing & learnings</h2>
+      <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+        <li>Comparison cards reduced product-hopping; users chose in fewer steps.</li>
+        <li>Guest checkout removed major drop-off; users preferred progress visibility.</li>
+        <li>Specs needed bolder labels; improved contrast and spacing in later iterations.</li>
+      </ul>
+    </section>
+
+    <section id="prototype" class="max-w-6xl mx-auto px-4 py-6 space-y-3">
+      <h2 class="text-2xl font-display">Prototype</h2>
+      <div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
+        <iframe class="w-full" style="border: 0;" width="900" height="640"
+          src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FqbwEwjyWIjEsTXq2nMvcYF%2FSpringboard-Capstone-II%3Fpage-id%3D248%253A43%26node-id%3D338%253A1518%26viewport%3D451%252C247%252C0.05%26scaling%3Dscale-down%26starting-point-node-id%3D428%253A1371%26show-proto-sidebar%3D1"
+          allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-6 space-y-3">
+      <h2 class="text-2xl font-display">Key takeaways</h2>
+      <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+        <li>Mobile constraints force clarity—prioritize essentials and comparison.</li>
+        <li>Guest checkout is a must-have for reducing abandonment.</li>
+        <li>Early testing caught hierarchy issues before development.</li>
+      </ul>
+    </section>
+  </main>
+
+  <button type="button" id="backToTop"
+    class="fixed bottom-8 right-8 hidden items-center justify-center w-12 h-12 rounded-full bg-ink text-white shadow-xl hover:bg-slate-800 transition-all z-50"
+    aria-label="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+      stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+    </svg>
+  </button>
+
+  <footer class="bg-white border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
+      <p class="text-sm text-subtle">© 2023 Phuong Vu</p>
+      <div class="flex gap-6 text-sm font-medium text-subtle">
+        <a href="https://www.linkedin.com/in/vuhoangphuong/" class="hover:text-ink transition-colors">LinkedIn</a>
+        <a href="mailto:vuhoangphuong@example.com" class="hover:text-ink transition-colors">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="lightbox" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm items-center justify-center p-4">
+    <div class="relative max-w-5xl w-full">
+      <button type="button" class="absolute -top-10 right-0 text-white text-2xl" aria-label="Close"
+        data-lightbox-close>&times;</button>
+      <img src="" alt="Expanded view" class="w-full h-auto rounded-2xl border border-white/20" data-lightbox-image>
+    </div>
+  </div>
+
+  <script>
+    // Inline script removed, functionality moved to js/main.js
+  </script>
+</body>
+
+</html>
