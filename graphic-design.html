@@ -1,480 +1,425 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Graphic Design Collection | Phuong Vu</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-          },
-          colors: {
-            neutral: {
-              950: '#0a0a0a',
-              925: '#141414',
-            }
-          },
-        }
-      }
-    }
-  </script>
-  <style>
-    html { scroll-behavior: smooth; }
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #f5f5f5; }
-    ::-webkit-scrollbar-thumb { background: #d4d4d4; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #a3a3a3; }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Graphic Design Collection — Phuong Vu</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--surface-base); }
+::-webkit-scrollbar-thumb { background: var(--color-light-400); border-radius: 3px; }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+/* Nav */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 28px 64px;
+  background: var(--surface-base);
+  border-bottom: 1px solid transparent;
+  transition: border-color 300ms ease-out, background 300ms ease-out;
+}
+.nav.scrolled { border-bottom-color: var(--border-default); background: rgba(247,248,246,0.95); backdrop-filter: blur(12px); }
+.nav-logo { font-size: 15px; font-weight: 400; letter-spacing: 0.04em; color: var(--text-primary); text-decoration: none; transition: color 250ms ease-out; }
+.nav-logo:hover { color: var(--hover-text); }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a { font-size: 14px; font-weight: 300; color: var(--text-primary); text-decoration: none; transition: color 250ms ease-out; }
+.nav-links a:hover { color: var(--hover-text); }
+.nav-links a:visited { color: var(--text-primary); }
 
-    .line-animate {
-      position: relative;
-      display: inline-block;
-    }
-    .line-animate::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: currentColor;
-      transition: width 0.3s ease;
-    }
-    .line-animate:hover::after {
-      width: 100%;
-    }
+/* Mobile menu button */
+.nav-menu-btn {
+  display: none; flex-direction: column; gap: 6px;
+  background: none; border: none; cursor: pointer;
+  padding: 8px;
+  margin: -8px;
+}
+.nav-menu-btn span {
+  width: 20px; height: 2px;
+  background: var(--text-primary);
+  transition: all 250ms ease-out;
+}
+.nav-menu-btn.open span:nth-child(1) { transform: rotate(45deg) translateY(10px); }
+.nav-menu-btn.open span:nth-child(2) { opacity: 0; }
+.nav-menu-btn.open span:nth-child(3) { transform: rotate(-45deg) translateY(-10px); }
 
-    .image-zoom {
-      cursor: zoom-in;
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .image-zoom:hover {
-      transform: scale(1.02);
-    }
+/* Reveal */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 600ms ease-out, transform 600ms ease-out; }
+.reveal.visible { opacity: 1; transform: none; }
 
-    .project-card {
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
-    }
-    .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.1);
-    }
-    .project-card img {
-      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .project-card:hover img {
-      transform: scale(1.05);
-    }
-  </style>
+/* Hero */
+.collection-hero { padding: 160px 64px 80px; text-align: center; max-width: 880px; margin: 0 auto; }
+.collection-eyebrow { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 24px; font-weight: 300; }
+.collection-h1 { font-size: clamp(34px, 4.5vw, 56px); font-weight: 300; line-height: 1.12; letter-spacing: -0.025em; color: var(--text-primary); margin-bottom: 28px; text-wrap: pretty; }
+.collection-sub { font-size: 18px; font-weight: 300; line-height: 1.7; color: var(--text-secondary); max-width: 640px; margin: 0 auto 32px; }
+.tag-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 36px; }
+.meta-tag { padding: 4px 14px; border-radius: 999px; border: 1px solid var(--border-default); font-size: 12px; font-weight: 300; color: var(--text-muted); }
+.cta-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 11px 24px; border-radius: var(--radius-md); background: var(--action-primary); font-size: 13px; font-weight: 400; color: var(--text-primary); text-decoration: none; transition: background 250ms ease-out; }
+.btn-primary:hover { background: var(--action-primary-hover); color: var(--text-primary); }
+.btn-primary:visited { color: var(--text-primary); }
+.btn-primary svg { width: 13px; height: 13px; stroke-width: 1.5; }
+.btn-outline { display: inline-flex; align-items: center; gap: 8px; padding: 11px 24px; border-radius: var(--radius-md); border: 1px solid var(--border-default); font-size: 13px; font-weight: 300; color: var(--text-secondary); text-decoration: none; transition: border-color 250ms ease-out, color 250ms ease-out; }
+.btn-outline:hover { border-color: var(--text-secondary); color: var(--text-primary); }
+.btn-outline:visited { color: var(--text-secondary); }
+
+/* Section */
+.section { padding: 96px 64px; max-width: 1200px; margin: 0 auto; }
+.section-alt { background: var(--surface-raised); border-top: 1px solid var(--border-default); border-bottom: 1px solid var(--border-default); padding: 96px 64px; }
+.section-alt-inner { max-width: 1200px; margin: 0 auto; }
+.section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 56px; }
+.section-num { font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 300; }
+.section-eyebrow { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; font-weight: 300; }
+.section-title { font-size: 32px; font-weight: 300; letter-spacing: -0.02em; color: var(--text-primary); }
+
+/* Project cards grid */
+.project-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.project-card { background: var(--surface-base); border: 1px solid var(--border-default); border-radius: var(--radius-md); overflow: hidden; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: background 250ms ease-out, box-shadow 250ms ease-out, transform 250ms ease-out; }
+.project-card:hover { background: var(--surface-hover); box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+.project-card:visited { color: inherit; }
+.project-card-img { aspect-ratio: 4/3; overflow: hidden; background: var(--surface-raised); }
+.project-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.project-card:hover .project-card-img img { transform: scale(1.04); }
+.project-card-body { padding: 22px 24px 26px; flex: 1; display: flex; flex-direction: column; }
+.project-card-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.project-card-cat { padding: 3px 12px; border-radius: 999px; border: 1px solid var(--border-default); font-size: 11px; font-weight: 300; color: var(--text-muted); }
+.project-card-sub { font-size: 11px; color: var(--text-muted); letter-spacing: 0.04em; }
+.project-card-title { font-size: 18px; font-weight: 400; color: var(--text-primary); line-height: 1.35; margin-bottom: 10px; }
+.project-card-desc { font-size: 13px; font-weight: 300; line-height: 1.65; color: var(--text-secondary); margin-bottom: 18px; flex: 1; }
+.project-card-link { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 400; color: var(--link-default); transition: color 250ms ease-out; }
+.project-card-link svg { width: 13px; height: 13px; stroke-width: 1.5; transition: transform 250ms ease-out; }
+.project-card:hover .project-card-link { color: var(--link-hover); }
+.project-card:hover .project-card-link svg { transform: translateX(3px); }
+
+/* Approach cards */
+.approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.approach-card { background: var(--surface-base); border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 32px 28px; }
+.approach-num { font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 300; margin-bottom: 24px; }
+.approach-title { font-size: 18px; font-weight: 400; color: var(--text-primary); margin-bottom: 12px; }
+.approach-desc { font-size: 14px; font-weight: 300; line-height: 1.7; color: var(--text-secondary); }
+
+/* Process snapshots */
+.snap-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.snap-4col { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.snap-img-wrap { background: var(--surface-base); border: 1px solid var(--border-default); border-radius: var(--radius-md); overflow: hidden; }
+.snap-img-wrap img { width: 100%; height: auto; display: block; cursor: zoom-in; transition: opacity 200ms ease-out; }
+.snap-img-wrap img:hover { opacity: 0.94; }
+
+/* Back to work */
+.back-section { padding: 80px 64px; text-align: center; border-top: 1px solid var(--border-default); }
+.back-link { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 300; color: var(--text-primary); text-decoration: none; border-bottom: 1px solid var(--text-primary); padding-bottom: 2px; transition: color 250ms ease-out, border-color 250ms ease-out; }
+.back-link:hover { color: var(--hover-text); border-color: var(--hover-text); }
+.back-link:visited { color: var(--text-primary); }
+.back-link svg { width: 14px; height: 14px; stroke-width: 1.5; transition: transform 250ms ease-out; }
+.back-link:hover svg { transform: translateX(-3px); }
+
+/* Footer */
+.footer { border-top: 1px solid var(--border-default); padding: 32px 64px; display: flex; justify-content: space-between; align-items: center; background: var(--surface-base); }
+.footer-copy { font-size: 13px; font-weight: 300; color: var(--text-muted); }
+.footer-links { display: flex; gap: 32px; }
+.footer-links a { font-size: 13px; font-weight: 300; color: var(--text-muted); text-decoration: none; transition: color 250ms ease-out; }
+.footer-links a:hover { color: var(--text-primary); }
+.footer-links a:visited { color: var(--text-muted); }
+
+/* Back to top */
+#backToTop { position: fixed; bottom: 32px; right: 32px; width: 40px; height: 40px; background: var(--color-dark-800); color: var(--text-inverse); border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 300ms ease-out, visibility 300ms ease-out, background 200ms ease-out; z-index: 50; }
+#backToTop.visible { opacity: 1; visibility: visible; }
+#backToTop:hover { background: var(--color-dark-700); }
+#backToTop svg { width: 16px; height: 16px; stroke-width: 1.5; }
+
+/* Lightbox */
+.lightbox { display: none; position: fixed; inset: 0; background: rgba(28,31,29,0.92); z-index: 200; align-items: center; justify-content: center; padding: 24px; cursor: zoom-out; }
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 100%; max-height: 90vh; border-radius: var(--radius-md); object-fit: contain; }
+.lightbox-close { position: absolute; top: 24px; right: 24px; background: none; border: none; cursor: pointer; color: rgba(243,242,237,0.5); transition: color 200ms ease-out; }
+.lightbox-close:hover { color: var(--text-inverse); }
+.lightbox-close svg { width: 28px; height: 28px; stroke-width: 1.5; }
+
+@media (max-width: 900px) {
+  .nav { padding: 20px 28px; }
+  .nav-menu-btn { display: flex; }
+  .nav-links {
+    display: none;
+    position: fixed; top: 62px; left: 0; right: 0;
+    flex-direction: column; gap: 0; list-style: none;
+    background: var(--surface-base);
+    border-bottom: 1px solid var(--border-default);
+    padding: 16px 0;
+    z-index: 99;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 12px 28px; display: block; }
+  .collection-hero { padding: 130px 28px 64px; }
+  .section, .section-alt { padding-left: 28px; padding-right: 28px; padding-top: 72px; padding-bottom: 72px; }
+  .project-cards, .approach-grid { grid-template-columns: 1fr; }
+  .snap-2col { grid-template-columns: 1fr; }
+  .snap-4col { grid-template-columns: 1fr 1fr; }
+  .back-section { padding: 64px 28px; }
+  .footer { padding: 28px; flex-direction: column; gap: 16px; text-align: center; }
+}
+</style>
 </head>
+<body>
 
-<body class="bg-white text-neutral-900 font-sans antialiased">
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-neutral-900 focus:text-white focus:rounded-lg focus:text-sm">Skip to content</a>
-  <!-- Header -->
-  <header class="fixed top-0 w-full z-50 transition-all duration-500" id="header">
-    <div class="max-w-[1400px] mx-auto px-6 md:px-12">
-      <div class="flex h-20 items-center justify-between">
-        <a href="index.html" class="text-lg font-medium tracking-tight hover:opacity-60 transition-opacity duration-300">
-          Phuong Vu
-        </a>
-
-        <button type="button" class="md:hidden p-2 -mr-2" data-menu-toggle aria-expanded="false" aria-label="Toggle navigation">
-          <div class="w-6 h-5 relative flex flex-col justify-between">
-            <span class="w-full h-px bg-neutral-900 transition-all duration-300 origin-center" data-line-1></span>
-            <span class="w-full h-px bg-neutral-900 transition-all duration-300" data-line-2></span>
-            <span class="w-full h-px bg-neutral-900 transition-all duration-300 origin-center" data-line-3></span>
-          </div>
-        </button>
-
-        <nav class="hidden md:flex items-center gap-12 text-sm">
-          <a href="index.html#work" class="line-animate text-neutral-900 font-medium transition-colors">Work</a>
-          <a href="index.html#about" class="line-animate text-neutral-600 hover:text-neutral-900 transition-colors">About</a>
-          <a href="https://www.linkedin.com/in/vuhoangphuong/" target="_blank" rel="noopener" class="line-animate text-neutral-600 hover:text-neutral-900 transition-colors">LinkedIn</a>
-        </nav>
-      </div>
-    </div>
-
-    <div class="fixed inset-0 bg-white z-40 hidden opacity-0 transition-opacity duration-300" data-mobile-menu>
-      <div class="flex flex-col items-center justify-center h-full gap-8 text-3xl font-medium">
-        <a href="index.html#work" class="hover:opacity-60 transition-opacity" data-mobile-link>Work</a>
-        <a href="index.html#about" class="hover:opacity-60 transition-opacity" data-mobile-link>About</a>
-        <a href="https://www.linkedin.com/in/vuhoangphuong/" target="_blank" rel="noopener" class="hover:opacity-60 transition-opacity" data-mobile-link>LinkedIn</a>
-      </div>
-    </div>
-  </header>
-
-  <main id="main-content">
-    <!-- Hero -->
-    <section class="pt-32 pb-16 md:pt-40 md:pb-24">
-      <div class="max-w-[1400px] mx-auto px-6 md:px-12">
-        <div class="max-w-4xl mx-auto text-center">
-          <p class="text-sm text-neutral-500 tracking-wide uppercase mb-4">Visual Design Collection</p>
-          <h1 class="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.1] mb-6">
-            Branding, Illustration & Storytelling
-          </h1>
-          <p class="text-xl md:text-2xl text-neutral-500 font-light leading-relaxed mb-8 max-w-3xl mx-auto">
-            A curated set of visual projects where I paired research-driven intent with playful craft—spanning public interventions, brand refreshes, and narrative infographics.
-          </p>
-          <div class="flex flex-wrap justify-center gap-3 mb-8">
-            <span class="px-4 py-2 text-sm bg-neutral-100 text-neutral-600 rounded-full">Visual & Product Design</span>
-            <span class="px-4 py-2 text-sm bg-neutral-100 text-neutral-600 rounded-full">Branding · Illustration · Layout</span>
-            <span class="px-4 py-2 text-sm bg-neutral-100 text-neutral-600 rounded-full">Figma · Affinity · Adobe Suite</span>
-          </div>
-          <div class="flex justify-center gap-4">
-            <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white rounded-full text-sm font-medium hover:bg-neutral-700 transition-colors">
-              View projects
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-              </svg>
-            </a>
-            <a href="index.html#about" class="inline-flex items-center gap-2 px-6 py-3 border border-neutral-200 rounded-full text-sm font-medium hover:border-neutral-400 transition-colors">
-              About me
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Project Cards -->
-    <section id="projects" class="py-24 bg-neutral-50">
-      <div class="max-w-[1400px] mx-auto px-6 md:px-12">
-        <div class="flex items-center gap-4 mb-16">
-          <span class="w-12 h-12 rounded-full bg-neutral-900 text-white flex items-center justify-center text-sm font-medium">01</span>
-          <div>
-            <p class="text-xs text-neutral-500 uppercase tracking-wide">Project Lineup</p>
-            <h2 class="text-3xl font-semibold tracking-tight">Three Distinct Visual Stories</h2>
-          </div>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8">
-          <!-- Pawsitively Clean -->
-          <article class="reveal project-card bg-white rounded-2xl overflow-hidden">
-            <a href="intervention.html" class="block">
-              <div class="aspect-[4/3] overflow-hidden">
-                <img src="images/other/intervention/img011.png" alt="Pawsitively Clean" loading="lazy" class="w-full h-full object-cover">
-              </div>
-              <div class="p-6">
-                <div class="flex items-center gap-2 mb-3">
-                  <span class="px-3 py-1 text-xs bg-neutral-100 text-neutral-600 rounded-full">Public Intervention</span>
-                  <span class="text-xs text-neutral-500">Behavioral Nudge</span>
-                </div>
-                <h3 class="text-xl font-semibold mb-2">Pawsitively Clean</h3>
-                <p class="text-neutral-500 text-sm mb-4">Friendly, memorable reminders that make city blocks cleaner for pedestrians and pets.</p>
-                <span class="inline-flex items-center gap-2 text-sm font-medium text-neutral-900 group-hover:gap-3 transition-all">
-                  View case study
-                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </span>
-              </div>
-            </a>
-          </article>
-
-          <!-- Through My Lens -->
-          <article class="reveal project-card bg-white rounded-2xl overflow-hidden">
-            <a href="infographic.html" class="block">
-              <div class="aspect-[4/3] overflow-hidden">
-                <img src="images/other/Infographic/img002.png" alt="Through my lens" loading="lazy" class="w-full h-full object-cover">
-              </div>
-              <div class="p-6">
-                <div class="flex items-center gap-2 mb-3">
-                  <span class="px-3 py-1 text-xs bg-neutral-100 text-neutral-600 rounded-full">Infographic</span>
-                  <span class="text-xs text-neutral-500">Storytelling</span>
-                </div>
-                <h3 class="text-xl font-semibold mb-2">Through My Lens</h3>
-                <p class="text-neutral-500 text-sm mb-4">A week of photography distilled into a single narrative map of moments and moods.</p>
-                <span class="inline-flex items-center gap-2 text-sm font-medium text-neutral-900">
-                  View case study
-                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </span>
-              </div>
-            </a>
-          </article>
-
-          <!-- Boston Children Museum -->
-          <article class="reveal project-card bg-white rounded-2xl overflow-hidden">
-            <a href="bmc.html" class="block">
-              <div class="aspect-[4/3] overflow-hidden">
-                <img src="images/other/bmc-cover.png" alt="Boston Children Museum" loading="lazy" class="w-full h-full object-cover">
-              </div>
-              <div class="p-6">
-                <div class="flex items-center gap-2 mb-3">
-                  <span class="px-3 py-1 text-xs bg-neutral-100 text-neutral-600 rounded-full">Branding</span>
-                  <span class="text-xs text-neutral-500">Identity</span>
-                </div>
-                <h3 class="text-xl font-semibold mb-2">Boston Children Museum</h3>
-                <p class="text-neutral-500 text-sm mb-4">A refreshed visual identity that celebrates curiosity and community.</p>
-                <span class="inline-flex items-center gap-2 text-sm font-medium text-neutral-900">
-                  View case study
-                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </span>
-              </div>
-            </a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Approach -->
-    <section class="py-24">
-      <div class="max-w-[1400px] mx-auto px-6 md:px-12">
-        <div class="flex items-center gap-4 mb-16">
-          <span class="w-12 h-12 rounded-full bg-neutral-900 text-white flex items-center justify-center text-sm font-medium">02</span>
-          <div>
-            <p class="text-xs text-neutral-500 uppercase tracking-wide">Approach</p>
-            <h2 class="text-3xl font-semibold tracking-tight">How I Build Visual Work</h2>
-          </div>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="reveal p-8 rounded-2xl border border-neutral-200">
-            <div class="w-12 h-12 bg-neutral-100 rounded-full flex items-center justify-center mb-6">
-              <svg class="w-5 h-5 text-neutral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold mb-3">Grounded in Intent</h3>
-            <p class="text-neutral-500 leading-relaxed">Start from audience, environment, and desired behavior shifts before drawing.</p>
-          </div>
-          <div class="reveal p-8 rounded-2xl border border-neutral-200">
-            <div class="w-12 h-12 bg-neutral-100 rounded-full flex items-center justify-center mb-6">
-              <svg class="w-5 h-5 text-neutral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold mb-3">Rapid Visual Exploration</h3>
-            <p class="text-neutral-500 leading-relaxed">Moodboards, sketches, and quick variants to test tone, hierarchy, and legibility.</p>
-          </div>
-          <div class="reveal p-8 rounded-2xl border border-neutral-200">
-            <div class="w-12 h-12 bg-neutral-100 rounded-full flex items-center justify-center mb-6">
-              <svg class="w-5 h-5 text-neutral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold mb-3">Polish with Purpose</h3>
-            <p class="text-neutral-500 leading-relaxed">Tighten grids, color, and typography to ensure consistency across formats.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Process Snapshots -->
-    <section class="py-24 bg-neutral-50">
-      <div class="max-w-[1400px] mx-auto px-6 md:px-12">
-        <div class="flex items-center gap-4 mb-16">
-          <span class="w-12 h-12 rounded-full bg-neutral-900 text-white flex items-center justify-center text-sm font-medium">03</span>
-          <div>
-            <p class="text-xs text-neutral-500 uppercase tracking-wide">Select Visuals</p>
-            <h2 class="text-3xl font-semibold tracking-tight">Snapshots from the Process</h2>
-          </div>
-        </div>
-
-        <div class="reveal grid md:grid-cols-2 gap-8 mb-8">
-          <div class="rounded-2xl overflow-hidden bg-white">
-            <img src="images/other/intervention/img005.png" alt="Intervention map" loading="lazy" class="w-full h-auto image-zoom" data-lightbox>
-          </div>
-          <div class="rounded-2xl overflow-hidden bg-white">
-            <img src="images/other/Infographic/img001.png" alt="Infographic spread" loading="lazy" class="w-full h-auto image-zoom" data-lightbox>
-          </div>
-        </div>
-
-        <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="rounded-xl overflow-hidden bg-white">
-            <img src="images/vietvaluealliance/img002.png" alt="Logo exploration 1" loading="lazy" class="w-full h-auto image-zoom" data-lightbox>
-          </div>
-          <div class="rounded-xl overflow-hidden bg-white">
-            <img src="images/vietvaluealliance/img003.png" alt="Logo exploration 2" loading="lazy" class="w-full h-auto image-zoom" data-lightbox>
-          </div>
-          <div class="rounded-xl overflow-hidden bg-white">
-            <img src="images/vietvaluealliance/img004.png" alt="Business card mock" loading="lazy" class="w-full h-auto image-zoom" data-lightbox>
-          </div>
-          <div class="rounded-xl overflow-hidden bg-white">
-            <img src="images/vietvaluealliance/img005.png" alt="Collateral" loading="lazy" class="w-full h-auto image-zoom" data-lightbox>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Back to Work -->
-    <section class="py-24">
-      <div class="max-w-[1400px] mx-auto px-6 md:px-12 text-center">
-        <a href="index.html#work" class="inline-flex items-center gap-3 text-neutral-900 font-medium group">
-          <svg class="w-5 h-5 transform group-hover:-translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
-          </svg>
-          <span class="line-animate">Back to all work</span>
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="py-12 border-t border-neutral-100">
-    <div class="max-w-[1400px] mx-auto px-6 md:px-12">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-        <p class="text-sm text-neutral-500">© 2025 Phuong Vu. All rights reserved.</p>
-        <div class="flex items-center gap-8">
-          <a href="https://www.linkedin.com/in/vuhoangphuong/" target="_blank" rel="noopener" class="text-sm text-neutral-500 hover:text-neutral-900 transition-colors line-animate">LinkedIn</a>
-          <a href="mailto:vuhoangphuong@example.com" class="text-sm text-neutral-500 hover:text-neutral-900 transition-colors line-animate">Email</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Back to top -->
-  <button type="button" id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-neutral-900 text-white rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-neutral-700 flex items-center justify-center z-50" aria-label="Back to top">
-    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-    </svg>
+<header class="nav" id="nav">
+  <a href="index.html" class="nav-logo">phuong vu</a>
+  <button class="nav-menu-btn" id="navMenuBtn" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
   </button>
+  <nav>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#work">work</a></li>
+      <li><a href="index.html#about">about</a></li>
+      <li><a href="https://www.linkedin.com/in/vuhoangphuong/" target="_blank" rel="noopener">linkedin</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <!-- Lightbox -->
-  <div id="lightbox" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-sm items-center justify-center p-4 cursor-zoom-out">
-    <button type="button" class="absolute top-6 right-6 w-12 h-12 flex items-center justify-center text-white/60 hover:text-white transition-colors" aria-label="Close" data-lightbox-close>
-      <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
-    <img src="" alt="Expanded view" class="max-w-full max-h-[90vh] rounded-lg" data-lightbox-image>
+<main>
+  <!-- Hero -->
+  <section class="collection-hero">
+    <p class="collection-eyebrow reveal">visual design collection</p>
+    <h1 class="collection-h1 reveal" style="transition-delay:80ms">Branding, illustration & storytelling.</h1>
+    <p class="collection-sub reveal" style="transition-delay:160ms">A curated set of visual projects where research-driven intent meets playful craft — public interventions, brand refreshes, and narrative infographics.</p>
+    <div class="tag-row reveal" style="transition-delay:200ms">
+      <span class="meta-tag">Visual & product design</span>
+      <span class="meta-tag">Branding · illustration · layout</span>
+      <span class="meta-tag">Figma · Affinity · Adobe Suite</span>
+    </div>
+    <div class="cta-row reveal" style="transition-delay:240ms">
+      <a href="#projects" class="btn-primary">
+        View projects
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+      </a>
+      <a href="index.html#about" class="btn-outline">About me</a>
+    </div>
+  </section>
+
+  <!-- Project Cards -->
+  <section id="projects" class="section-alt">
+    <div class="section-alt-inner">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <div>
+          <p class="section-eyebrow">project lineup</p>
+          <h2 class="section-title">Three distinct visual stories</h2>
+        </div>
+      </div>
+
+      <div class="project-cards">
+        <a href="intervention.html" class="project-card reveal">
+          <div class="project-card-img">
+            <img src="images/other/intervention/img004.jpg" alt="Pawsitively Clean" loading="lazy">
+          </div>
+          <div class="project-card-body">
+            <div class="project-card-meta">
+              <span class="project-card-cat">Public intervention</span>
+              <span class="project-card-sub">Behavioral nudge</span>
+            </div>
+            <h3 class="project-card-title">Pawsitively clean</h3>
+            <p class="project-card-desc">Friendly, memorable reminders that make city blocks cleaner for pedestrians and pets.</p>
+            <span class="project-card-link">
+              View case study
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <a href="infographic.html" class="project-card reveal" style="transition-delay:80ms">
+          <div class="project-card-img">
+            <img src="images/other/Infographic/img002.png" alt="Through my lens" loading="lazy">
+          </div>
+          <div class="project-card-body">
+            <div class="project-card-meta">
+              <span class="project-card-cat">Infographic</span>
+              <span class="project-card-sub">Storytelling</span>
+            </div>
+            <h3 class="project-card-title">Through my lens</h3>
+            <p class="project-card-desc">A week of photography distilled into a single narrative map of moments and moods.</p>
+            <span class="project-card-link">
+              View case study
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <a href="bmc.html" class="project-card reveal" style="transition-delay:160ms">
+          <div class="project-card-img">
+            <img src="images/other/bmc-cover.png" alt="Boston Children Museum" loading="lazy">
+          </div>
+          <div class="project-card-body">
+            <div class="project-card-meta">
+              <span class="project-card-cat">Branding</span>
+              <span class="project-card-sub">Identity</span>
+            </div>
+            <h3 class="project-card-title">Boston Children Museum</h3>
+            <p class="project-card-desc">A refreshed visual identity that celebrates curiosity and community.</p>
+            <span class="project-card-link">
+              View case study
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Approach -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <div>
+        <p class="section-eyebrow">approach</p>
+        <h2 class="section-title">How I build visual work</h2>
+      </div>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-card reveal">
+        <p class="approach-num">01</p>
+        <h3 class="approach-title">Grounded in intent</h3>
+        <p class="approach-desc">Start from audience, environment, and desired behavior shifts before drawing.</p>
+      </div>
+      <div class="approach-card reveal" style="transition-delay:80ms">
+        <p class="approach-num">02</p>
+        <h3 class="approach-title">Rapid visual exploration</h3>
+        <p class="approach-desc">Moodboards, sketches, and quick variants to test tone, hierarchy, and legibility.</p>
+      </div>
+      <div class="approach-card reveal" style="transition-delay:160ms">
+        <p class="approach-num">03</p>
+        <h3 class="approach-title">Polish with purpose</h3>
+        <p class="approach-desc">Tighten grids, color, and typography to ensure consistency across formats.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Snapshots -->
+  <section class="section-alt">
+    <div class="section-alt-inner">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <div>
+          <p class="section-eyebrow">select visuals</p>
+          <h2 class="section-title">Snapshots from the process</h2>
+        </div>
+      </div>
+      <div class="snap-2col reveal">
+        <div class="snap-img-wrap"><img src="images/other/intervention/img005.png" alt="Intervention map" loading="lazy" data-lightbox></div>
+        <div class="snap-img-wrap"><img src="images/other/Infographic/img001.png" alt="Infographic spread" loading="lazy" data-lightbox></div>
+      </div>
+      <div class="snap-4col reveal" style="transition-delay:80ms">
+        <div class="snap-img-wrap"><img src="images/vietvaluealliance/img002.png" alt="Logo exploration 1" loading="lazy" data-lightbox></div>
+        <div class="snap-img-wrap"><img src="images/vietvaluealliance/img003.png" alt="Logo exploration 2" loading="lazy" data-lightbox></div>
+        <div class="snap-img-wrap"><img src="images/vietvaluealliance/img004.png" alt="Business card mock" loading="lazy" data-lightbox></div>
+        <div class="snap-img-wrap"><img src="images/vietvaluealliance/img005.png" alt="Collateral" loading="lazy" data-lightbox></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back to work -->
+  <section class="back-section">
+    <a href="index.html#work" class="back-link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5m7-7l-7 7 7 7"/></svg>
+      Back to all work
+    </a>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <p class="footer-copy">© 2025 Phuong Vu</p>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/vuhoangphuong/" target="_blank" rel="noopener">linkedin</a>
+    <a href="mailto:vuhoangphuong@example.com">email</a>
   </div>
+</footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const header = document.getElementById('header');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-          header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
-        } else {
-          header.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
-        }
-      });
+<button id="backToTop" aria-label="Back to top">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+</button>
 
-      const menuToggle = document.querySelector('[data-menu-toggle]');
-      const mobileMenu = document.querySelector('[data-mobile-menu]');
-      const mobileLinks = document.querySelectorAll('[data-mobile-link]');
-      const lines = {
-        1: document.querySelector('[data-line-1]'),
-        2: document.querySelector('[data-line-2]'),
-        3: document.querySelector('[data-line-3]')
-      };
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" aria-label="Close" id="lightboxClose">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+  </button>
+  <img src="" alt="Expanded view" id="lightboxImg">
+</div>
 
-      if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener('click', () => {
-          const isOpen = mobileMenu.classList.contains('hidden');
-          if (isOpen) {
-            mobileMenu.classList.remove('hidden');
-            setTimeout(() => mobileMenu.classList.remove('opacity-0'), 10);
-            lines[1].style.transform = 'rotate(45deg) translateY(8px)';
-            lines[2].style.opacity = '0';
-            lines[3].style.transform = 'rotate(-45deg) translateY(-8px)';
-            document.body.style.overflow = 'hidden';
-          } else {
-            mobileMenu.classList.add('opacity-0');
-            setTimeout(() => mobileMenu.classList.add('hidden'), 300);
-            lines[1].style.transform = '';
-            lines[2].style.opacity = '';
-            lines[3].style.transform = '';
-            document.body.style.overflow = '';
-          }
-          menuToggle.setAttribute('aria-expanded', isOpen.toString());
-        });
-
-        mobileLinks.forEach(link => {
-          link.addEventListener('click', () => {
-            mobileMenu.classList.add('opacity-0');
-            setTimeout(() => mobileMenu.classList.add('hidden'), 300);
-            lines[1].style.transform = '';
-            lines[2].style.opacity = '';
-            lines[3].style.transform = '';
-            document.body.style.overflow = '';
-          });
-        });
-      }
-
-      const revealElements = document.querySelectorAll('.reveal');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-      revealElements.forEach(el => observer.observe(el));
-
-      const backToTop = document.getElementById('backToTop');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 500) {
-          backToTop.classList.remove('opacity-0', 'invisible');
-          backToTop.classList.add('opacity-100', 'visible');
-        } else {
-          backToTop.classList.add('opacity-0', 'invisible');
-          backToTop.classList.remove('opacity-100', 'visible');
-        }
-      });
-      backToTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImage = document.querySelector('[data-lightbox-image]');
-      const closeLightbox = document.querySelector('[data-lightbox-close]');
-
-      let lastFocused = null;
-
-      document.querySelectorAll('[data-lightbox]').forEach(img => {
-        img.addEventListener('click', () => {
-          lastFocused = document.activeElement;
-          lightboxImage.src = img.src;
-          lightbox.classList.remove('hidden');
-          lightbox.classList.add('flex');
-          document.body.style.overflow = 'hidden';
-          closeLightbox.focus();
-        });
-      });
-
-      const hideLightbox = () => {
-        lightbox.classList.add('hidden');
-        lightbox.classList.remove('flex');
-        lightboxImage.src = '';
-        document.body.style.overflow = '';
-        if (lastFocused) lastFocused.focus();
-      };
-
-      if (closeLightbox) closeLightbox.addEventListener('click', hideLightbox);
-      lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) hideLightbox();
-      });
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) hideLightbox();
-        if (e.key === 'Tab' && !lightbox.classList.contains('hidden')) {
-          e.preventDefault();
-          closeLightbox.focus();
-        }
-      });
+<script>
+// Nav scroll
+const nav = document.getElementById("nav");
+window.addEventListener("scroll", () => nav.classList.toggle("scrolled", window.scrollY > 60));
+// Mobile menu toggle
+const navMenuBtn = document.getElementById('navMenuBtn');
+const navLinks = document.getElementById('navLinks');
+if (navMenuBtn) {
+  navMenuBtn.addEventListener('click', () => {
+    navMenuBtn.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navMenuBtn.classList.remove('open');
+      navLinks.classList.remove('open');
     });
-  </script>
-</body>
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav')) {
+      navMenuBtn.classList.remove('open');
+      navLinks.classList.remove('open');
+    }
+  });
+}
 
+// Reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+setTimeout(() => {
+  reveals.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) { el.classList.add('visible'); observer.unobserve(el); }
+  });
+}, 50);
+
+// Back to top
+const btt = document.getElementById('backToTop');
+window.addEventListener('scroll', () => btt.classList.toggle('visible', window.scrollY > 500));
+btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// Smooth anchor scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if (id.length > 1) {
+      const el = document.querySelector(id);
+      if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
+    }
+  });
+});
+
+// Lightbox
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxClose = document.getElementById('lightboxClose');
+document.querySelectorAll('[data-lightbox]').forEach(img => {
+  img.addEventListener('click', () => {
+    lightboxImg.src = img.src;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+const closeLb = () => { lightbox.classList.remove('open'); lightboxImg.src = ''; document.body.style.overflow = ''; };
+lightboxClose.addEventListener('click', closeLb);
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLb(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLb(); });
+</script>
+
+</body>
 </html>

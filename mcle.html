@@ -1,115 +1,230 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MCLE | Phuong Vu</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            display: ['Inter', 'system-ui', 'sans-serif'],
-            body: ['Inter', 'system-ui', 'sans-serif']
-          },
-          colors: {
-            ink: '#111827',
-            accent: '#2563eb',
-            subtle: '#6b7280'
-          }
-        }
-      }
-    }
-  </script>
-  <script src="js/main.js" defer></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCLE — Phuong Vu</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--surface-base); }
+::-webkit-scrollbar-thumb { background: var(--color-light-400); border-radius: 3px; }
+
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 28px 64px; background: var(--surface-base); border-bottom: 1px solid transparent; transition: border-color 300ms ease-out, background 300ms ease-out; }
+.nav.scrolled { border-bottom-color: var(--border-default); background: rgba(247,248,246,0.95); backdrop-filter: blur(12px); }
+.nav-logo { font-size: 15px; font-weight: 400; letter-spacing: 0.04em; color: var(--text-primary); text-decoration: none; transition: color 250ms ease-out; }
+.nav-logo:hover { color: var(--hover-text); }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a { font-size: 14px; font-weight: 300; color: var(--text-primary); text-decoration: none; transition: color 250ms ease-out; }
+.nav-links a:hover { color: var(--hover-text); }
+.nav-links a:visited { color: var(--text-primary); }
+
+/* Mobile menu button */
+.nav-menu-btn {
+  display: none; flex-direction: column; gap: 6px;
+  background: none; border: none; cursor: pointer;
+  padding: 8px;
+  margin: -8px;
+}
+.nav-menu-btn span {
+  width: 20px; height: 2px;
+  background: var(--text-primary);
+  transition: all 250ms ease-out;
+}
+.nav-menu-btn.open span:nth-child(1) { transform: rotate(45deg) translateY(10px); }
+.nav-menu-btn.open span:nth-child(2) { opacity: 0; }
+.nav-menu-btn.open span:nth-child(3) { transform: rotate(-45deg) translateY(-10px); }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 600ms ease-out, transform 600ms ease-out; }
+.reveal.visible { opacity: 1; transform: none; }
+
+.case-hero { padding: 140px 64px 48px; max-width: 1200px; margin: 0 auto; }
+.breadcrumb { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 300; color: var(--link-default); text-decoration: none; margin-bottom: 36px; transition: color 250ms ease-out; }
+.breadcrumb:hover { color: var(--link-hover); }
+.breadcrumb:visited { color: var(--link-default); }
+.breadcrumb svg { width: 13px; height: 13px; stroke-width: 1.5; }
+.case-eyebrow { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 18px; font-weight: 300; }
+.case-h1 { font-size: clamp(32px, 4.5vw, 56px); font-weight: 300; line-height: 1.12; letter-spacing: -0.025em; color: var(--text-primary); margin-bottom: 24px; max-width: 680px; text-wrap: pretty; }
+.case-sub { font-size: 17px; font-weight: 300; line-height: 1.7; color: var(--text-secondary); max-width: 600px; }
+
+/* Layout */
+.body-wrap { padding: 24px 64px 96px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: start; }
+.sidebar { background: var(--surface-raised); border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 28px; position: sticky; top: 120px; }
+.sb-block { margin-bottom: 24px; }
+.sb-block:last-child { margin-bottom: 0; }
+.sb-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; font-weight: 300; }
+.sb-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.sb-list li { font-size: 14px; font-weight: 300; color: var(--text-secondary); line-height: 1.5; padding-left: 14px; position: relative; }
+.sb-list li::before { content: '–'; position: absolute; left: 0; color: var(--text-muted); }
+.sb-text { font-size: 14px; font-weight: 300; color: var(--text-secondary); line-height: 1.5; }
+
+.image-panel { background: var(--surface-raised); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 32px; display: flex; justify-content: center; align-items: center; }
+.image-panel img { max-width: 100%; height: auto; border-radius: var(--radius-md); display: block; cursor: zoom-in; transition: opacity 200ms ease-out; }
+.image-panel img:hover { opacity: 0.94; }
+
+.back-section { padding: 48px 64px 96px; max-width: 1200px; margin: 0 auto; text-align: center; border-top: 1px solid var(--border-default); }
+.back-link { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 300; color: var(--text-primary); text-decoration: none; border-bottom: 1px solid var(--text-primary); padding-bottom: 2px; transition: color 250ms ease-out, border-color 250ms ease-out; }
+.back-link:hover { color: var(--hover-text); border-color: var(--hover-text); }
+.back-link:visited { color: var(--text-primary); }
+.back-link svg { width: 14px; height: 14px; stroke-width: 1.5; transition: transform 250ms ease-out; }
+.back-link:hover svg { transform: translateX(-3px); }
+
+.footer { border-top: 1px solid var(--border-default); padding: 32px 64px; display: flex; justify-content: space-between; align-items: center; background: var(--surface-base); }
+.footer-copy { font-size: 13px; font-weight: 300; color: var(--text-muted); }
+.footer-links { display: flex; gap: 32px; }
+.footer-links a { font-size: 13px; font-weight: 300; color: var(--text-muted); text-decoration: none; transition: color 250ms ease-out; }
+.footer-links a:hover { color: var(--text-primary); }
+.footer-links a:visited { color: var(--text-muted); }
+
+#backToTop { position: fixed; bottom: 32px; right: 32px; width: 40px; height: 40px; background: var(--color-dark-800); color: var(--text-inverse); border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 300ms ease-out, visibility 300ms ease-out, background 200ms ease-out; z-index: 50; }
+#backToTop.visible { opacity: 1; visibility: visible; }
+#backToTop:hover { background: var(--color-dark-700); }
+#backToTop svg { width: 16px; height: 16px; stroke-width: 1.5; }
+
+.lightbox { display: none; position: fixed; inset: 0; background: rgba(28,31,29,0.92); z-index: 200; align-items: center; justify-content: center; padding: 24px; cursor: zoom-out; }
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 100%; max-height: 90vh; border-radius: var(--radius-md); object-fit: contain; }
+.lightbox-close { position: absolute; top: 24px; right: 24px; background: none; border: none; cursor: pointer; color: rgba(243,242,237,0.5); transition: color 200ms ease-out; }
+.lightbox-close:hover { color: var(--text-inverse); }
+.lightbox-close svg { width: 28px; height: 28px; stroke-width: 1.5; }
+
+@media (max-width: 900px) {
+  .nav { padding: 20px 28px; }
+  .nav-menu-btn { display: flex; }
+  .nav-links {
+    display: none;
+    position: fixed; top: 62px; left: 0; right: 0;
+    flex-direction: column; gap: 0; list-style: none;
+    background: var(--surface-base);
+    border-bottom: 1px solid var(--border-default);
+    padding: 16px 0;
+    z-index: 99;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 12px 28px; display: block; }
+  .case-hero { padding: 130px 28px 32px; }
+  .body-wrap { padding: 16px 28px 64px; grid-template-columns: 1fr; gap: 24px; }
+  .sidebar { position: static; }
+  .image-panel { padding: 20px; }
+  .back-section { padding: 40px 28px 80px; }
+  .footer { padding: 28px; flex-direction: column; gap: 16px; text-align: center; }
+}
+</style>
 </head>
+<body>
 
-<body class="bg-white text-ink font-body">
-  <header
-    class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex h-20 items-center justify-between">
-        <a href="index.html" class="text-xl font-bold tracking-tight text-ink hover:opacity-70 transition-opacity">
-          Phuong Vu
-        </a>
-        <button type="button" class="md:hidden p-2 rounded-lg border border-slate-200" data-menu-toggle
-          aria-expanded="false" aria-label="Toggle navigation">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-            stroke-width="1.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
-          </svg>
-        </button>
-        <nav class="hidden md:flex items-center gap-10 text-sm font-medium text-subtle">
-          <a href="index.html#work" class="hover:text-ink transition-colors">Work</a>
-          <a href="index.html#about" class="hover:text-ink transition-colors">About</a>
-          <a href="https://www.linkedin.com/in/vuhoangphuong/"
-            class="text-ink hover:text-accent transition-colors">LinkedIn ↗</a>
-        </nav>
-      </div>
-      <div class="hidden flex-col gap-6 pb-8 md:hidden text-lg font-medium text-subtle" data-mobile-menu>
-        <a href="index.html#work" class="hover:text-ink">Work</a>
-        <a href="index.html#about" class="hover:text-ink">About</a>
-        <a href="https://www.linkedin.com/in/vuhoangphuong/" class="text-ink">LinkedIn ↗</a>
-      </div>
-    </div>
-  </header>
-
-  <main class="pt-14 pb-16">
-    <section class="max-w-6xl mx-auto px-4 py-8 space-y-6">
-      <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Visual Design</p>
-      <h1 class="font-display text-3xl sm:text-4xl leading-tight">MCLE</h1>
-      <div class="grid gap-8 lg:grid-cols-[260px_1fr] items-start">
-        <div class="space-y-4 rounded-2xl border border-slate-200 bg-slate-50 p-5">
-          <div>
-            <h2 class="text-lg font-semibold text-ink">Tools</h2>
-            <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
-              <li>Figma</li>
-            </ul>
-          </div>
-        </div>
-        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-          <img src="images/mcle/mcle1.png" alt="MCLE project" loading="lazy"
-            class="w-full max-w-3xl mx-auto h-auto rounded-xl cursor-pointer" data-lightbox>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <button type="button" id="backToTop"
-    class="fixed bottom-8 right-8 hidden items-center justify-center w-12 h-12 rounded-full bg-ink text-white shadow-xl hover:bg-slate-800 transition-all z-50"
-    aria-label="Back to top">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-      stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-    </svg>
+<header class="nav" id="nav">
+  <a href="index.html" class="nav-logo">phuong vu</a>
+  <button class="nav-menu-btn" id="navMenuBtn" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
   </button>
+  <nav>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#work">work</a></li>
+      <li><a href="index.html#about">about</a></li>
+      <li><a href="https://www.linkedin.com/in/vuhoangphuong/" target="_blank" rel="noopener">linkedin</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <footer class="bg-white border-t border-slate-100">
-    <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
-      <p class="text-sm text-subtle">© 2023 Phuong Vu</p>
-      <div class="flex gap-6 text-sm font-medium text-subtle">
-        <a href="https://www.linkedin.com/in/vuhoangphuong/" class="hover:text-ink transition-colors">LinkedIn</a>
-        <a href="mailto:vuhoangphuong@example.com" class="hover:text-ink transition-colors">Email</a>
+<main>
+  <div class="case-hero">
+    <a href="index.html#work" class="breadcrumb reveal">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5m7-7l-7 7 7 7"/></svg>
+      All work
+    </a>
+    <p class="case-eyebrow reveal">visual design</p>
+    <h1 class="case-h1 reveal">MCLE.</h1>
+    <p class="case-sub reveal">A focused visual design exercise — laying out clear hierarchy and crisp visual cues for a continuing-education piece.</p>
+  </div>
+
+  <div class="body-wrap">
+    <aside class="sidebar reveal">
+      <div class="sb-block">
+        <p class="sb-label">tools</p>
+        <ul class="sb-list">
+          <li>Figma</li>
+        </ul>
       </div>
-    </div>
-  </footer>
-
-  <div id="lightbox" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm items-center justify-center p-4">
-    <div class="relative max-w-5xl w-full">
-      <button type="button" class="absolute -top-10 right-0 text-white text-2xl" aria-label="Close"
-        data-lightbox-close>&times;</button>
-      <img src="" alt="Expanded view" class="w-full h-auto rounded-2xl border border-white/20" data-lightbox-image>
+    </aside>
+    <div class="image-panel reveal" style="transition-delay:80ms">
+      <img src="images/mcle/mcle1.png" alt="MCLE project" loading="lazy" data-lightbox>
     </div>
   </div>
 
-  <script>
-    // Inline script removed, functionality moved to js/main.js
-  </script>
-</body>
+  <section class="back-section">
+    <a href="index.html#work" class="back-link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5m7-7l-7 7 7 7"/></svg>
+      Back to all work
+    </a>
+  </section>
+</main>
 
+<footer class="footer">
+  <p class="footer-copy">© 2025 Phuong Vu</p>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/vuhoangphuong/" target="_blank" rel="noopener">linkedin</a>
+    <a href="mailto:vuhoangphuong@example.com">email</a>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Back to top">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+</button>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" aria-label="Close" id="lightboxClose">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+  </button>
+  <img src="" alt="Expanded view" id="lightboxImg">
+</div>
+
+<script>
+const nav = document.getElementById("nav");
+window.addEventListener("scroll", () => nav.classList.toggle("scrolled", window.scrollY > 60));
+// Mobile menu toggle
+const navMenuBtn = document.getElementById('navMenuBtn');
+const navLinks = document.getElementById('navLinks');
+if (navMenuBtn) {
+  navMenuBtn.addEventListener('click', () => {
+    navMenuBtn.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navMenuBtn.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav')) {
+      navMenuBtn.classList.remove('open');
+      navLinks.classList.remove('open');
+    }
+  });
+}
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+setTimeout(() => { reveals.forEach(el => { const r = el.getBoundingClientRect(); if (r.top < window.innerHeight) { el.classList.add('visible'); observer.unobserve(el); } }); }, 50);
+const btt = document.getElementById('backToTop');
+window.addEventListener('scroll', () => btt.classList.toggle('visible', window.scrollY > 500));
+btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxClose = document.getElementById('lightboxClose');
+document.querySelectorAll('[data-lightbox]').forEach(img => { img.addEventListener('click', () => { lightboxImg.src = img.src; lightbox.classList.add('open'); document.body.style.overflow = 'hidden'; }); });
+const closeLb = () => { lightbox.classList.remove('open'); lightboxImg.src = ''; document.body.style.overflow = ''; };
+lightboxClose.addEventListener('click', closeLb);
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLb(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLb(); });
+</script>
+
+</body>
 </html>
