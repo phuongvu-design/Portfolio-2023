@@ -27,10 +27,10 @@ There are no tests, linters, or CI scripts configured.
 - `graphic-design.html` — Graphic design collection gallery
 - `bmc.html`, `infographic.html`, `intervention.html`, `mcle.html` — Smaller single-project pages
 - `colors_and_type.css` — Shared design-system tokens (the only shared stylesheet)
-- `js/main.js` — Utility script for lightbox, mobile menu, back-to-top (written for the old Tailwind version; mostly unused by current pages)
 - `fonts/` — Self-hosted Roboto variable font
 - `images/` — Per-project subdirectories (`bike-website/`, `Carcare/`, `remoteworkplace/`, etc.)
-- `backup/` — Old Tailwind-based version of the site; do not modify
+
+There is no shared JS file. Each page inlines its own `<script>` block at the bottom (nav scroll, reveal observer, back-to-top, lightbox).
 
 ### CSS architecture
 
@@ -72,17 +72,11 @@ Omitting `font-variation-settings` causes the variable font to render incorrectl
 
 ### Icons
 
-Icons use [Lucide](https://lucide.dev/) loaded from unpkg CDN:
-
-```html
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-```
-
-Inline SVG is used directly rather than `<i data-lucide>` tags. Copy the SVG from the Lucide site and apply `stroke-width: 1.5` to match the existing style.
+Icons are inline SVG copied from [Lucide](https://lucide.dev/), with `stroke-width: 1.5` applied to match the existing style. There is no Lucide runtime script — do not reintroduce one.
 
 ### Shared page patterns
 
-Every page duplicates a standard nav block, reveal animation system, and back-to-top button inline — these are not pulled from `main.js`. When adding or editing a page, follow the existing inline implementations exactly.
+Every page duplicates a standard nav block, reveal animation system, and back-to-top button inline. When adding or editing a page, follow the existing inline implementations exactly.
 
 **Reveal animation**: add class `reveal` to any element; an `IntersectionObserver` adds `visible` on scroll. Above-fold elements get a `setTimeout(..., 50)` to fire immediately. Stagger siblings with `style="transition-delay: 80ms"` increments.
 
