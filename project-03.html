@@ -13,7 +13,8 @@ html { scroll-behavior: smooth; }
 ::-webkit-scrollbar-thumb { background: var(--color-light-400); border-radius: 3px; }
 .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 28px 64px; background: var(--surface-base); border-bottom: 1px solid transparent; transition: border-color 300ms ease-out, background 300ms ease-out; }
 .nav.scrolled { border-bottom-color: var(--border-default); background: rgba(247,248,246,0.95); backdrop-filter: blur(12px); }
-.nav-logo { font-size: 17px; font-weight: 400; letter-spacing: 0.04em; color: var(--text-primary); text-decoration: none; transition: color 250ms ease-out; font-family: var(--font-primary); font-variation-settings: "wdth" 100; }
+.nav-logo { display: inline-flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 400; letter-spacing: 0.04em; color: var(--text-primary); text-decoration: none; transition: color 250ms ease-out; font-family: var(--font-primary); font-variation-settings: "wdth" 100; }
+.nav-logo-mark { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; background: #fff; border: 1px solid var(--border-default); flex-shrink: 0; }
 .nav-logo:hover { color: var(--hover-text); }
 /* Nav: draw-border hover + lift */
 .nav-logo,
@@ -155,7 +156,7 @@ html { scroll-behavior: smooth; }
   .nav-links a::before { display: none; }
   .nav-links {
     display: none;
-    position: fixed; top: 62px; left: 0; right: 0;
+    position: fixed; top: 70px; left: 0; right: 0;
     flex-direction: column; gap: 0; list-style: none;
     background: var(--surface-base);
     border-bottom: 1px solid var(--border-default);
@@ -179,7 +180,7 @@ html { scroll-behavior: smooth; }
 <body>
 
 <header class="nav" id="nav">
-  <a href="index.html" class="nav-logo">phuong vu</a>
+  <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="" class="nav-logo-mark"><span>Phuong Vu</span></a>
   <button type="button" class="nav-menu-btn" id="navMenuBtn" aria-label="Toggle menu">
     <span></span>
     <span></span>
@@ -407,15 +408,15 @@ html { scroll-behavior: smooth; }
   </div>
 
   <div class="next-project">
-    <p class="next-label">back to work</p>
-    <a href="index.html#work" class="next-card">
+    <p class="next-label">next project</p>
+    <a href="project-01.html" class="next-card">
       <div class="next-card-img">
-        <img src="images/bike-website/img001.png" alt="E-bike website redesign" loading="lazy">
+        <img src="images/2brental/2brental_cover.png" alt="2B Rental website" loading="lazy">
       </div>
       <div>
-        <p class="next-card-eyebrow">UX & UI design · web</p>
-        <h3 class="next-card-title">E-bike website redesign</h3>
-        <p class="next-card-desc">A mobile-first redesign for a premium bike retailer — simplifying comparison and guest checkout.</p>
+        <p class="next-card-eyebrow">design & build · web</p>
+        <h3 class="next-card-title">2B Rental — short-term stay website</h3>
+        <p class="next-card-desc">A self-initiated site for a short-term rental home in Quincy, MA — designed in Figma and hand-built in VS Code.</p>
         <span class="next-link">
           View case study
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>

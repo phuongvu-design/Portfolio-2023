@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>E-bike Website Redesign — Phuong Vu</title>
+<title>2B Rental — Phuong Vu</title>
 <link rel="stylesheet" href="colors_and_type.css">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -21,7 +21,8 @@ html { scroll-behavior: smooth; }
   transition: border-color 300ms ease-out, background 300ms ease-out;
 }
 .nav.scrolled { border-bottom-color: var(--border-default); background: rgba(247,248,246,0.95); backdrop-filter: blur(12px); }
-.nav-logo { font-size: 17px; font-weight: 400; letter-spacing: 0.04em; color: var(--text-primary); text-decoration: none; transition: color 250ms ease-out; font-family: var(--font-primary); font-variation-settings: "wdth" 100; }
+.nav-logo { display: inline-flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 400; letter-spacing: 0.04em; color: var(--text-primary); text-decoration: none; transition: color 250ms ease-out; font-family: var(--font-primary); font-variation-settings: "wdth" 100; }
+.nav-logo-mark { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; background: #fff; border: 1px solid var(--border-default); flex-shrink: 0; }
 .nav-logo:hover { color: var(--hover-text); }
 /* Nav: draw-border hover + lift */
 .nav-logo,
@@ -148,6 +149,12 @@ html { scroll-behavior: smooth; }
 .proto-wrap { border: 1px solid var(--border-default); border-radius: var(--radius-md); overflow: hidden; margin-top: 32px; }
 .proto-wrap iframe { width: 100%; aspect-ratio: 16/10; border: 0; display: block; }
 
+/* Specs card */
+.specs-card { display: grid; grid-template-columns: repeat(5,1fr); gap: 28px; background: var(--surface-raised); border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 28px 32px; margin-top: 32px; margin-bottom: 8px; }
+.spec-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; font-family: var(--font-primary); font-weight: 300; font-variation-settings: "wdth" 100; }
+.spec-value { font-size: 14px; font-weight: 300; color: var(--text-primary); line-height: 1.5; font-family: var(--font-primary); font-variation-settings: "wdth" 100; }
+.spec-note { display: block; font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
 /* Takeaways */
 .takeaway-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; margin-top: 40px; }
 .takeaway-item { border-top: 1px solid var(--border-default); padding-top: 20px; }
@@ -198,7 +205,7 @@ html { scroll-behavior: smooth; }
   .nav-links a::before { display: none; }
   .nav-links {
     display: none;
-    position: fixed; top: 62px; left: 0; right: 0;
+    position: fixed; top: 70px; left: 0; right: 0;
     flex-direction: column; gap: 0; list-style: none;
     background: var(--surface-base);
     border-bottom: 1px solid var(--border-default);
@@ -211,6 +218,7 @@ html { scroll-behavior: smooth; }
   .overview-strip { padding: 48px 28px; }
   .overview-grid { grid-template-columns: 1fr; gap: 32px; }
   .insight-grid, .solution-grid, .takeaway-grid { grid-template-columns: 1fr; }
+  .specs-card { grid-template-columns: 1fr 1fr; gap: 20px; padding: 24px; }
   .img-2col { grid-template-columns: 1fr 1fr; }
   .img-4col { grid-template-columns: 1fr 1fr; }
   .stat-band { padding: 48px 28px; }
@@ -224,7 +232,7 @@ html { scroll-behavior: smooth; }
 <body>
 
 <header class="nav" id="nav">
-  <a href="index.html" class="nav-logo">phuong vu</a>
+  <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="" class="nav-logo-mark"><span>Phuong Vu</span></a>
   <button type="button" class="nav-menu-btn" id="navMenuBtn" aria-label="Toggle menu">
     <span></span>
     <span></span>
@@ -246,25 +254,24 @@ html { scroll-behavior: smooth; }
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5m7-7l-7 7 7 7"/></svg>
       All work
     </a>
-    <p class="case-eyebrow reveal">case study — UX & UI design</p>
-    <h1 class="case-h1 reveal">E-bike website redesign</h1>
-    <p class="case-sub reveal">A mobile-first redesign for a premium bike retailer — simplifying comparison and guest checkout to turn browsers into buyers.</p>
+    <p class="case-eyebrow reveal">case study — design & build</p>
+    <h1 class="case-h1 reveal">2B Rental — short-term stay website</h1>
+    <p class="case-sub reveal">A self-initiated website for a short-term rental home in Quincy, MA — designed in Figma and hand-built in VS Code to give the property its own place on the web.</p>
     <div class="meta-row reveal">
-      <span class="meta-tag">3 months</span>
-      <span class="meta-tag">FigJam & Figma</span>
-      <span class="meta-tag">Solo designer</span>
+      <span class="meta-tag">6 months</span>
+      <span class="meta-tag">Figma &amp; VS Code</span>
+      <span class="meta-tag">Solo end-to-end</span>
     </div>
     <div class="cta-row reveal">
-      <a href="#solution" class="btn-primary">
-        Jump to solution
+      <a href="#designs" class="btn-primary">
+        Jump to designs
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
       </a>
-      <a href="#prototype" class="btn-outline">View prototype</a>
     </div>
   </div>
 
   <div class="hero-image-wrap reveal">
-    <img src="images/bike-website/img002.png" alt="E-bike mobile website hero" class="cs-img-full" data-lightbox>
+    <img src="images/2brental/2brental_cover.png" alt="2B Rental website cover" class="cs-img-full" data-lightbox>
   </div>
 
   <!-- Overview -->
@@ -273,173 +280,91 @@ html { scroll-behavior: smooth; }
       <div class="reveal">
         <p class="ov-label">the challenge</p>
         <ul class="ov-list">
-          <li>No small-screen experience</li>
-          <li>Hard to compare bikes side by side</li>
-          <li>Checkout friction; account required</li>
+          <li>Property only lived on third-party listing sites</li>
+          <li>No standalone brand or shareable home</li>
+          <li>Photography and copy buried in template layouts</li>
         </ul>
       </div>
       <div class="reveal" style="transition-delay:80ms">
         <p class="ov-label">goals</p>
         <ul class="ov-list">
-          <li>Support mobile discovery to checkout</li>
-          <li>Make comparison effortless</li>
-          <li>Add guest checkout to cut drop-off</li>
+          <li>Give the home a focused, warm online presence</li>
+          <li>Let photography do the heavy lifting</li>
+          <li>Keep the path from browsing to booking short</li>
         </ul>
       </div>
       <div class="reveal" style="transition-delay:160ms">
         <p class="ov-label">my focus</p>
         <ul class="ov-list">
-          <li>Research & synthesis</li>
-          <li>Flows, wireframes, prototypes</li>
-          <li>UI system & usability testing</li>
+          <li>Concept, content, and visual direction</li>
+          <li>Layout and component design in Figma</li>
+          <li>End-to-end front-end build in HTML, CSS, JS</li>
         </ul>
       </div>
     </div>
   </div>
 
-  <!-- Research -->
+  <!-- Approach -->
   <div class="wrap" style="padding-top:0; padding-bottom:0;">
     <section class="cs-section">
-      <div class="reveal">
-        <p class="cs-eyebrow">discovery</p>
-        <h2 class="cs-h2-lg">Research insights</h2>
-      </div>
-      <div class="insight-grid">
-        <div class="insight-card reveal">
-          <p class="insight-card-label">what I learned</p>
-          <ul class="insight-list">
-            <li><span class="insight-num">1</span>Users open many product pages but can't tell differences quickly</li>
-            <li><span class="insight-num">2</span>Account creation before checkout causes abandonment</li>
-            <li><span class="insight-num">3</span>They want specs up front: size, terrain, components, price</li>
-          </ul>
-        </div>
-        <div class="insight-card reveal" style="transition-delay:100ms">
-          <p class="insight-card-label">design principles</p>
-          <ul class="insight-list">
-            <li><span class="insight-num dark">1</span>Comparison first: align specs, enable quick contrast</li>
-            <li><span class="insight-num dark">2</span>Frictionless purchase: guest checkout, minimal fields</li>
-            <li><span class="insight-num dark">3</span>Small-screen clarity: concise cards, tap-friendly actions</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Solution -->
-    <section id="solution" class="cs-section">
       <div class="reveal">
         <p class="cs-eyebrow">approach</p>
-        <h2 class="cs-h2-lg">Solution highlights</h2>
-      </div>
-      <div class="solution-grid">
-        <div class="solution-card reveal">
-          <div class="solution-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-          </div>
-          <h3 class="solution-title">Compare in one glance</h3>
-          <p class="solution-desc">Side-by-side spec summaries and saved comparisons to reduce back-and-forth browsing.</p>
-        </div>
-        <div class="solution-card reveal" style="transition-delay:80ms">
-          <div class="solution-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-          </div>
-          <h3 class="solution-title">Guest checkout</h3>
-          <p class="solution-desc">Checkout without account creation; clear progress, minimal form fields, auto-fill friendly.</p>
-        </div>
-        <div class="solution-card reveal" style="transition-delay:160ms">
-          <div class="solution-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-          </div>
-          <h3 class="solution-title">Mobile-first UI</h3>
-          <p class="solution-desc">Compact cards, large tap targets, and scannable detail blocks tailored for phones.</p>
-        </div>
+        <h2 class="cs-h2-lg">From listing tile to a place of its own</h2>
+        <p class="cs-body">2B Rental is a three-bedroom short-term rental in Quincy, MA. It was renting well through third-party platforms, but it didn't have a place of its own on the web — no single link to share, no room to let the photography breathe, no voice for the home itself.</p>
+        <p class="cs-body">I scoped the project, designed the layout in Figma, then built the site from scratch in VS Code with plain HTML, CSS, and JavaScript. The work stretched across about six months of evenings and weekends — slow enough to iterate, fast enough to actually ship.</p>
       </div>
     </section>
 
-    <!-- User Flow -->
+    <!-- Wireframe -->
+    <section id="designs" class="cs-section">
+      <div class="reveal">
+        <p class="cs-eyebrow">structure</p>
+        <h2 class="cs-h2">Wireframe</h2>
+        <p class="cs-body">Sketched in Figma to settle the hierarchy before any styling: a hero with the home's name, a small gallery to set the mood, a written introduction, and a single primary action — book.</p>
+      </div>
+      <div class="cs-img-wrap reveal">
+        <img src="images/2brental/2brental_wirefram.png" alt="2B Rental wireframe in Figma" class="cs-img-full" data-lightbox loading="lazy">
+      </div>
+    </section>
+
+    <!-- Built site -->
     <section class="cs-section">
       <div class="reveal">
-        <p class="cs-eyebrow">process</p>
-        <h2 class="cs-h2">User flow</h2>
-        <p class="cs-body">Mapped the core path from discovery to checkout to remove dead ends and reduce taps.</p>
+        <p class="cs-eyebrow">the build</p>
+        <h2 class="cs-h2">The shipped site</h2>
+        <p class="cs-body">Hand-built in VS Code — no framework, no CMS. Large photography leads, descriptive copy supports, and the gallery stretches across the page so the home stays the hero. Type and spacing were kept calm and consistent to give the imagery room to do the work.</p>
+        <p class="cs-body">A scroll through the live page — opening on the hero photograph, moving into the gallery and property story, and closing on guest reviews with a single, unmissable booking CTA.</p>
+      </div>
+      <div class="specs-card reveal">
+        <div>
+          <p class="spec-label">Stack</p>
+          <p class="spec-value">HTML · CSS · Vanilla JS</p>
+        </div>
+        <div>
+          <p class="spec-label">Design</p>
+          <p class="spec-value">Figma</p>
+        </div>
+        <div>
+          <p class="spec-label">Editor</p>
+          <p class="spec-value">VS Code</p>
+        </div>
+        <div>
+          <p class="spec-label">Hosting</p>
+          <p class="spec-value">GitHub Pages<span class="spec-note">test only — handed off after launch</span></p>
+        </div>
+        <div>
+          <p class="spec-label">Photography</p>
+          <p class="spec-value">Shot by Phuong Vu</p>
+        </div>
       </div>
       <div class="cs-img-wrap reveal">
-        <img src="images/bike-website/img004.png" alt="User flow diagram" class="cs-img-full" data-lightbox loading="lazy">
-      </div>
-    </section>
-
-    <!-- Wireframes -->
-    <section class="cs-section">
-      <div class="reveal">
-        <p class="cs-eyebrow">exploration</p>
-        <h2 class="cs-h2">Wireframes</h2>
-        <p class="cs-body">Quick sketches and low-fidelity wires to explore layout options for product cards and comparison.</p>
-      </div>
-      <div class="img-2col reveal">
-        <img src="images/bike-website/img005.png" alt="Wireframe 1" class="cs-img-full" data-lightbox loading="lazy" style="border-radius:var(--radius-md);">
-        <img src="images/bike-website/img006.png" alt="Wireframe 2" class="cs-img-full" data-lightbox loading="lazy" style="border-radius:var(--radius-md);">
-      </div>
-      <div class="img-2col reveal">
-        <img src="images/bike-website/img007.png" alt="Wireframe 3" class="cs-img-full" data-lightbox loading="lazy" style="border-radius:var(--radius-md);">
-        <img src="images/bike-website/img008.png" alt="Wireframe 4" class="cs-img-full" data-lightbox loading="lazy" style="border-radius:var(--radius-md);">
+        <img src="images/2brental/2brental_03.png" alt="2B Rental — hero with 'The Cozy Retreat' headline" class="cs-img-full" data-lightbox loading="lazy">
       </div>
       <div class="cs-img-wrap reveal">
-        <img src="images/bike-website/img009.png" alt="Lo-fi refinement" class="cs-img-full" data-lightbox loading="lazy">
-      </div>
-    </section>
-
-    <!-- Hi-Fi -->
-    <section class="cs-section">
-      <div class="reveal">
-        <p class="cs-eyebrow">final design</p>
-        <h2 class="cs-h2">Hi-fi screens</h2>
-        <p class="cs-body">Iterated high-fidelity designs after usability rounds.</p>
+        <img src="images/2brental/2brental_04.png" alt="2B Rental — property description and photo gallery" class="cs-img-full" data-lightbox loading="lazy">
       </div>
       <div class="cs-img-wrap reveal">
-        <img src="images/bike-website/img010.png" alt="Hi-fi screen 1" class="cs-img-full" data-lightbox loading="lazy">
-      </div>
-      <div class="cs-img-wrap reveal">
-        <img src="images/bike-website/img011.png" alt="Hi-fi screen 2" class="cs-img-full" data-lightbox loading="lazy">
-      </div>
-    </section>
-  </div>
-
-  <!-- Stats band -->
-  <div class="stat-band">
-    <div class="stat-band-inner">
-      <div class="reveal">
-        <p class="stat-eyebrow">validation</p>
-        <h2 class="stat-h2">Testing & learnings</h2>
-        <ul class="stat-list">
-          <li>
-            <span class="stat-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
-            Comparison cards reduced product-hopping; users chose in fewer steps
-          </li>
-          <li>
-            <span class="stat-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
-            Guest checkout removed major drop-off; users preferred progress visibility
-          </li>
-          <li>
-            <span class="stat-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
-            Specs needed bolder labels; improved contrast and spacing in later iterations
-          </li>
-        </ul>
-      </div>
-      <div class="reveal" style="transition-delay:100ms">
-        <p class="stat-number">40%</p>
-        <p class="stat-label">Reduction in checkout abandonment<br>with guest checkout flow</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Prototype -->
-  <div class="wrap" style="padding-top:0; padding-bottom:0;">
-    <section id="prototype" class="cs-section">
-      <div class="reveal">
-        <p class="cs-eyebrow">interactive</p>
-        <h2 class="cs-h2">Prototype</h2>
-      </div>
-      <div class="proto-wrap reveal">
-        <iframe src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FqbwEwjyWIjEsTXq2nMvcYF%2FSpringboard-Capstone-II%3Fpage-id%3D248%253A43%26node-id%3D338%253A1518%26viewport%3D451%252C247%252C0.05%26scaling%3Dscale-down%26starting-point-node-id%3D428%253A1371%26show-proto-sidebar%3D1" allowfullscreen loading="lazy" title="E-bike prototype"></iframe>
+        <img src="images/2brental/2brental_05.png" alt="2B Rental — guest reviews and 'Book with us' call to action" class="cs-img-full" data-lightbox loading="lazy">
       </div>
     </section>
 
@@ -452,15 +377,15 @@ html { scroll-behavior: smooth; }
       <div class="takeaway-grid">
         <div class="takeaway-item reveal">
           <p class="takeaway-num">01</p>
-          <p class="takeaway-text">Mobile constraints force clarity — prioritize essentials and comparison above all else.</p>
+          <p class="takeaway-text">Designing around the actual photography first made every layout decision easier — the rooms set the palette and rhythm.</p>
         </div>
         <div class="takeaway-item reveal" style="transition-delay:80ms">
           <p class="takeaway-num">02</p>
-          <p class="takeaway-text">Guest checkout is a must-have for e-commerce — every forced account step costs conversions.</p>
+          <p class="takeaway-text">Owning idea, design, and build end-to-end shortened the feedback loop. Decisions I made in Figma got tested in code the same week.</p>
         </div>
         <div class="takeaway-item reveal" style="transition-delay:160ms">
           <p class="takeaway-num">03</p>
-          <p class="takeaway-text">Early testing caught hierarchy issues before development, saving significant rework time.</p>
+          <p class="takeaway-text">Six months of evenings taught me to ship in slices. The home page came first, earned its keep, then everything else grew around it.</p>
         </div>
       </div>
     </section>
