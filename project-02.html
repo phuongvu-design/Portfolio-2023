@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kura Car Care App — Phuong Vu</title>
+<title>Bentley GSA Website Redesign — Phuong Vu</title>
 <link rel="stylesheet" href="colors_and_type.css">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -62,7 +62,7 @@ html { scroll-behavior: smooth; }
 .breadcrumb svg { width: 13px; height: 13px; stroke-width: 1.5; }
 .case-eyebrow { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 18px; font-family: var(--font-primary); font-weight: 300; font-variation-settings: "wdth" 100; }
 .case-h1 { font-size: clamp(32px, 4.5vw, 56px); font-weight: 300; line-height: 1.12; letter-spacing: -0.025em; color: var(--text-primary); margin-bottom: 24px; max-width: 680px; text-wrap: pretty; font-family: var(--font-primary); font-variation-settings: "wdth" 100; }
-.case-sub { font-size: 18px; font-weight: 300; line-height: 1.7; color: var(--text-secondary); max-width: 560px; margin-bottom: 36px; font-family: var(--font-primary); font-variation-settings: "wdth" 100; }
+.case-sub { font-size: 18px; font-weight: 300; line-height: 1.7; color: var(--text-secondary); max-width: 620px; margin-bottom: 36px; font-family: var(--font-primary); font-variation-settings: "wdth" 100; }
 .meta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
 .meta-tag { padding: 4px 14px; border-radius: 999px; border: 1px solid var(--border-default); font-size: 12px; font-weight: 300; color: var(--text-muted); font-family: var(--font-primary); font-variation-settings: "wdth" 100; }
 .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
@@ -80,6 +80,8 @@ html { scroll-behavior: smooth; }
 .cs-h2 { font-size: 28px; font-weight: 300; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 20px; text-wrap: pretty; font-family: var(--font-primary); font-variation-settings: "wdth" 100; }
 .cs-h2-lg { font-size: 36px; font-weight: 300; letter-spacing: -0.025em; color: var(--text-primary); margin-bottom: 20px; text-wrap: pretty; font-family: var(--font-primary); font-variation-settings: "wdth" 100; }
 .cs-body { font-size: 16px; font-weight: 300; line-height: 1.75; color: var(--text-secondary); margin-bottom: 16px; font-family: var(--font-primary); font-variation-settings: "wdth" 100; }
+.cs-body strong { font-weight: 500; color: var(--text-primary); }
+.cs-body--lead { max-width: 760px; }
 .overview-strip { background: var(--surface-raised); border-top: 1px solid var(--border-default); border-bottom: 1px solid var(--border-default); padding: 56px 64px; }
 .overview-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); gap: 48px; }
 .ov-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; font-family: var(--font-primary); font-weight: 300; font-variation-settings: "wdth" 100; }
@@ -93,33 +95,28 @@ html { scroll-behavior: smooth; }
 .insight-list li { display: flex; gap: 14px; align-items: flex-start; font-size: 14px; font-weight: 300; line-height: 1.6; color: var(--text-secondary); font-family: var(--font-primary); font-variation-settings: "wdth" 100; }
 .insight-num { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--surface-hover); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 400; color: var(--text-muted); margin-top: 1px; }
 .insight-num.dark { background: var(--color-dark-800); color: var(--text-inverse); }
-.solution-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 40px; }
-.solution-card { background: var(--surface-raised); border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 28px 24px; }
-.solution-icon { width: 36px; height: 36px; background: var(--color-sage-50); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
-.solution-icon svg { width: 16px; height: 16px; stroke: var(--color-sage-600); stroke-width: 1.5; }
-.solution-title { font-size: 16px; font-weight: 400; color: var(--text-primary); margin-bottom: 10px; font-family: var(--font-primary); font-variation-settings: "wdth" 100; }
-.solution-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--text-secondary); font-family: var(--font-primary); font-variation-settings: "wdth" 100; }
 .cs-img-full { width: 100%; border-radius: var(--radius-md); border: 1px solid var(--border-default); display: block; cursor: zoom-in; transition: opacity 200ms ease-out; }
 .cs-img-full:hover { opacity: 0.94; }
 .cs-img-wrap { margin-top: 32px; }
 .img-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 32px; }
-.img-4col { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-top: 32px; }
-.branding-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-.stat-band { background: var(--color-dark-800); padding: 64px; }
-.stat-band-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-.stat-eyebrow { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-dark-400); margin-bottom: 20px; font-family: var(--font-primary); font-weight: 300; font-variation-settings: "wdth" 100; }
-.stat-h2 { font-size: 28px; font-weight: 300; color: var(--text-inverse); letter-spacing: -0.02em; margin-bottom: 28px; text-wrap: pretty; font-family: var(--font-primary); font-variation-settings: "wdth" 100; }
-.stat-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-.stat-list li { display: flex; gap: 12px; font-size: 14px; font-weight: 300; color: var(--color-dark-400); line-height: 1.6; font-family: var(--font-primary); font-variation-settings: "wdth" 100; }
-.stat-check { flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--color-sage-400); display: flex; align-items: center; justify-content: center; margin-top: 1px; }
-.stat-check svg { width: 10px; height: 10px; stroke: var(--color-dark-900); stroke-width: 2.5; }
-.stat-number { font-size: 72px; font-weight: 300; color: var(--color-sage-400); letter-spacing: -0.04em; line-height: 1; font-family: var(--font-primary); font-variation-settings: "wdth" 100; }
-.stat-label { font-size: 15px; font-weight: 300; color: var(--color-dark-400); margin-top: 12px; font-family: var(--font-primary); font-variation-settings: "wdth" 100; line-height: 1.5; }
-.proto-wrap { border: 1px solid var(--border-default); border-radius: var(--radius-md); overflow: hidden; margin-top: 32px; }
-.proto-wrap iframe { width: 100%; aspect-ratio: 16/10; border: 0; display: block; }
+
+/* Before/after comparison */
+.compare { margin-top: 32px; }
+.cmp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+.cmp-col { display: flex; flex-direction: column; gap: 12px; }
+.cmp-tag { align-self: flex-start; padding: 3px 12px; border-radius: 999px; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 400; font-family: var(--font-primary); font-variation-settings: "wdth" 100; }
+.cmp-tag.before { background: var(--surface-hover); color: var(--text-muted); }
+.cmp-tag.after { background: var(--color-sage-50); color: var(--color-sage-600); }
+
+/* Navigation-model callout */
+.nav-model { margin-top: 28px; background: var(--surface-raised); border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 22px 28px; display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; }
+.nav-model span { font-size: 14px; font-weight: 400; letter-spacing: 0.05em; color: var(--text-primary); font-family: var(--font-primary); font-variation-settings: "wdth" 100; }
+.nav-model .sep { color: var(--color-sage-600); font-weight: 300; }
+
 .takeaway-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; margin-top: 40px; }
 .takeaway-item { border-top: 1px solid var(--border-default); padding-top: 20px; }
 .takeaway-num { font-size: 11px; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px; font-family: var(--font-primary); font-weight: 300; font-variation-settings: "wdth" 100; }
+.takeaway-title { font-size: 15px; font-weight: 400; color: var(--text-primary); margin-bottom: 8px; font-family: var(--font-primary); font-variation-settings: "wdth" 100; }
 .takeaway-text { font-size: 14px; font-weight: 300; line-height: 1.7; color: var(--text-secondary); font-family: var(--font-primary); font-variation-settings: "wdth" 100; }
 .next-project { padding: 72px 64px 96px; max-width: 1200px; margin: 0 auto; }
 .next-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 28px; font-family: var(--font-primary); font-weight: 300; font-variation-settings: "wdth" 100; }
@@ -168,11 +165,8 @@ html { scroll-behavior: smooth; }
   .nav-links a { padding: 12px 28px; display: block; }
   .case-hero, .hero-image-wrap, .wrap { padding-left: 28px; padding-right: 28px; }
   .overview-strip { padding: 48px 28px; }
-  .overview-grid, .insight-grid, .solution-grid, .takeaway-grid, .branding-grid { grid-template-columns: 1fr; }
+  .overview-grid, .insight-grid, .takeaway-grid { grid-template-columns: 1fr; }
   .img-2col { grid-template-columns: 1fr 1fr; }
-  .img-4col { grid-template-columns: 1fr 1fr; }
-  .stat-band { padding: 48px 28px; }
-  .stat-band-inner { grid-template-columns: 1fr; gap: 40px; }
   .next-project { padding: 64px 28px 80px; }
   .next-card { grid-template-columns: 1fr; gap: 24px; }
   .footer { padding: 28px; flex-direction: column; gap: 16px; text-align: center; }
@@ -198,263 +192,280 @@ html { scroll-behavior: smooth; }
 </header>
 
 <main>
+  <!-- Hero -->
   <div class="case-hero">
     <a href="index.html#work" class="breadcrumb reveal">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5m7-7l-7 7 7 7"/></svg>
       All work
     </a>
-    <p class="case-eyebrow reveal">case study — product design</p>
-    <h1 class="case-h1 reveal">Kura car care app</h1>
-    <p class="case-sub reveal">A maintenance companion that turns complex schedules into friendly reminders and transparent history for car owners.</p>
+    <p class="case-eyebrow reveal">case study — web redesign &amp; information architecture</p>
+    <h1 class="case-h1 reveal">Bentley GSA website redesign</h1>
+    <p class="case-sub reveal">Bringing a neglected student-government website back into service by rebuilding its navigation, content hierarchy, and page structure around what graduate students actually come to it to do.</p>
     <div class="meta-row reveal">
-      <span class="meta-tag">3 months</span>
-      <span class="meta-tag">FigJam & Figma</span>
-      <span class="meta-tag">UX research & UI</span>
+      <span class="meta-tag">VP of Technology</span>
+      <span class="meta-tag">Sole designer &amp; developer</span>
+      <span class="meta-tag">Weebly</span>
+      <span class="meta-tag">Five core pages</span>
     </div>
     <div class="cta-row reveal">
-      <a href="#solution" class="btn-primary">
-        Jump to solution
+      <a href="#pages" class="btn-primary">
+        See the redesign
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
       </a>
-      <a href="#prototype" class="btn-outline">View prototype</a>
+      <a href="#problem" class="btn-outline">Read the problem</a>
     </div>
   </div>
 
   <div class="hero-image-wrap reveal">
-    <img src="images/Carcare/img001.png" alt="Kura car care app" class="cs-img-full" data-lightbox>
+    <img src="images/BentleyGSA/BentleyGSA_Cover.png" alt="Bentley GSA redesign shown on desktop and mobile" class="cs-img-full" data-lightbox>
   </div>
 
+  <!-- Overview strip -->
   <div class="overview-strip">
     <div class="overview-grid">
       <div class="reveal">
-        <p class="ov-label">the challenge</p>
+        <p class="ov-label">my role</p>
         <ul class="ov-list">
-          <li>Owners forget periodic maintenance</li>
-          <li>No easy way to track service history</li>
-          <li>DIY guidance and trustworthy advice are scarce</li>
+          <li>VP of Technology, Bentley GSA</li>
+          <li>Led the redesign end to end</li>
+          <li>Parent body for 12 grad organizations</li>
         </ul>
       </div>
       <div class="reveal" style="transition-delay:80ms">
-        <p class="ov-label">goals</p>
+        <p class="ov-label">scope</p>
         <ul class="ov-list">
-          <li>Track maintenance in one place</li>
-          <li>Surface clear next steps and reminders</li>
-          <li>Give owners confidence with reliable recommendations</li>
+          <li>Sole designer and developer</li>
+          <li>Five core pages</li>
+          <li>Audit, diagnose, rebuild</li>
         </ul>
       </div>
       <div class="reveal" style="transition-delay:160ms">
-        <p class="ov-label">my focus</p>
+        <p class="ov-label">platform</p>
         <ul class="ov-list">
-          <li>Research & synthesis</li>
-          <li>User flows, wireframes, prototypes</li>
-          <li>UI system & usability testing</li>
+          <li>Weebly, a low-code builder</li>
+          <li>Designed within fixed components</li>
+          <li>No specialized tooling required</li>
         </ul>
       </div>
     </div>
   </div>
 
   <div class="wrap" style="padding-top:0; padding-bottom:0;">
+    <!-- Overview -->
     <section class="cs-section">
       <div class="reveal">
-        <p class="cs-eyebrow">discovery</p>
-        <h2 class="cs-h2-lg">Research insights</h2>
+        <p class="cs-eyebrow">overview</p>
+        <h2 class="cs-h2-lg">A front door that had fallen out of date</h2>
+        <p class="cs-body cs-body--lead">The Graduate Student Association represents every graduate student at Bentley University and is the parent body for twelve graduate organizations. Its website is the front door to events, organizations, mentorship, and leadership contact. When I took on the VP of Technology role, that front door had quietly fallen out of date and out of sync with the organization it was meant to serve.</p>
+        <p class="cs-body cs-body--lead">I led the redesign end to end: auditing the existing site, diagnosing its structural problems, and rebuilding five core pages within the constraints of the platform and a single-person team. The site runs on Weebly, so the work was as much about designing within fixed limits as it was about design itself — achieving a consistent navigation system, a uniform card layout, and a coherent content hierarchy using the components the platform allowed, rather than building freely from scratch.</p>
+        <p class="cs-body cs-body--lead">The work leaned on my own perspective as a graduate student in the organization and on a structured review of the old site against basic usability and information-architecture principles, rather than a large formal research program. This case study reconstructs that work using archived snapshots of the previous site alongside the current live pages.</p>
+      </div>
+    </section>
+
+    <!-- The problem -->
+    <section id="problem" class="cs-section">
+      <div class="reveal">
+        <p class="cs-eyebrow">the problem</p>
+        <h2 class="cs-h2-lg">Not broken — neglected</h2>
+        <p class="cs-body cs-body--lead">The old site was not broken in any single dramatic way. It was suffering from accumulated neglect, and the symptoms compounded each other. The clearest signal was the footer copyright: <strong>it still read 2015.</strong> The site had drifted for years without a coherent owner, and that showed up in three recurring failures.</p>
       </div>
       <div class="insight-grid">
         <div class="insight-card reveal">
-          <p class="insight-card-label">what I learned</p>
+          <p class="insight-card-label">the symptoms</p>
           <ul class="insight-list">
-            <li><span class="insight-num">1</span>People forget schedules and lack visibility into car health</li>
-            <li><span class="insight-num">2</span>They want guidance that is timely, simple, and trustworthy</li>
-            <li><span class="insight-num">3</span>Service history needs to be transparent and portable</li>
+            <li><span class="insight-num">1</span>The navigation did not agree with itself — header and footer menus listed different pages, and several items pointed nowhere consistent.</li>
+            <li><span class="insight-num">2</span>Pages were mislabeled — more than one page announced itself as something it was not, so the first orienting cue was often wrong.</li>
+            <li><span class="insight-num">3</span>Layout space went unused — single columns of content sat beside large empty areas, leaving the most valuable screen real estate doing no work.</li>
           </ul>
         </div>
         <div class="insight-card reveal" style="transition-delay:100ms">
-          <p class="insight-card-label">design principles</p>
+          <p class="insight-card-label">my goal</p>
           <ul class="insight-list">
-            <li><span class="insight-num dark">1</span>Clarity first: show upcoming tasks and status at a glance</li>
-            <li><span class="insight-num dark">2</span>Helpful nudges: reminders with context, not alarms</li>
-            <li><span class="insight-num dark">3</span>Trustworthy tone: friendly, confident visuals</li>
+            <li><span class="insight-num dark">1</span>Consistent navigation, identical in the header and footer of every page.</li>
+            <li><span class="insight-num dark">2</span>Honest labels, so each page tells the truth about what it is.</li>
+            <li><span class="insight-num dark">3</span>Layouts where structure matches the content's actual purpose — not a cosmetic refresh.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section id="solution" class="cs-section">
+    <!-- The spine: navigation model -->
+    <section class="cs-section">
       <div class="reveal">
-        <p class="cs-eyebrow">approach</p>
-        <h2 class="cs-h2-lg">Solution highlights</h2>
+        <p class="cs-eyebrow">the spine of the work</p>
+        <h2 class="cs-h2">One navigation model, applied everywhere</h2>
+        <p class="cs-body">The single most important fix was also the least glamorous. On the old site, the header navigation read one way and the footer read another. The header surfaced items like a Grad Life PDF and reshuffled Events and GNP; the footer listed Resources and FAQ that the header never showed. Orphan links appeared in one place and vanished in another. There was no canonical answer to a basic question: what pages does this site have?</p>
+        <p class="cs-body">I established a single navigation model and applied it identically in the header and footer of every page:</p>
       </div>
-      <div class="solution-grid">
-        <div class="solution-card reveal">
-          <div class="solution-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
-          </div>
-          <h3 class="solution-title">Unified maintenance hub</h3>
-          <p class="solution-desc">Dashboard of car performance, service history, and upcoming tasks in one place.</p>
-        </div>
-        <div class="solution-card reveal" style="transition-delay:80ms">
-          <div class="solution-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
-          </div>
-          <h3 class="solution-title">Smart reminders</h3>
-          <p class="solution-desc">Timely prompts for service with clear instructions or DIY steps, never just alarms.</p>
-        </div>
-        <div class="solution-card reveal" style="transition-delay:160ms">
-          <div class="solution-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
-          <h3 class="solution-title">Friendly visuals</h3>
-          <p class="solution-desc">Confident visual language that builds trust and reduces friction for anxious owners.</p>
-        </div>
+      <div class="nav-model reveal">
+        <span>HOME</span><span class="sep">·</span>
+        <span>ABOUT GSA</span><span class="sep">·</span>
+        <span>GRAD ORGS</span><span class="sep">·</span>
+        <span>EVENTS</span><span class="sep">·</span>
+        <span>GNP</span><span class="sep">·</span>
+        <span>CONTACT</span>
+      </div>
+      <div class="reveal">
+        <p class="cs-body" style="margin-top:28px;">This is the structural decision the rest of the redesign hangs from. The mismatched footers and mislabeled pages were not separate cosmetic issues — they were symptoms of the same underlying problem: no one had defined the site as a single system. Naming that system, and enforcing it consistently, is what turned a set of drifting pages back into a website.</p>
       </div>
     </section>
 
-    <section class="cs-section">
+    <!-- Page by page intro -->
+    <section id="pages" class="cs-section">
       <div class="reveal">
-        <p class="cs-eyebrow">understanding users</p>
-        <h2 class="cs-h2">Persona</h2>
-      </div>
-      <div class="cs-img-wrap reveal">
-        <img src="images/Carcare/img002.png" alt="User persona" class="cs-img-full" data-lightbox loading="lazy">
+        <p class="cs-eyebrow">the redesign</p>
+        <h2 class="cs-h2-lg">Page by page</h2>
+        <p class="cs-body cs-body--lead">Each page carried a distinct problem, so each one demonstrates a different part of the work. Tap any screen to view it full size.</p>
       </div>
     </section>
 
+    <!-- Home -->
     <section class="cs-section">
       <div class="reveal">
-        <p class="cs-eyebrow">exploration</p>
-        <h2 class="cs-h2">Ideation</h2>
-        <p class="cs-body">"How might we" prompts to simplify maintenance, surface priorities, and reduce stress.</p>
+        <p class="cs-eyebrow">home</p>
+        <h2 class="cs-h2">From greeting to wayfinding</h2>
+        <p class="cs-body">The old homepage greeted visitors with "Welcome to Graduate School!" and then offered exactly two ways forward: two image tiles labeled Our Events and Grad Orgs. The most valuable area of the site said nothing about what the GSA is or does, and surfaced only a fraction of what a student might be looking for.</p>
+        <p class="cs-body">I rebuilt the page around the tasks people arrive to complete. The hero now leads with the organization's name, a one-line statement of what it does, and a clear call to action. Below it, four labeled entry points — Events, Organizations, Resources, Contact — each pair an icon with a short description and a dedicated button. The homepage went from a static welcome to a wayfinding layer: a visitor can see the site's primary paths at a glance and choose one, instead of guessing from two unlabeled pictures.</p>
       </div>
-      <div class="cs-img-wrap reveal">
-        <img src="images/Carcare/img003.png" alt="How might we notes" class="cs-img-full" data-lightbox loading="lazy">
-      </div>
-    </section>
-
-    <section class="cs-section">
-      <div class="reveal">
-        <p class="cs-eyebrow">process</p>
-        <h2 class="cs-h2">User flow</h2>
-      </div>
-      <div class="cs-img-wrap reveal">
-        <img src="images/Carcare/img004.png" alt="User flow diagram" class="cs-img-full" data-lightbox loading="lazy">
-      </div>
-    </section>
-
-    <section class="cs-section">
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px;" class="reveal">
-        <div>
-          <p class="cs-eyebrow">sketching</p>
-          <h2 class="cs-h2">Wireframes</h2>
-          <p class="cs-body">Quick sketches and low-fidelity wires to clarify layout and feature hierarchy.</p>
-          <div class="img-2col" style="margin-top:24px;">
-            <img src="images/Carcare/img006.jpeg" alt="Wireframe sketches" class="cs-img-full" data-lightbox loading="lazy" style="border-radius:var(--radius-md);">
-            <img src="images/Carcare/img007.png" alt="Lo-fi screens" class="cs-img-full" data-lightbox loading="lazy" style="border-radius:var(--radius-md);">
+      <div class="compare reveal">
+        <div class="cmp-grid">
+          <div class="cmp-col">
+            <span class="cmp-tag before">Before</span>
+            <img src="images/BentleyGSA/BENTLEY_GSA_-_Home_Old.png" alt="Original GSA home page — generic welcome with two image tiles" class="cs-img-full" data-lightbox loading="lazy">
           </div>
-        </div>
-        <div>
-          <p class="cs-eyebrow">validation</p>
-          <h2 class="cs-h2">Usability testing</h2>
-          <p class="cs-body">Iterative usability rounds ensured users could complete tasks; flows were refined based on feedback.</p>
-          <div style="margin-top:24px;">
-            <img src="images/Carcare/img008.JPG" alt="Usability testing session" class="cs-img-full" data-lightbox loading="lazy">
+          <div class="cmp-col">
+            <span class="cmp-tag after">After</span>
+            <img src="images/BentleyGSA/BENTLEY_GSA_-_Home.png" alt="Redesigned GSA home page — hero plus four labeled entry points" class="cs-img-full" data-lightbox loading="lazy">
           </div>
         </div>
       </div>
     </section>
 
+    <!-- About -->
     <section class="cs-section">
-      <div class="branding-grid reveal">
-        <div>
-          <p class="cs-eyebrow">identity</p>
-          <h2 class="cs-h2">Branding</h2>
-          <p class="cs-body">Name derived from "cura" (care). A confident palette conveys clarity — the quality car owners need when managing their vehicle's health.</p>
+      <div class="reveal">
+        <p class="cs-eyebrow">about</p>
+        <h2 class="cs-h2">From roster to community</h2>
+        <p class="cs-body">The old About page presented the leadership team as a committee roster: names and titles grouped by function, with sparse and inconsistent imagery. It documented who was in charge without conveying anything about the community a prospective member would be joining.</p>
+        <p class="cs-body">The redesigned page treats the team as the organization's most human asset. Every member now appears in a consistent card with a professional photo, their role, and a short personal note — a hobby, a fact, something disarming. This was a deliberate content decision, not a styling one: the About page's real job is to make a "vibrant community" feel worth joining, and a uniform, photo-led card grid with a touch of personality does that in a way a text roster cannot. The redesign also let the page focus — contact details that once lived at the bottom of About now have a single canonical home on the Contact page.</p>
+      </div>
+      <div class="compare reveal">
+        <div class="cmp-grid">
+          <div class="cmp-col">
+            <span class="cmp-tag before">Before</span>
+            <img src="images/BentleyGSA/About_GSA_-_BENTLEY_GSA_Old.png" alt="Original About page — committee roster of names and titles" class="cs-img-full" data-lightbox loading="lazy">
+          </div>
+          <div class="cmp-col">
+            <span class="cmp-tag after">After</span>
+            <img src="images/BentleyGSA/About_GSA_-_BENTLEY_GSA.png" alt="Redesigned About page — uniform photo-led team cards" class="cs-img-full" data-lightbox loading="lazy">
+          </div>
         </div>
-        <div style="display:flex; justify-content:center;">
-          <img src="images/Carcare/img009.png" alt="Kura logo and branding" style="max-width:220px; height:auto;" data-lightbox loading="lazy" class="cs-img-full">
+      </div>
+    </section>
+
+    <!-- Grad Orgs -->
+    <section class="cs-section">
+      <div class="reveal">
+        <p class="cs-eyebrow">grad orgs</p>
+        <h2 class="cs-h2">From list to navigable index</h2>
+        <p class="cs-body">The directory of graduate organizations was a long single-column list — each org a left-aligned block of text with its logo floated to the side, stacked one after another, with no clear way to act on any of them.</p>
+        <p class="cs-body">I converted the list into a two-column card grid. Each organization is now a self-contained unit — logo, name, description, and an explicit "Visit page" link — which makes a directory of roughly eight items scannable and turns a static description into a navigable index. I also added a closing "Don't see your community here?" section that invites students to propose a new organization and routes them to Contact, supporting the GSA's goal of growing the roster. While restructuring the content I caught a real error too: the old Graduate Accountancy Association entry was carrying copy pasted from the Chinese Students and Scholars Association, so it described the wrong organization entirely. The redesign corrected it.</p>
+      </div>
+      <div class="compare reveal">
+        <div class="cmp-grid">
+          <div class="cmp-col">
+            <span class="cmp-tag before">Before</span>
+            <img src="images/BentleyGSA/Grad_Orgs_-_BENTLEY_GSA_Old.png" alt="Original Grad Orgs page — long single-column text list" class="cs-img-full" data-lightbox loading="lazy">
+          </div>
+          <div class="cmp-col">
+            <span class="cmp-tag after">After</span>
+            <img src="images/BentleyGSA/Grad_Orgs_-_BENTLEY_GSA.png" alt="Redesigned Grad Orgs page — two-column card grid with Visit page links" class="cs-img-full" data-lightbox loading="lazy">
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- GNP -->
     <section class="cs-section">
       <div class="reveal">
-        <p class="cs-eyebrow">final design</p>
-        <h2 class="cs-h2">Hi-fi screens</h2>
-        <p class="cs-body">Iterated high-fidelity designs after usability rounds.</p>
+        <p class="cs-eyebrow">gnp — graduate networking program</p>
+        <h2 class="cs-h2">From one column to a clear choice</h2>
+        <p class="cs-body">The Graduate Networking Program page had the most direct labeling problem on the site. Its hero banner read "Graduate Networking Program," but the heading immediately below it read "Contact Us" — even though the entire page was about mentorship. The first thing a visitor read pointed them at the wrong thing.</p>
+        <p class="cs-body">I corrected the label and rebuilt the structure around the decision the page is actually asking the visitor to make. The mentor and mentee paths are parallel choices, so I placed them in two side-by-side cards — "Why Become a Mentor?" and "Why Become a Mentee?" — instead of stacking everything in one centered column. Key facts, like the six-course eligibility requirement, were pulled into callout boxes so they surface instead of hiding inside paragraphs. The content itself was largely sound; the work here was making the page's structure match the structure of the choice it presents, and making its heading tell the truth.</p>
       </div>
-      <div class="img-4col reveal">
-        <img src="images/Carcare/img010.png" alt="Hi-fi screen 1" class="cs-img-full" data-lightbox loading="lazy" style="border-radius:var(--radius-md);">
-        <img src="images/Carcare/img011.png" alt="Hi-fi screen 2" class="cs-img-full" data-lightbox loading="lazy" style="border-radius:var(--radius-md);">
-        <img src="images/Carcare/img012.png" alt="Hi-fi screen 3" class="cs-img-full" data-lightbox loading="lazy" style="border-radius:var(--radius-md);">
-        <img src="images/Carcare/img013.png" alt="Hi-fi screen 4" class="cs-img-full" data-lightbox loading="lazy" style="border-radius:var(--radius-md);">
-      </div>
-      <div class="img-4col reveal">
-        <img src="images/Carcare/img014.png" alt="Hi-fi screen 5" class="cs-img-full" data-lightbox loading="lazy" style="border-radius:var(--radius-md);">
-        <img src="images/Carcare/img015.png" alt="Hi-fi screen 6" class="cs-img-full" data-lightbox loading="lazy" style="border-radius:var(--radius-md);">
-        <img src="images/Carcare/img016.png" alt="Hi-fi screen 7" class="cs-img-full" data-lightbox loading="lazy" style="border-radius:var(--radius-md); grid-column:span 2;">
-      </div>
-    </section>
-  </div>
-
-  <div class="stat-band">
-    <div class="stat-band-inner">
-      <div class="reveal">
-        <p class="stat-eyebrow">validation</p>
-        <h2 class="stat-h2">Testing & learnings</h2>
-        <ul class="stat-list">
-          <li>
-            <span class="stat-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
-            Clear reminders and history reduce anxiety and missed tasks
-          </li>
-          <li>
-            <span class="stat-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
-            Concise flows improved task completion during testing
-          </li>
-          <li>
-            <span class="stat-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
-            Visual clarity (labels, spacing) increased comprehension significantly
-          </li>
-        </ul>
-      </div>
-      <div class="reveal" style="transition-delay:100ms">
-        <p class="stat-number">85%</p>
-        <p class="stat-label">Task completion rate<br>in usability testing sessions</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="wrap" style="padding-top:0; padding-bottom:0;">
-    <section id="prototype" class="cs-section">
-      <div class="reveal">
-        <p class="cs-eyebrow">interactive</p>
-        <h2 class="cs-h2">Prototype</h2>
-      </div>
-      <div class="proto-wrap reveal">
-        <iframe src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FRD1QNkJJcE91tqCKCvVP60%2FSpringboard-Capstone-I---Car-App%3Fpage-id%3D202%253A75%26node-id%3D202%253A76%26viewport%3D988%252C667%252C0.13%26scaling%3Dscale-down%26starting-point-node-id%3D327%253A1217%26show-proto-sidebar%3D1" allowfullscreen loading="lazy" title="Kura car care prototype"></iframe>
+      <div class="compare reveal">
+        <div class="cmp-grid">
+          <div class="cmp-col">
+            <span class="cmp-tag before">Before</span>
+            <img src="images/BentleyGSA/GNP_-_BENTLEY_GSA_Old.png" alt="Original GNP page — mislabeled 'Contact Us' heading, single column" class="cs-img-full" data-lightbox loading="lazy">
+          </div>
+          <div class="cmp-col">
+            <span class="cmp-tag after">After</span>
+            <img src="images/BentleyGSA/GNP_-_BENTLEY_GSA.png" alt="Redesigned GNP page — parallel mentor and mentee cards with callouts" class="cs-img-full" data-lightbox loading="lazy">
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- Contact -->
     <section class="cs-section">
       <div class="reveal">
-        <p class="cs-eyebrow">reflection</p>
-        <h2 class="cs-h2">Key takeaways</h2>
+        <p class="cs-eyebrow">contact</p>
+        <h2 class="cs-h2">From a form in a void to a real point of contact</h2>
+        <p class="cs-body">The old Contact page was a form floating in empty space. It collected a name, email, and reason for contact, but the entire right half of the page was blank — no address, no email, no sense of who was on the other end. A contact page that does not show you how to reach the organization is failing at its one task.</p>
+        <p class="cs-body">The redesigned page pairs the form with the information that makes it usable: the physical address, the email, and a short, warm "Let's start a conversation" introduction. A two-column layout puts contact details on the left and the form on the right, filling the space that was previously wasted and giving the visitor a complete picture. This is also where the new unified navigation is most visibly an improvement, since the old Contact page carried one of the most inconsistent menus on the site.</p>
+      </div>
+      <div class="compare reveal">
+        <div class="cmp-grid">
+          <div class="cmp-col">
+            <span class="cmp-tag before">Before</span>
+            <img src="images/BentleyGSA/Contact_-_BENTLEY_GSA_Old.png" alt="Original Contact page — a form floating in empty space" class="cs-img-full" data-lightbox loading="lazy">
+          </div>
+          <div class="cmp-col">
+            <span class="cmp-tag after">After</span>
+            <img src="images/BentleyGSA/Contact_-_BENTLEY_GSA.png" alt="Redesigned Contact page — contact details paired with the form" class="cs-img-full" data-lightbox loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What I'd do next -->
+    <section class="cs-section">
+      <div class="reveal">
+        <p class="cs-eyebrow">what I'd do next</p>
+        <h2 class="cs-h2">Closing the loop</h2>
+        <p class="cs-body">This redesign fixed the structural and content problems I could diagnose from the site itself. The honest next step is to close the loop with the people who use it.</p>
       </div>
       <div class="takeaway-grid">
         <div class="takeaway-item reveal">
           <p class="takeaway-num">01</p>
-          <p class="takeaway-text">Timely, contextual reminders are the core value proposition for busy car owners.</p>
+          <p class="takeaway-title">Validate with graduate students</p>
+          <p class="takeaway-text">Light usability checks with a handful of students would confirm whether the new navigation and labels match how they actually look for things.</p>
         </div>
         <div class="takeaway-item reveal" style="transition-delay:80ms">
           <p class="takeaway-num">02</p>
-          <p class="takeaway-text">Transparency in service history builds lasting trust with owners.</p>
+          <p class="takeaway-title">Add the Events page</p>
+          <p class="takeaway-text">Events is the one core page I have not yet rebuilt. Bringing it into the same navigation and layout system would complete the set.</p>
         </div>
         <div class="takeaway-item reveal" style="transition-delay:160ms">
           <p class="takeaway-num">03</p>
-          <p class="takeaway-text">Early testing exposed clarity gaps before development, preventing expensive fixes.</p>
+          <p class="takeaway-title">Establish maintenance</p>
+          <p class="takeaway-text">The deepest problem was that no one owned the site — that's how it ends up reading 2015 in 2026. The work leaves behind a consistent system, built in standard Weebly components, that the next VP of Technology can keep current.</p>
         </div>
+      </div>
+    </section>
+
+    <!-- What this shows -->
+    <section class="cs-section">
+      <div class="reveal">
+        <p class="cs-eyebrow">what this project shows</p>
+        <h2 class="cs-h2">Coherence over cosmetics</h2>
+        <p class="cs-body cs-body--lead">I am drawn to the structural layer of design: how a site is organized, whether its labels are honest, and whether each page does the job it claims to do. This redesign was less about making the GSA site look new and more about making it coherent. I treated the site as a single system, found where it contradicted itself, and rebuilt it so that its navigation, its labels, and its layouts all tell the visitor the same true story.</p>
       </div>
     </section>
   </div>
 
+  <!-- Next project -->
   <div class="next-project">
     <p class="next-label">next project</p>
     <a href="project-03.html" class="next-card">
@@ -475,7 +486,7 @@ html { scroll-behavior: smooth; }
 </main>
 
 <footer class="footer">
-  <p class="footer-copy">© 2025 Phuong Vu</p>
+  <p class="footer-copy">© 2026 Phuong Vu</p>
   <div class="footer-links">
     <a href="https://www.linkedin.com/in/vuhoangphuong/" target="_blank" rel="noopener">linkedin</a>
     <a href="mailto:ultiepv@proton.me">email</a>
