@@ -8,84 +8,86 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+body { background: var(--surface-base); color: var(--text-primary); }
+section[id] { scroll-margin-top: 76px; }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--surface-base); }
 ::-webkit-scrollbar-thumb { background: var(--color-light-400); border-radius: 3px; }
 
+/* Every text element that sets type uses the variable font */
+.nav-logo, .nav-links a, .nav-cta, .hero-eyebrow, .hero h1, .hero-sub, .btn,
+.index-num, .index-title, .index-meta, .section-title, .section-count,
+.project-num, .project-title, .project-desc, .project-facts, .project-link,
+.more-row-title, .more-row-meta, .about-label, .about-lead, .about-body p, .about-caption,
+.cap-title, .cap-desc, .cta-eyebrow, .cta-title, .cta-email, .footer-copy, .footer-links a {
+  font-family: var(--font-primary);
+  font-variation-settings: "wdth" 100;
+}
+
+.wrap { max-width: 1440px; margin: 0 auto; padding: 0 80px; }
+
 /* Nav */
 .nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 100;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 28px 64px;
   background: var(--surface-base);
-  border-bottom: 1px solid transparent;
-  transition: border-color 300ms ease-out, background 300ms ease-out;
+  border-bottom: 1px solid var(--border-default);
+  transition: background 300ms ease-out;
 }
 .nav.scrolled {
-  border-bottom-color: var(--border-default);
   background: rgba(247,248,246,0.95);
   backdrop-filter: blur(12px);
 }
+.nav-inner {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 20px; padding-bottom: 20px;
+}
 .nav-logo {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-size: 17px; font-weight: 400; letter-spacing: 0.04em;
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 17px; font-weight: 400; letter-spacing: 0.02em;
   color: var(--text-primary); text-decoration: none;
-  transition: color 250ms ease-out;
+  transition: var(--transition-color);
 }
-.nav-logo-mark { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; background: #fff; border: 1px solid var(--border-default); flex-shrink: 0; }
+.nav-logo-mark { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; background: #fff; border: 1px solid var(--border-default); flex-shrink: 0; }
 .nav-logo:hover { color: var(--hover-text); }
-/* Nav: draw-border hover + lift */
-.nav-logo,
-.nav-links a { position: relative; transition: color 250ms ease-out, transform 200ms ease-out; }
-.nav-logo::before,
-.nav-links a::before {
-  content: ''; position: absolute; inset: -4px -8px;
-  border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
-  clip-path: inset(0 100% 0 0 round var(--radius-sm));
-  transition: clip-path 280ms ease-out, box-shadow 280ms ease-out;
-  pointer-events: none;
-}
-.nav-logo:hover, .nav-links a:hover { transform: translateY(-1px); }
-.nav-logo:hover::before, .nav-links a:hover::before {
-  clip-path: inset(0 0% 0 0% round var(--radius-sm));
-  box-shadow: var(--shadow-hover);
-}
-.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-right { display: flex; align-items: center; gap: 40px; }
+.nav-links { display: flex; gap: 40px; list-style: none; }
 .nav-links a {
-  font-size: 16px; font-weight: 300; letter-spacing: 0.01em;
+  font-size: 16px; font-weight: 300;
   color: var(--text-primary); text-decoration: none;
-  transition: color 250ms ease-out;
+  transition: var(--transition-color);
 }
 .nav-links a:hover { color: var(--hover-text); }
 .nav-links a:visited { color: var(--text-primary); }
-.nav-links a.active { color: var(--hover-text); }
+.nav-links a.active { color: var(--color-sage-700); font-weight: 400; }
+.nav-cta {
+  display: inline-flex; align-items: center; min-height: 44px;
+  padding: 0 22px; border-radius: 999px;
+  border: 1px solid var(--text-primary);
+  font-size: 15px; font-weight: 400;
+  color: var(--text-primary); text-decoration: none;
+  transition: var(--transition-color);
+}
+.nav-cta:hover { background: var(--text-primary); color: var(--text-inverse); }
+.nav-cta:visited { color: var(--text-primary); }
+.nav-cta:visited:hover { color: var(--text-inverse); }
 
 /* Mobile menu button */
 .nav-menu-btn {
-  display: none; flex-direction: column; gap: 6px;
-  background: none; border: none; cursor: pointer;
-  padding: 8px;
-  margin: -8px;
+  display: none; flex-direction: column; justify-content: center; align-items: center; gap: 6px;
+  width: 44px; height: 44px;
+  background: none; border: 1px solid var(--border-default); border-radius: 999px;
+  cursor: pointer;
 }
 .nav-menu-btn span {
-  width: 20px; height: 2px;
+  width: 18px; height: 1.5px;
   background: var(--text-primary);
-  transition: all 250ms ease-out;
+  transition: var(--transition-base);
 }
-.nav-menu-btn.open span:nth-child(1) { transform: rotate(45deg) translateY(10px); }
-.nav-menu-btn.open span:nth-child(2) { opacity: 0; }
-.nav-menu-btn.open span:nth-child(3) { transform: rotate(-45deg) translateY(-10px); }
-
-/* Mobile nav panel */
-.nav-panel {
-  display: none;
-}
-.nav-panel.open {
-  display: flex;
-}
+.nav-menu-btn.open span:nth-child(1) { transform: translateY(3.75px) rotate(45deg); }
+.nav-menu-btn.open span:nth-child(2) { transform: translateY(-3.75px) rotate(-45deg); }
 
 /* Reveal */
 .reveal {
@@ -96,265 +98,229 @@ html { scroll-behavior: smooth; }
 
 /* Hero */
 .hero {
-  min-height: 100vh; display: flex; align-items: center;
-  padding: 120px 64px 80px;
+  padding-top: calc(85px + var(--space-10));
+  padding-bottom: var(--space-10);
   border-bottom: 1px solid var(--border-default);
 }
-.hero-inner {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 48px; align-items: center; width: 100%;
-}
 .hero-eyebrow {
-  font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--text-muted); margin-bottom: 28px;
-  font-family: var(--font-primary); font-weight: 300;
-  font-variation-settings: "wdth" 100;
+  font-size: 15px; font-weight: 400; letter-spacing: 0.02em;
+  color: var(--text-secondary); margin-bottom: var(--space-7);
 }
 .hero h1 {
-  font-size: clamp(36px, 4.5vw, 60px);
-  font-weight: 300; line-height: 1.12;
-  letter-spacing: -0.025em;
+  max-width: 1180px;
+  font-size: clamp(44px, 6.7vw, 96px);
+  font-weight: 300; line-height: 1.02;
+  letter-spacing: -0.035em;
   color: var(--text-primary);
-  margin-bottom: 28px;
-  text-wrap: pretty;
+  text-wrap: balance;
 }
+.hero h1 em { font-style: normal; color: var(--color-sage-700); }
+.hero-bottom {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--space-7); align-items: end;
+  margin-top: 72px;
+}
+.hero-intro { grid-column: span 5; display: flex; flex-direction: column; gap: 36px; }
 .hero-sub {
-  font-size: 17px; font-weight: 300; line-height: 1.7;
-  color: var(--text-secondary); max-width: 440px; margin-bottom: 40px;
-  font-family: var(--font-primary);
-  font-variation-settings: "wdth" 100;
+  font-size: 19px; font-weight: 300; line-height: 1.65;
+  color: var(--text-secondary);
 }
-.hero-cta {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 12px 26px; border-radius: var(--radius-md);
-  background: var(--action-primary);
-  font-size: 14px; font-weight: 400; color: var(--text-primary);
-  text-decoration: none;
-  font-family: var(--font-primary);
-  font-variation-settings: "wdth" 100;
-  transition: background 250ms ease-out;
+.hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 48px; padding: 0 28px; border-radius: 999px;
+  font-size: 15px; font-weight: 400;
+  color: var(--text-primary); text-decoration: none;
+  transition: var(--transition-color);
 }
-.hero-cta:hover { background: var(--action-primary-hover); color: var(--text-primary); }
-.hero-cta:visited { color: var(--text-primary); }
-.hero-cta svg { width: 14px; height: 14px; stroke-width: 1.5; }
+.btn svg { width: 16px; height: 16px; stroke-width: 1.5; }
+.btn:visited { color: var(--text-primary); }
+.btn-primary { background: var(--action-primary); font-weight: 500; }
+.btn-primary:hover { background: var(--action-primary-hover); color: var(--text-primary); }
+.btn-ghost { border: 1px solid var(--border-default); }
+.btn-ghost:hover { border-color: var(--text-primary); color: var(--text-primary); }
 
-
+/* Hero case-study index */
+.hero-index {
+  grid-column: 7 / span 6;
+  display: flex; flex-direction: column;
+  border-top: 1px solid var(--text-primary);
+}
+.index-row {
+  display: grid; grid-template-columns: 56px 1fr auto 24px;
+  align-items: center; gap: var(--space-4);
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border-default);
+  color: var(--text-primary); text-decoration: none;
+  transition: var(--transition-color);
+}
+.index-row:visited { color: var(--text-primary); }
+.index-row:hover { color: var(--hover-text); }
+.index-num { font-size: 14px; font-weight: 400; color: var(--text-secondary); }
+.index-title { font-size: 22px; font-weight: 300; letter-spacing: -0.01em; }
+.index-meta { font-size: 14px; font-weight: 300; color: var(--text-secondary); }
+.index-row svg { width: 18px; height: 18px; stroke-width: 1.5; transition: transform 250ms ease-out; }
+.index-row:hover svg { transform: translate(2px, -2px); }
 
 /* Work section */
-.section-work { padding: 96px 64px; }
+.section-work { padding-top: var(--space-11); padding-bottom: var(--space-9); }
 .section-header {
-  display: flex; justify-content: space-between; align-items: baseline;
-  margin-bottom: 64px;
-}
-.section-eyebrow {
-  font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--text-muted);
-  font-family: var(--font-primary); font-weight: 300;
-  font-variation-settings: "wdth" 100;
-  margin-bottom: 12px;
+  display: flex; justify-content: space-between; align-items: flex-end; gap: var(--space-6);
+  margin-bottom: var(--space-10);
 }
 .section-title {
-  font-size: 32px; font-weight: 300; letter-spacing: -0.02em;
-  color: var(--text-primary);
-  font-family: var(--font-primary);
-  font-variation-settings: "wdth" 100;
+  font-size: clamp(36px, 3.9vw, 56px); font-weight: 300; line-height: 1.1;
+  letter-spacing: -0.03em; color: var(--text-primary);
 }
-.section-count {
-  font-size: 13px; font-weight: 300; color: var(--text-muted);
-  font-family: var(--font-primary);
-  font-variation-settings: "wdth" 100;
-}
+.section-count { font-size: 15px; font-weight: 400; color: var(--text-secondary); }
 
-/* Featured projects list */
-.projects-list { display: flex; flex-direction: column; gap: 0; }
-.project-row {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 48px; align-items: center;
-  padding: 64px 0;
-  border-top: 1px solid var(--border-default);
-  text-decoration: none; color: inherit;
-  transition: none;
+.projects-list { display: flex; flex-direction: column; gap: var(--space-10); }
+.project {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--space-7); align-items: center;
 }
-.project-row:last-child { border-bottom: 1px solid var(--border-default); }
-.project-row.reverse .project-text { order: 2; }
-.project-row.reverse .project-image { order: 1; }
-
-.project-image {
-  overflow: hidden; border-radius: var(--radius-md);
+.project-mat {
+  grid-column: span 7;
+  display: block; padding: var(--space-8);
+  border-radius: var(--radius-lg);
   background: var(--surface-raised);
   border: 1px solid var(--border-default);
-  aspect-ratio: 4/3;
+  transition: box-shadow 250ms ease-out, transform 250ms ease-out;
 }
-.project-image img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+.project-mat:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+.project-mat img {
+  display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
 }
-.project-row:hover .project-image img { transform: scale(1.03); }
+.project-mat img.muted { filter: saturate(0.55); }
+.project-text { grid-column: 9 / span 4; display: flex; flex-direction: column; gap: var(--space-6); }
+.project.reverse .project-text { grid-column: 1 / span 4; grid-row: 1; }
+.project.reverse .project-mat { grid-column: 6 / span 7; grid-row: 1; }
 
-.project-num {
-  font-size: 11px; letter-spacing: 0.08em; color: var(--text-muted);
-  font-family: var(--font-primary); font-weight: 300;
-  font-variation-settings: "wdth" 100;
-  margin-bottom: 16px;
-  display: flex; align-items: center; gap: 12px;
-}
-.project-num::after {
-  content: ''; display: block; width: 32px; height: 1px;
-  background: var(--border-default);
-}
+.project-num { font-size: 14px; font-weight: 400; color: var(--text-secondary); }
 .project-title {
-  font-size: 26px; font-weight: 300; line-height: 1.25;
+  font-size: clamp(28px, 2.5vw, 36px); font-weight: 300; line-height: 1.2;
   letter-spacing: -0.02em; color: var(--text-primary);
-  margin-bottom: 14px;
-  font-family: var(--font-primary);
-  font-variation-settings: "wdth" 100;
-  transition: color 250ms ease-out;
+  text-wrap: balance;
 }
-.project-row:hover .project-title { color: var(--hover-text); }
 .project-desc {
-  font-size: 15px; font-weight: 300; line-height: 1.7;
-  color: var(--text-secondary); margin-bottom: 20px;
-  font-family: var(--font-primary);
-  font-variation-settings: "wdth" 100;
+  font-size: 17px; font-weight: 300; line-height: 1.7;
+  color: var(--text-secondary);
 }
-.project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.tag {
-  padding: 3px 12px; border-radius: 999px;
-  border: 1px solid var(--border-default);
-  font-size: 11px; font-weight: 300; color: var(--text-muted);
-  letter-spacing: 0.03em;
-  font-family: var(--font-primary);
-  font-variation-settings: "wdth" 100;
+.project-facts { display: flex; flex-direction: column; border-top: 1px solid var(--border-default); }
+.project-facts div {
+  display: flex; justify-content: space-between; gap: var(--space-4);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--border-default);
+  font-size: 14px; font-weight: 400;
 }
+.project-facts dt { color: var(--text-secondary); font-weight: 300; }
+.project-facts dd { color: var(--text-primary); text-align: right; }
 .project-link {
-  display: inline-flex; align-items: center; gap: 8px;
-  margin-top: 24px;
-  font-size: 13px; font-weight: 400; color: var(--link-default);
-  font-family: var(--font-primary);
-  font-variation-settings: "wdth" 100;
-  transition: color 250ms ease-out;
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  width: fit-content; min-height: 44px;
+  font-size: 15px; font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px;
+  transition: var(--transition-color);
 }
-.project-link svg { width: 13px; height: 13px; stroke-width: 1.5; transition: transform 250ms ease-out; }
-.project-row:hover .project-link { color: var(--link-hover); }
-.project-row:hover .project-link svg { transform: translateX(3px); }
+.project-link:visited { color: var(--text-primary); }
+.project-link:hover { color: var(--hover-text); }
+.project-link svg { width: 16px; height: 16px; stroke-width: 1.5; transition: transform 250ms ease-out; }
+.project-link:hover svg { transform: translateX(3px); }
 
-/* More works */
-.more-link-wrap {
-  padding: 72px 0 0;
-  display: flex; justify-content: center;
+/* More work row */
+.more-row {
+  display: flex; justify-content: space-between; align-items: center; gap: var(--space-6);
+  margin-top: var(--space-10);
+  padding: 40px 0;
+  border-top: 1px solid var(--text-primary);
+  border-bottom: 1px solid var(--border-default);
+  color: var(--text-primary); text-decoration: none;
+  transition: var(--transition-color);
 }
-.more-link {
-  display: inline-flex; align-items: center; gap: 12px;
-  padding: 16px 32px; border-radius: var(--radius-md);
-  background: var(--surface-base);
-  border: 1px solid var(--border-strong);
-  font-size: 16px; font-weight: 400; letter-spacing: 0.01em;
-  color: var(--text-primary);
-  text-decoration: none;
-  font-family: var(--font-primary);
-  font-variation-settings: "wdth" 100;
-  box-shadow: var(--shadow-subtle);
-  transition: transform 200ms ease-out, box-shadow 250ms ease-out, background 250ms ease-out, border-color 250ms ease-out;
-}
-.more-link:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
-  background: var(--surface-hover);
-  color: var(--text-primary);
-  border-color: var(--text-primary);
-}
-.more-link:visited { color: var(--text-primary); }
-.more-link svg { width: 16px; height: 16px; stroke-width: 1.5; transition: transform 250ms ease-out; }
-.more-link:hover svg { transform: translateX(4px); }
+.more-row:visited { color: var(--text-primary); }
+.more-row:hover { color: var(--hover-text); }
+.more-row-title { font-size: 32px; font-weight: 300; letter-spacing: -0.02em; }
+.more-row-meta { display: flex; align-items: center; gap: var(--space-3); font-size: 15px; font-weight: 300; color: var(--text-secondary); }
+.more-row svg { width: 20px; height: 20px; stroke-width: 1.5; transition: transform 250ms ease-out; }
+.more-row:hover svg { transform: translateX(4px); }
 
 /* About */
-.section-about { padding: 96px 64px; }
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-.about-quote {
-  font-size: clamp(26px, 3.2vw, 42px); font-weight: 300; line-height: 1.2;
-  letter-spacing: -0.02em; color: var(--text-primary);
+.section-about {
+  padding-top: var(--space-11); padding-bottom: var(--space-11);
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--space-7); align-items: start;
+}
+.about-figure { grid-column: span 4; display: flex; flex-direction: column; gap: var(--space-3); }
+.about-figure img {
+  display: block; width: 100%; aspect-ratio: 4 / 5;
+  object-fit: cover; object-position: 50% 45%;
+  border-radius: var(--radius-md);
+}
+.about-caption { font-size: 13px; font-weight: 300; color: var(--text-secondary); }
+.about-text { grid-column: 6 / span 7; display: flex; flex-direction: column; gap: var(--space-7); padding-top: var(--space-2); }
+.about-label { font-size: 14px; font-weight: 400; color: var(--text-secondary); }
+.about-lead {
+  font-size: clamp(30px, 3.1vw, 44px); font-weight: 300; line-height: 1.2;
+  letter-spacing: -0.025em; color: var(--text-primary);
   text-wrap: pretty;
-  font-family: var(--font-primary);
-  font-variation-settings: "wdth" 100;
 }
-.about-body { display: flex; flex-direction: column; gap: 20px; padding-top: 8px; }
-.about-body p {
-  font-size: 16px; font-weight: 300; line-height: 1.75;
-  color: var(--text-secondary);
-  font-family: var(--font-primary);
-  font-variation-settings: "wdth" 100;
+.about-body { display: flex; flex-direction: column; gap: var(--space-5); max-width: 620px; }
+.about-body p { font-size: 18px; font-weight: 300; line-height: 1.7; color: var(--text-secondary); }
+.caps-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-7);
+  margin-top: var(--space-7); padding-top: var(--space-7);
+  border-top: 1px solid var(--border-default);
 }
-.about-cta {
-  display: inline-flex; align-items: center; gap: 8px;
-  margin-top: 12px;
-  font-size: 14px; font-weight: 400; color: var(--text-primary);
-  text-decoration: none;
-  font-family: var(--font-primary);
-  font-variation-settings: "wdth" 100;
-  border-bottom: 1px solid var(--text-primary); padding-bottom: 2px;
-  transition: color 250ms ease-out, border-color 250ms ease-out;
+.cap-item { display: flex; flex-direction: column; gap: 10px; }
+.cap-title { font-size: 18px; font-weight: 500; color: var(--text-primary); }
+.cap-desc { font-size: 15px; font-weight: 300; line-height: 1.65; color: var(--text-secondary); }
+
+/* Closing CTA + footer (dark) */
+.closing { background: var(--surface-dark); color: var(--text-inverse); }
+.closing-inner {
+  padding-top: var(--space-11); padding-bottom: var(--space-8);
+  display: flex; flex-direction: column; gap: var(--space-10);
+}
+.cta { display: flex; flex-direction: column; gap: 40px; }
+.cta-eyebrow { font-size: 15px; font-weight: 400; color: var(--color-light-500); }
+.cta-title {
+  font-size: clamp(40px, 6.7vw, 96px); font-weight: 300; line-height: 1.02;
+  letter-spacing: -0.035em; color: var(--text-inverse);
+  text-wrap: balance;
+}
+.cta-email {
   width: fit-content;
+  font-size: clamp(20px, 2.2vw, 32px); font-weight: 300; letter-spacing: -0.01em;
+  color: var(--color-coral-400);
+  text-decoration: underline; text-underline-offset: 10px; text-decoration-thickness: 1px;
+  transition: var(--transition-color);
 }
-.about-cta:hover { color: var(--hover-text); border-color: var(--hover-text); }
-.about-cta:visited { color: var(--text-primary); }
-.about-cta svg { width: 13px; height: 13px; stroke-width: 1.5; transition: transform 250ms ease-out; }
-.about-cta:hover svg { transform: translateX(3px); }
-
-/* Capabilities */
-.section-caps {
-  padding: 80px 64px 96px;
-  border-top: 1px solid var(--border-default);
-}
-.caps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 48px; margin-top: 56px; }
-.cap-item {}
-.cap-label {
-  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--text-muted); margin-bottom: 14px;
-  font-family: var(--font-primary); font-weight: 300;
-  font-variation-settings: "wdth" 100;
-}
-.cap-title {
-  font-size: 18px; font-weight: 400; color: var(--text-primary);
-  margin-bottom: 10px;
-  font-family: var(--font-primary);
-  font-variation-settings: "wdth" 100;
-}
-.cap-desc {
-  font-size: 14px; font-weight: 300; line-height: 1.7;
-  color: var(--text-secondary);
-  font-family: var(--font-primary);
-  font-variation-settings: "wdth" 100;
-}
-
-/* Footer */
+.cta-email:visited { color: var(--color-coral-400); }
+.cta-email:hover { color: var(--color-coral-300); }
 .footer {
-  border-top: 1px solid var(--border-default);
-  padding: 32px 64px;
-  display: flex; justify-content: space-between; align-items: center;
-  background: var(--surface-base);
+  display: flex; justify-content: space-between; align-items: center; gap: var(--space-6);
+  padding-top: var(--space-7);
+  border-top: 1px solid var(--color-dark-700);
 }
-.footer-copy {
-  font-size: 13px; font-weight: 300; color: var(--text-muted);
-  font-family: var(--font-primary);
-  font-variation-settings: "wdth" 100;
-}
-.footer-links { display: flex; gap: 32px; }
+.footer-copy { font-size: 14px; font-weight: 300; color: var(--color-light-500); }
+.footer-links { display: flex; gap: var(--space-7); }
 .footer-links a {
-  font-size: 13px; font-weight: 300; color: var(--text-muted);
-  text-decoration: none;
-  font-family: var(--font-primary);
-  font-variation-settings: "wdth" 100;
-  transition: color 250ms ease-out;
+  font-size: 14px; font-weight: 300;
+  color: var(--text-inverse); text-decoration: none;
+  transition: var(--transition-color);
 }
-.footer-links a:hover { color: var(--text-primary); }
-.footer-links a:visited { color: var(--text-muted); }
+.footer-links a:visited { color: var(--text-inverse); }
+.footer-links a:hover { color: var(--color-sage-300); }
 
 /* Back to top */
 #backToTop {
   position: fixed; bottom: 32px; right: 32px;
-  width: 40px; height: 40px;
+  width: 44px; height: 44px;
   background: var(--color-dark-800); color: var(--text-inverse);
-  border: none; border-radius: 50%; cursor: pointer;
+  border: 1px solid var(--color-dark-700); border-radius: 50%; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   opacity: 0; visibility: hidden;
   transition: opacity 300ms ease-out, visibility 300ms ease-out, background 200ms ease-out;
@@ -364,71 +330,54 @@ html { scroll-behavior: smooth; }
 #backToTop:hover { background: var(--color-dark-700); }
 #backToTop svg { width: 16px; height: 16px; stroke-width: 1.5; }
 
-/* Hero logo */
-.hero-logo-wrap {
-  display: flex; align-items: center; justify-content: center;
-}
-
-/* Fluid shape container */
-.fluid-shape {
-  width: 420px; height: 420px;
-  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  background: var(--surface-raised);
-  box-shadow: -8px 8px 48px rgba(28,31,29,0.07), inset 8px -8px 24px rgba(255,255,255,0.6);
-  animation: morph 8s ease-in-out infinite alternate;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-}
-@keyframes morph {
-  0%   { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-  50%  { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-  100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-}
-.fluid-shape::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  border-radius: inherit;
-  box-shadow: inset -5px 5px 20px rgba(0,0,0,0.03);
-  pointer-events: none;
-}
-.fluid-shape img {
-  width: 72%; height: auto;
-  mix-blend-mode: multiply;
-  opacity: 0.85;
-  position: relative; z-index: 1;
-}
-
 @media (max-width: 900px) {
-  .nav { padding: 20px 28px; }
-  .nav-menu-btn { display: flex; margin-left: auto; }
-  .nav-links a::before { display: none; }
+  .wrap { padding: 0 20px; }
+  .nav-inner { padding-top: 16px; padding-bottom: 16px; }
+  .nav-menu-btn { display: flex; }
+  .nav-cta { display: none; }
   .nav-links {
     display: none;
-    position: fixed; top: 70px; left: 0; right: 0;
-    flex-direction: column; gap: 0; list-style: none;
+    position: fixed; top: 77px; left: 0; right: 0;
+    flex-direction: column; gap: 0;
     background: var(--surface-base);
     border-bottom: 1px solid var(--border-default);
-    padding: 16px 0;
+    padding: var(--space-2) 0;
     z-index: 99;
   }
   .nav-links.open { display: flex; }
-  .nav-links a {
-    padding: 12px 28px;
-    display: block;
-  }
-  .hero { padding: 100px 28px 64px; }
-  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-  .fluid-shape { width: 280px; height: 280px; }
-  .section-work, .section-about, .section-caps { padding-left: 28px; padding-right: 28px; }
-  .footer { padding: 28px; }
-  .project-row { grid-template-columns: 1fr; gap: 28px; }
-  .project-row.reverse .project-text { order: 1; }
-  .project-row.reverse .project-image { order: 2; }
-  .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .caps-grid { grid-template-columns: 1fr; gap: 36px; }
+  .nav-links a { display: block; padding: 14px 20px; }
+  .nav-links .nav-links-mail { display: block; }
+
+  .hero { padding-top: calc(77px + var(--space-8)); padding-bottom: var(--space-8); }
+  .hero-eyebrow { font-size: 14px; margin-bottom: var(--space-6); }
+  .hero-bottom { grid-template-columns: 1fr; row-gap: var(--space-8); margin-top: var(--space-7); }
+  .hero-intro, .hero-index { grid-column: 1 / -1; }
+  .hero-sub { font-size: 17px; }
+  .index-row { grid-template-columns: 40px 1fr 20px; }
+  .index-meta { display: none; }
+
+  .section-work { padding-top: var(--space-9); padding-bottom: var(--space-8); }
+  .section-header { flex-direction: column; align-items: flex-start; gap: var(--space-2); margin-bottom: var(--space-8); }
+  .projects-list { gap: var(--space-9); }
+  .project { grid-template-columns: 1fr; row-gap: var(--space-6); }
+  .project-mat, .project-text,
+  .project.reverse .project-mat, .project.reverse .project-text { grid-column: 1 / -1; grid-row: auto; }
+  .project-mat { padding: var(--space-5); }
+  .more-row { flex-direction: column; align-items: flex-start; margin-top: var(--space-9); padding: var(--space-7) 0; }
+  .more-row-title { font-size: 26px; }
+
+  .section-about { grid-template-columns: 1fr; row-gap: var(--space-8); padding-top: var(--space-9); padding-bottom: var(--space-9); }
+  .about-figure, .about-text { grid-column: 1 / -1; }
+  .about-figure { max-width: 360px; }
+  .caps-grid { grid-template-columns: 1fr; gap: var(--space-6); }
+
+  .closing-inner { padding-top: var(--space-9); padding-bottom: var(--space-7); gap: var(--space-8); }
+  .cta { gap: var(--space-6); }
+  .footer { flex-direction: column; align-items: flex-start; }
+  #backToTop { bottom: 20px; right: 20px; }
+}
+@media (min-width: 901px) {
+  .nav-links .nav-links-mail { display: none; }
 }
 </style>
 </head>
@@ -436,184 +385,203 @@ html { scroll-behavior: smooth; }
 
 <!-- Nav -->
 <header class="nav" id="nav">
-  <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="" class="nav-logo-mark"><span>Phuong Vu</span></a>
-  <button type="button" class="nav-menu-btn" id="navMenuBtn" aria-label="Toggle menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-  <nav>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#work" class="active">work</a></li>
-      <li><a href="#about">about</a></li>
-      <li><a href="https://www.linkedin.com/in/vuhoangphuong/" target="_blank" rel="noopener">linkedin</a></li>
-    </ul>
-  </nav>
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="" class="nav-logo-mark"><span>Phuong Vu</span></a>
+    <div class="nav-right">
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#work" class="active">work</a></li>
+          <li><a href="#about">about</a></li>
+          <li><a href="https://www.linkedin.com/in/vuhoangphuong/" target="_blank" rel="noopener">linkedin</a></li>
+          <li class="nav-links-mail"><a href="mailto:ultiepv@proton.me">email</a></li>
+        </ul>
+      </nav>
+      <a href="mailto:ultiepv@proton.me" class="nav-cta">Get in touch</a>
+      <button type="button" class="nav-menu-btn" id="navMenuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
 </header>
 
 <main>
   <!-- Hero -->
-  <section class="hero">
-    <div class="hero-inner">
-      <!-- Left: intro -->
-      <div>
-        <p class="hero-eyebrow reveal">product designer — Boston</p>
-        <h1 class="reveal" style="transition-delay:80ms">Designing digital experiences that clarify complexity.</h1>
-        <p class="hero-sub reveal" style="transition-delay:160ms">
-          I'm Phuong, a product designer who transforms intricate problems into intuitive, user-centered solutions for web and mobile.
-        </p>
-        <a href="#work" class="hero-cta reveal" style="transition-delay:240ms">
-          Selected work
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
-        </a>
-      </div>
-      <!-- Right: logo in fluid shape -->
-      <div class="hero-logo-wrap reveal" style="transition-delay:200ms">
-        <div class="fluid-shape">
-          <img src="images/logo.png" alt="Phuong Vu">
+  <section class="hero" id="top">
+    <div class="wrap">
+      <p class="hero-eyebrow reveal">Product designer · Boston, MA</p>
+      <h1 class="reveal" style="transition-delay:80ms">Designing digital experiences that <em>clarify</em> complexity.</h1>
+      <div class="hero-bottom">
+        <div class="hero-intro reveal" style="transition-delay:160ms">
+          <p class="hero-sub">I'm Phuong, a product designer who turns intricate problems into intuitive, user-centered solutions for web and mobile. I design in Figma and build what I design.</p>
+          <div class="hero-actions">
+            <a href="#work" class="btn btn-primary">
+              Selected work
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+            </a>
+            <a href="#about" class="btn btn-ghost">About me</a>
+          </div>
         </div>
+        <nav class="hero-index reveal" aria-label="Case studies" style="transition-delay:240ms">
+          <a href="project-01.html" class="index-row">
+            <span class="index-num">01</span>
+            <span class="index-title">2B Rental</span>
+            <span class="index-meta">Web design &amp; build</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </a>
+          <a href="project-02.html" class="index-row">
+            <span class="index-num">02</span>
+            <span class="index-title">Bentley GSA</span>
+            <span class="index-meta">Web redesign · IA</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </a>
+          <a href="project-03.html" class="index-row">
+            <span class="index-num">03</span>
+            <span class="index-title">PostUp</span>
+            <span class="index-meta">Design sprint · UX</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </a>
+        </nav>
       </div>
     </div>
   </section>
 
   <!-- Work -->
   <section id="work" class="section-work">
-    <div class="section-header">
-      <div>
-        <p class="section-eyebrow">selected projects</p>
-        <h2 class="section-title">Featured work</h2>
+    <div class="wrap">
+      <div class="section-header reveal">
+        <h2 class="section-title">Selected work</h2>
+        <span class="section-count">Three case studies</span>
       </div>
-      <span class="section-count">01 — 03</span>
-    </div>
 
-    <div class="projects-list">
-      <!-- Project 01 -->
-      <a href="project-01.html" class="project-row reveal">
-        <div class="project-text">
-          <p class="project-num">01</p>
-          <h3 class="project-title">2B Rental — short-term stay website</h3>
-          <p class="project-desc">A self-initiated site for a short-term rental home in Quincy, MA — designed in Figma and hand-built in VS Code.</p>
-          <div class="project-tags">
-            <span class="tag">Web design</span>
-            <span class="tag">HTML / CSS / JS</span>
-            <span class="tag">Solo build</span>
+      <div class="projects-list">
+        <!-- Project 01 -->
+        <article class="project reveal">
+          <a href="project-01.html" class="project-mat" tabindex="-1" aria-hidden="true">
+            <img src="images/2brental/2brental_cover.png" alt="" loading="lazy">
+          </a>
+          <div class="project-text">
+            <p class="project-num">01 — Web design &amp; build</p>
+            <h3 class="project-title">2B Rental, a home of its own on the web</h3>
+            <p class="project-desc">A self-initiated site for a short-term rental in Quincy, MA. Designed in Figma and hand-built in VS Code.</p>
+            <dl class="project-facts">
+              <div><dt>Role</dt><dd>Solo, end to end</dd></div>
+              <div><dt>Timeline</dt><dd>About 6 months</dd></div>
+              <div><dt>Tools</dt><dd>Figma, HTML, CSS, JS</dd></div>
+            </dl>
+            <a href="project-01.html" class="project-link">
+              Read case study
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
           </div>
-          <span class="project-link">
-            View case study
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </span>
-        </div>
-        <div class="project-image">
-          <img src="images/2brental/2brental_cover.png" alt="2B Rental website" loading="lazy">
-        </div>
-      </a>
+        </article>
 
-      <!-- Project 02 -->
-      <a href="project-02.html" class="project-row reverse reveal">
-        <div class="project-image">
-          <img src="images/BentleyGSA/BentleyGSA_Cover.png" alt="Bentley GSA website redesign" loading="lazy">
-        </div>
-        <div class="project-text">
-          <p class="project-num">02</p>
-          <h3 class="project-title">Bentley GSA website redesign</h3>
-          <p class="project-desc">Rebuilding a neglected student-government site around honest labels, one consistent navigation, and layouts that match what students come to do.</p>
-          <div class="project-tags">
-            <span class="tag">Web redesign</span>
-            <span class="tag">Information architecture</span>
-            <span class="tag">Sole designer & developer</span>
+        <!-- Project 02 -->
+        <article class="project reverse reveal">
+          <div class="project-text">
+            <p class="project-num">02 — Web redesign</p>
+            <h3 class="project-title">Bentley GSA, rebuilt around what students come to do</h3>
+            <p class="project-desc">Honest labels, one consistent navigation, and layouts that match what students come to do.</p>
+            <dl class="project-facts">
+              <div><dt>Role</dt><dd>Sole designer &amp; developer</dd></div>
+              <div><dt>Focus</dt><dd>Information architecture</dd></div>
+              <div><dt>Type</dt><dd>Web redesign</dd></div>
+            </dl>
+            <a href="project-02.html" class="project-link">
+              Read case study
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
           </div>
-          <span class="project-link">
-            View case study
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </span>
-        </div>
-      </a>
+          <a href="project-02.html" class="project-mat" tabindex="-1" aria-hidden="true">
+            <img src="images/BentleyGSA/BentleyGSA_Cover.png" alt="" loading="lazy">
+          </a>
+        </article>
 
-      <!-- Project 03 -->
-      <a href="project-03.html" class="project-row reveal">
-        <div class="project-text">
-          <p class="project-num">03</p>
-          <h3 class="project-title">PostUp remote workplace finder</h3>
-          <p class="project-desc">A design sprint to help remote workers quickly find reliable places to work with the right amenities.</p>
-          <div class="project-tags">
-            <span class="tag">Design sprint</span>
-            <span class="tag">UX design</span>
-            <span class="tag">Case study</span>
+        <!-- Project 03 -->
+        <article class="project reveal">
+          <a href="project-03.html" class="project-mat" tabindex="-1" aria-hidden="true">
+            <img src="images/remoteworkplace/img001.png" alt="" loading="lazy" class="muted">
+          </a>
+          <div class="project-text">
+            <p class="project-num">03 — Design sprint</p>
+            <h3 class="project-title">PostUp, finding a good place to work, fast</h3>
+            <p class="project-desc">A design sprint to help remote workers quickly find reliable places to work with the right amenities.</p>
+            <dl class="project-facts">
+              <div><dt>Format</dt><dd>Design sprint</dd></div>
+              <div><dt>Focus</dt><dd>UX design</dd></div>
+              <div><dt>Type</dt><dd>Case study</dd></div>
+            </dl>
+            <a href="project-03.html" class="project-link">
+              Read case study
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
           </div>
-          <span class="project-link">
-            View case study
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </span>
-        </div>
-        <div class="project-image">
-          <img src="images/remoteworkplace/img001.png" alt="PostUp remote workplace finder" loading="lazy">
-        </div>
-      </a>
-    </div>
+        </article>
+      </div>
 
-    <div class="more-link-wrap reveal">
-      <a href="graphic-design.html" class="more-link">
-        More design work
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      <a href="graphic-design.html" class="more-row reveal">
+        <span class="more-row-title">More design work</span>
+        <span class="more-row-meta">
+          Graphic design, infographics, branding
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </span>
       </a>
     </div>
   </section>
 
   <!-- About -->
-  <section id="about" class="section-about">
-    <div class="about-grid">
-      <div class="reveal">
-        <p class="section-eyebrow" style="margin-bottom:24px">about</p>
-        <p class="about-quote">Good design is invisible. It clears the path.</p>
-      </div>
-      <div class="about-body reveal" style="transition-delay:100ms">
-        <p>With a background in graphic design and a passion for user research, I bridge the gap between aesthetics and utility. I believe the best interfaces feel effortless — they let users achieve their goals without friction.</p>
-        <p>When I'm not designing, you'll find me exploring Boston's coffee scene, sketching in my notebook, or perfecting my sourdough recipe.</p>
-        <a href="mailto:ultiepv@proton.me" class="about-cta">
-          Get in touch
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Capabilities -->
-  <section class="section-caps">
-    <div>
-      <p class="section-eyebrow">what I do</p>
-      <h2 class="section-title">Capabilities</h2>
-    </div>
-    <div class="caps-grid">
-      <div class="cap-item reveal">
-        <p class="cap-label">01</p>
-        <h3 class="cap-title">Product strategy</h3>
-        <p class="cap-desc">Stakeholder workshops, concise problem framing, prioritization, and measurable success criteria.</p>
-      </div>
-      <div class="cap-item reveal" style="transition-delay:80ms">
-        <p class="cap-label">02</p>
-        <h3 class="cap-title">UX design</h3>
-        <p class="cap-desc">Flows, wireframes, prototyping, and usability testing with a bias for quick iteration.</p>
-      </div>
-      <div class="cap-item reveal" style="transition-delay:160ms">
-        <p class="cap-label">03</p>
-        <h3 class="cap-title">Visual systems</h3>
-        <p class="cap-desc">Design languages, component libraries, and launch-ready UI that scales across devices.</p>
+  <section id="about">
+    <div class="wrap section-about">
+      <figure class="about-figure reveal">
+        <img src="images/me-portrait.jpg" alt="Portrait of Phuong Vu outdoors, in black and white" loading="lazy">
+        <figcaption class="about-caption">Boston, MA</figcaption>
+      </figure>
+      <div class="about-text reveal" style="transition-delay:100ms">
+        <p class="about-label">About</p>
+        <p class="about-lead">A graphic designer's eye, a researcher's patience, and the habit of building what I draw.</p>
+        <div class="about-body">
+          <p>With a background in graphic design and a passion for user research, I bridge the gap between aesthetics and utility. I believe the best interfaces feel effortless: they let people reach their goals without friction.</p>
+          <p>When I'm not designing, you'll find me exploring Boston's coffee scene, sketching in my notebook, or perfecting my sourdough recipe.</p>
+        </div>
+        <div class="caps-grid">
+          <div class="cap-item">
+            <h3 class="cap-title">Product strategy</h3>
+            <p class="cap-desc">Stakeholder workshops, problem framing, prioritization, and measurable success criteria.</p>
+          </div>
+          <div class="cap-item">
+            <h3 class="cap-title">UX design</h3>
+            <p class="cap-desc">Flows, wireframes, prototyping, and usability testing with a bias for quick iteration.</p>
+          </div>
+          <div class="cap-item">
+            <h3 class="cap-title">Visual systems</h3>
+            <p class="cap-desc">Design languages, component libraries, and launch-ready UI that scales across devices.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 </main>
 
-<!-- Footer -->
-<footer class="footer">
-  <p class="footer-copy">© 2026 Phuong Vu</p>
-  <div class="footer-links">
-    <a href="https://www.linkedin.com/in/vuhoangphuong/" target="_blank" rel="noopener">linkedin</a>
-    <a href="mailto:ultiepv@proton.me">email</a>
+<!-- Closing CTA + Footer -->
+<div class="closing">
+  <div class="wrap closing-inner">
+    <section class="cta reveal" aria-labelledby="ctaTitle">
+      <p class="cta-eyebrow">Get in touch</p>
+      <h2 class="cta-title" id="ctaTitle">Let's make something clear together.</h2>
+      <a href="mailto:ultiepv@proton.me" class="cta-email">ultiepv@proton.me</a>
+    </section>
+    <footer class="footer">
+      <p class="footer-copy">© 2026 Phuong Vu</p>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/vuhoangphuong/" target="_blank" rel="noopener">linkedin</a>
+        <a href="#top">back to top</a>
+      </div>
+    </footer>
   </div>
-</footer>
+</div>
 
 <button type="button" id="backToTop" aria-label="Back to top">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
 </button>
 
 <script>
@@ -637,7 +605,6 @@ setTimeout(() => {
   });
 }, 50);
 
-
 // Back to top
 const btt = document.getElementById('backToTop');
 window.addEventListener('scroll', () => btt.classList.toggle('visible', window.scrollY > 500));
@@ -646,37 +613,31 @@ btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth'
 // Mobile menu toggle
 const navMenuBtn = document.getElementById('navMenuBtn');
 const navLinks = document.getElementById('navLinks');
+function setMenu(open) {
+  navMenuBtn.classList.toggle('open', open);
+  navLinks.classList.toggle('open', open);
+  navMenuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
 if (navMenuBtn) {
-  navMenuBtn.addEventListener('click', () => {
-    navMenuBtn.classList.toggle('open');
-    navLinks.classList.toggle('open');
-  });
+  navMenuBtn.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
   // Close menu when a link is clicked
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      navMenuBtn.classList.remove('open');
-      navLinks.classList.remove('open');
-    });
-  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
   // Close menu when clicking outside
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.nav')) {
-      navMenuBtn.classList.remove('open');
-      navLinks.classList.remove('open');
-    }
+    if (!e.target.closest('.nav')) setMenu(false);
   });
 }
 
 // Smooth anchor scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
-    e.preventDefault();
     const el = document.querySelector(a.getAttribute('href'));
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (!el) return;
+    e.preventDefault();
+    el.scrollIntoView({ behavior: 'smooth' });
   });
 });
 </script>
-
 
 </body>
 </html>
