@@ -22,7 +22,7 @@ There are no tests, linters, or CI scripts configured.
 
 ### File layout
 
-- `index.html` — Homepage: hero, 3 featured projects (list layout), 5 additional projects (card grid), about, capabilities
+- `index.html` — Homepage: hero (headline + case-study index), 3 featured projects (`.project` rows with matted covers and a facts list), "more design work" row, about (portrait + capabilities), dark closing CTA with footer
 - `project-01.html` / `project-02.html` / `project-03.html` / `project-04.html` — Long-form case study pages
 - `graphic-design.html` — Graphic design collection gallery
 - `bmc.html`, `infographic.html`, `intervention.html`, `mcle.html` — Smaller single-project pages
@@ -78,6 +78,8 @@ Icons are inline SVG copied from [Lucide](https://lucide.dev/), with `stroke-wid
 
 Every page duplicates a standard nav block, reveal animation system, and back-to-top button inline. When adding or editing a page, follow the existing inline implementations exactly.
 
+`index.html` and the case study pages (`project-01.html` to `project-04.html`) share the current nav (`.nav-inner`, `.nav-right`, pill `.nav-cta`, two-line `.nav-menu-btn` with `aria-expanded`) and end with the dark `.closing` block (CTA + footer). The other pages (`graphic-design.html`, `bmc.html`, `infographic.html`, `intervention.html`, `mcle.html`) still use the older nav and footer. Copy from a case study page when updating them.
+
 **Reveal animation**: add class `reveal` to any element; an `IntersectionObserver` adds `visible` on scroll. Above-fold elements get a `setTimeout(..., 50)` to fire immediately. Stagger siblings with `style="transition-delay: 80ms"` increments.
 
 **Mobile breakpoint**: all responsive overrides live inside `@media (max-width: 900px)`.
@@ -90,5 +92,5 @@ Every page duplicates a standard nav block, reveal animation system, and back-to
 
 1. Create a new HTML page (e.g. `project-05.html`) using an existing case study page as the template.
 2. Add a cover image folder under `images/`.
-3. Link the project from `index.html` — add it as a `.project-row` in the featured list or a `.card` in the additional-projects grid.
-4. Update the `section-count` label (e.g. `01 — 04`) in `index.html` if adding to the featured list.
+3. Link the project from `index.html` — add it as a `.project` article in the featured list and an `.index-row` in the hero index.
+4. Update the `section-count` label (e.g. `Four case studies`) in `index.html` if adding to the featured list.
