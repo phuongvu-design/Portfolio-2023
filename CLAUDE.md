@@ -78,6 +78,8 @@ Icons are inline SVG copied from [Lucide](https://lucide.dev/), with `stroke-wid
 
 Every page duplicates a standard nav block, reveal animation system, and back-to-top button inline. When adding or editing a page, follow the existing inline implementations exactly.
 
+`index.html` and the case study pages (`project-01.html` to `project-04.html`) share the current nav (`.nav-inner`, `.nav-right`, pill `.nav-cta`, two-line `.nav-menu-btn` with `aria-expanded`) and end with the dark `.closing` block (CTA + footer). The other pages (`graphic-design.html`, `bmc.html`, `infographic.html`, `intervention.html`, `mcle.html`) still use the older nav and footer. Copy from a case study page when updating them.
+
 **Reveal animation**: add class `reveal` to any element; an `IntersectionObserver` adds `visible` on scroll. Above-fold elements get a `setTimeout(..., 50)` to fire immediately. Stagger siblings with `style="transition-delay: 80ms"` increments.
 
 **Mobile breakpoint**: all responsive overrides live inside `@media (max-width: 900px)`.
